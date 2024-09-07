@@ -47,4 +47,22 @@ class MainTest {
     void Test_10_no_elements(){
         assertTrue(Arrays.equals(new int[] {},Main.heapsort(new int[] {})));
     }
+    @Test
+    void Test_11_heap_building(){
+        int[] arr= new int[] {3,4,1,2,5};
+        int n=arr.length;
+        for (int j = n / 2; j >= 0; j--) {
+            Main.build_heap(arr, j, n);
+        }
+        assertArrayEquals(new int[]{5,4,1,2,3},arr);
+    }
+    @Test
+    void Test_12_heap_building_wrong(){
+        int[] arr= new int[] {3,4,1,2,5};
+        int n=arr.length;
+        for (int j = n / 2; j >= 0; j--) {
+            Main.build_heap(arr, j, n);
+        }
+        assertFalse(Arrays.equals(new int[]{4,2,1,5,3},arr));
+    }
 }
