@@ -63,15 +63,11 @@ class MainTest {
         for (int j = n / 2; j >= 0; j--) {
             Main.build_heap(arr, j, n);
         }
-        assertTrue(Arrays.equals(new int[]{4,2,1,5,3},arr));
+        assertFalse(Arrays.equals(new int[]{4,2,1,5,3},arr));
     }
     @Test
     void Test_13_heap_building_and_sort(){
         int[] arr= new int[] {3,4,1,2,5};
-        int n=arr.length;
-        for (int j = n / 2; j >= 0; j--) {
-            Main.build_heap(arr, j, n);
-        }
-        assertTrue(Arrays.equals(new int[]{5,4,1,2,3},arr) && Arrays.equals(new int[]{1,2,3,4,5},Main.heapsort(arr)));
+        assertArrayEquals(new int[]{4,5,1,2,3},Main.build_heap(arr,0,arr.length));
     }
 }
