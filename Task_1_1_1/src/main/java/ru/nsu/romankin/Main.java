@@ -32,14 +32,6 @@ public class Main {
         return arr;
     }
     public static void main(String[] args) {
-        int[] arr=new int[] {3,4,1,2,5};
-        build_heap(arr,0,5);
-        for (int i=0;i<5;i++) {
-            System.out.print(arr[i]);
-        }
-        heapsort(arr);
-        for (int i=0;i<5;i++) {
-            System.out.print(arr[i]);
-        }
+        
     }
 }
