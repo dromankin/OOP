@@ -31,4 +31,20 @@ class MainTest {
     void Test_6_one_element(){
         assertArrayEquals(new int[] {-8},Main.heapsort(new int[] {-8}));
     }
+    @Test
+    void Test_7_one_element_neg_result(){
+        assertFalse(Arrays.equals(new int[] {-8},Main.heapsort(new int[] {0})));
+    }
+    @Test
+    void Test_8_different_arrays(){
+        assertFalse(Arrays.equals(new int[] {1,2,3,4,5,9,45},Main.heapsort(new int[] {-8,0,4,5,6,13})));
+    }
+    @Test
+    void Test_9_only_same_numbers(){
+        assertTrue(Arrays.equals(new int[] {0, 0, 0, 0, 0},Main.heapsort(new int[] {0, 0, 0, 0, 0})));
+    }
+    @Test
+    void Test_10_no_elements(){
+        assertTrue(Arrays.equals(new int[] {},Main.heapsort(new int[] {})));
+    }
 }
