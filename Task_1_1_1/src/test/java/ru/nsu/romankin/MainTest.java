@@ -63,7 +63,7 @@ class MainTest {
         for (int j = n / 2; j >= 0; j--) {
             Main.build_heap(arr, j, n);
         }
-        assertFalse(Arrays.equals(new int[]{4,2,1,5,3},arr));
+        assertTrue(Arrays.equals(new int[]{4,2,1,5,3},arr));
     }
     @Test
     void Test_13_heap_building_and_sort(){
