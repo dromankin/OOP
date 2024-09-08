@@ -20,17 +20,20 @@ class MainTest {
 
     @Test
     void test_3_negative_numbers() {
-        assertArrayEquals(new int[] {-8, -5, 0, 1, 12}, Main.heapsort(new int[] {-5, -8, 12, 1, 0}));
+        int[] arr = new int[] {-5, -8, 12, 1, 0};
+        assertArrayEquals(new int[] {-8, -5, 0, 1, 12}, Main.heapsort(arr));
     }
 
     @Test
     void test_4_negative_numbers_negative_result() {
-        assertFalse(Arrays.equals(new int[] {12, -8, -5, 1, 0}, Main.heapsort(new int[] {-5, -8, 12, 1, 0})));
+        int[] arr = new int[] {-5, -8, 12, 1, 0};
+        assertFalse(Arrays.equals(new int[] {12, -8, -5, 1, 0}, Main.heapsort(arr)));
     }
 
     @Test
     void test_5_repeating_numbers() {
-        assertArrayEquals(new int[] {0, 1, 1, 1, 4, 5, 7, 7, 8, 87}, Main.heapsort(new int[] {1, 1, 1, 87, 4, 0, 8, 5, 7, 7}));
+        int[] arr = new int[] {1, 1, 1, 87, 4, 0, 8, 5, 7, 7};
+        assertArrayEquals(new int[]{0, 1, 1, 1, 4, 5, 7, 7, 8, 87}, Main.heapsort(arr));
     }
 
     @Test
@@ -62,8 +65,8 @@ class MainTest {
 
     @Test
     void test_11_heap_building() {
-        int[] arr= new int[] {3, 4, 1, 2, 5};
-        int n=arr.length;
+        int[] arr = new int[] {3, 4, 1, 2, 5};
+        int n = arr.length;
         for (int j = n / 2; j >= 0; j--) {
             Main.build_heap(arr, j, n);
         }
