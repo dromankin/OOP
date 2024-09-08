@@ -9,7 +9,7 @@ public class Main {
 
         int index_of_max = i; /**choosing cuurent index as index of maximal element*/
         if ((2 * i + 1) < n && arr[2 * i + 1] > arr[index_of_max]) {
-            index_of_max=2*i+1; /**choosing left son if it is bigger**/
+            index_of_max = 2 * i + 1; /**choosing left son if it is bigger**/
         }
         if ((2 * i + 2) < n && arr[2 * i + 2] > arr[index_of_max] ) {
             index_of_max = 2 * i + 2; /**choosing right son if it is bigger**/
@@ -22,12 +22,12 @@ public class Main {
         }
         return arr;
     }
-    public static int[] heapsort(int[] arr){
+    public static int[] heapsort(int[] arr) {
         int n=arr.length; //length of array
         for (int j = n / 2; j >= 0; j--) { //building a heap using build_heap function for each element with index than n/2
             build_heap(arr, j, n);
         }
-        for (int i = n - 1; i >= 0; i--){
+        for (int i = n - 1; i >= 0; i--) {
 
             int t = arr[0];   /** swapping first and last elements; after that the biggest element will be in the end of array*/
             arr[0] = arr[i];
