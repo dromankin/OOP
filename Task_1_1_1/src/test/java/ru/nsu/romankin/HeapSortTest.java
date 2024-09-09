@@ -103,4 +103,10 @@ class HeapSortTest {
         HeapSort.build_heap(arr, 0, arr.length);
         assertArrayEquals(new int[] {4, 5, 1, 2, 3}, arr);
     }
+
+    @Test
+    void test_main() {
+        HeapSort.main(null);
+        assertTrue(true);
+    }
 }
