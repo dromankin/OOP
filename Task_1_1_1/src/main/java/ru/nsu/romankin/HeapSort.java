@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class HeapSort {
     /**
-    * @summary this function builds a heap from array.
+    * this function builds a heap from array.
     * @param arr - array,
     * @param i - index of element in tree,
     * @param n - amount of elements.
