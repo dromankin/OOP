@@ -6,13 +6,13 @@ import java.util.Random;
 
 public class HeapSort {
     /**
-     * @param arr - array,
-     * @param i - index of element in tree,
-     * @param n - amount of elements.
-     * this function builds a heap from array.
-     */
+    * @summary this function builds a heap from array.
+    * @param arr - array,
+    * @param i - index of element in tree,
+    * @param n - amount of elements.
+    */
 
-    public static void build_heap(int[] arr, int i,int n) {
+    public static void build_heap(int[] arr, int i, int n) {
 
         int indexOfMax = i; /*choosing cuurent index as index of maximal element*/
         if ((2 * i + 1) < n && arr[2 * i + 1] > arr[indexOfMax]) {
