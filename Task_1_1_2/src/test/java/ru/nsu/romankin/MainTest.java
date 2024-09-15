@@ -1,29 +1,25 @@
 package ru.nsu.romankin;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MainTest {
     private String runGame(String input) {
-        InputStream inputStream = System.in;
-        PrintStream outputStream = System.out;
-
+        final InputStream inputStream = System.in;
+        final PrintStream outputStream = System.out;
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
-
         Main.main(null);
-
         System.setIn(inputStream);
         System.setOut(outputStream);
-
         return myOut.toString();
     }
 
@@ -35,7 +31,7 @@ class MainTest {
 
     @Test
     void blackjackFunction() {
-        Player player = new Player();
+        final Player player = new Player();
         Deck deck = new Deck();
         deck.list.get(0).rank = "Туз";
         deck.list.get(0).value = 11;

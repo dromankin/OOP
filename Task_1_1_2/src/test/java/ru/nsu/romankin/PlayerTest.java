@@ -1,12 +1,12 @@
 package ru.nsu.romankin;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.junit.jupiter.api.Test;
 
 class PlayerTest {
+
     @Test
     void playerConstructor() {
         Player player = new Player();
@@ -29,7 +29,7 @@ class PlayerTest {
 
     @Test
     void getAceTest() {
-        Player player = new Player();
+        final Player player = new Player();
         Deck deck = new Deck();
         deck.list.get(0).rank = "Туз";
         deck.list.get(0).value = 11;
@@ -40,8 +40,7 @@ class PlayerTest {
 
         player.getCard(deck);
         player.getCard(deck);
-//        System.out.println(player.hand.get(0).value);
-//        System.out.println(player.points);
+
         assertTrue(player.hand.get(0).value == 1);
         assertTrue(player.points == 12);
         player.getCard(deck);
