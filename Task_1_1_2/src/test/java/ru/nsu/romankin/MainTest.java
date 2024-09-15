@@ -11,12 +11,13 @@ import org.junit.jupiter.api.Test;
 
 class MainTest {
     private String runGame(String input) {
-        final InputStream inputStream = System.in;
-        final PrintStream outputStream = System.out;
+
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
+        InputStream inputStream = System.in;
+        PrintStream outputStream = System.out;
         Main.main(null);
         System.setIn(inputStream);
         System.setOut(outputStream);
@@ -31,7 +32,7 @@ class MainTest {
 
     @Test
     void blackjackFunction() {
-        final Player player = new Player();
+        Player player = new Player();
         Deck deck = new Deck();
         deck.list.get(0).rank = "Туз";
         deck.list.get(0).value = 11;
