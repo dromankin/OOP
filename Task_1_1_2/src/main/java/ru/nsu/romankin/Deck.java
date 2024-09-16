@@ -8,6 +8,7 @@ import java.util.Collections;
 public class Deck {
     ArrayList<Card> list;
     /** Class constructor.*/
+
     public Deck() {
         list = new ArrayList<>();
         String[] suitNames = new String[] {"Червы", "Пики", "Бубны", "Трефы"};
@@ -26,6 +27,7 @@ public class Deck {
         Collections.shuffle(list); //shuffling deck;
     }
     /** Operation of removing card from the top of the deck.*/
+
     public void removeCard() {
         list.remove(0);
     }
