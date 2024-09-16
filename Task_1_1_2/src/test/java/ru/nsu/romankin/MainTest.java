@@ -43,9 +43,35 @@ class MainTest {
     }
 
     @Test
+    void winFunction() {
+        Main.playerWonRounds = 0;
+        Main.currentRound = 0;
+        Main.player_win();
+        Main.player_win();
+
+        assertTrue(Main.playerWonRounds == 2);
+        assertTrue(Main.currentRound == 2);
+    }
+
+    @Test
     void looseFunction() {
+        Main.dealerWonRounds = 0;
+        Main.currentRound = 0;
         Main.player_loose();
         Main.player_loose();
-        assertTrue(Main.dealerWonRounds == 2);
+        Main.player_loose();
+        assertTrue(Main.dealerWonRounds == 3);
+        assertTrue(Main.currentRound == 3);
+    }
+
+    @Test
+    void checkWinTest(){
+        Player player = new Player();
+        Player dealer = new Player();
+        int rounds = Main.playerWonRounds;
+        player.points = 21;
+        dealer.points = 21;
+        Main.checkWin(player,dealer);
+        assertTrue(Main.playerWonRounds == rounds);
     }
 }
