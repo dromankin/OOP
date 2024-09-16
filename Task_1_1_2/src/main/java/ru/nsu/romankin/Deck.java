@@ -5,6 +5,7 @@ import java.util.Collections;
 
 public class Deck {
     ArrayList<Card> list;
+
     public Deck() {
         list = new ArrayList<>();
         String[] suitNames = new String[] {"Червы", "Пики", "Бубны", "Трефы"};
@@ -22,6 +23,7 @@ public class Deck {
         }
         Collections.shuffle(list);
     }
+
     public void removeCard(){
         list.remove(0);
     }

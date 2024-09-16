@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 class MainTest {
     private String runGame(String input) {
-
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();

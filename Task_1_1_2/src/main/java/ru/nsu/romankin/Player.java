@@ -7,6 +7,7 @@ public class Player {
     int points = 0;
     ArrayList<Card> hand = new ArrayList<Card>();
     ArrayList<Integer> aceIndex = new ArrayList<Integer>();
+
     public void getCard(Deck deck){
         hand.add(deck.list.get(0));
         if (hand.get(hand.size() - 1).rank.equals("Туз")){

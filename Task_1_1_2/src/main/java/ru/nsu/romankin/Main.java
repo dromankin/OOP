@@ -51,7 +51,7 @@ public class Main {
                 player_loose();
 
             }
-            else {
+            if (player.points == dealer.points) {
                 System.out.print("Ничья! ");
                 System.out.printf("Счёт %d:%d ",
                         playerWonRounds, dealerWonRounds);
