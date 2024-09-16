@@ -66,9 +66,9 @@ class MainTest {
 
     @Test
     void checkWinTest() {
-        int rounds = Main.playerWonRounds;
         Player player = new Player();
         Player dealer = new Player();
+        int rounds = Main.playerWonRounds;
         player.points = 21;
         dealer.points = 21;
         Main.checkWin(player, dealer);
