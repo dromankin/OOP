@@ -2,10 +2,12 @@ package ru.nsu.romankin;
 
 import java.util.Scanner;
 
+/** This is a main game class.
+ * It implements the input and output of the game and has some additional functions*/
 public class Main {
-    static int currentRound = 1;
-    static int playerWonRounds = 0;
-    static int dealerWonRounds = 0;
+    static int currentRound = 1; //store the current round
+    static int playerWonRounds = 0; //amount of rounds won by player
+    static int dealerWonRounds = 0; //amount of rounds won by dealer
 
     static void player_loose() {
         dealerWonRounds++;
@@ -48,7 +50,7 @@ public class Main {
             return;
         }
         if (player.points <= 21 && dealer.points <= 21) {
-            if (player.points > dealer.points){
+            if (player.points > dealer.points) {
                 player_win();
             }
             if (player.points < dealer.points) {
@@ -91,7 +93,7 @@ public class Main {
         System.out.printf(" -> %d\n", player.points);
         System.out.print("Карты дилера: [");
         for (int i = 0; i < dealer.hand.size(); i++) {
-            if (dealer.hand.get(i).hidden){
+            if (dealer.hand.get(i).hidden) {
                 System.out.print("<закрытая карта>]");
                 break;
             }
@@ -115,6 +117,7 @@ public class Main {
         }
     }
 
+    /**main method processing player input and displaying the game.*/
     public static void main(String[] args) {
         System.out.println("Добро пожаловать в Блэкджек!");
         Scanner scan = new Scanner(System.in);
