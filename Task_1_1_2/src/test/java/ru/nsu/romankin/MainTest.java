@@ -65,13 +65,13 @@ class MainTest {
     }
 
     @Test
-    void checkWinTest(){
+    void checkWinTest() {
+        int rounds = Main.playerWonRounds;
         Player player = new Player();
         Player dealer = new Player();
-        int rounds = Main.playerWonRounds;
         player.points = 21;
         dealer.points = 21;
-        Main.checkWin(player,dealer);
+        Main.checkWin(player, dealer);
         assertTrue(Main.playerWonRounds == rounds);
     }
 }
