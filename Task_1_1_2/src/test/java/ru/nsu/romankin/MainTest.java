@@ -31,12 +31,12 @@ class MainTest {
 
     @Test
     void blackjackFunction() {
-        Player player = new Player();
         Deck deck = new Deck();
         deck.list.get(0).rank = "Туз";
         deck.list.get(0).value = 11;
         deck.list.get(1).rank = "Король";
         deck.list.get(1).value = 10;
+        Player player = new Player();
         player.getCard(deck);
         player.getCard(deck);
         assertTrue(Main.checkBlackjack(player));

@@ -8,9 +8,9 @@ public class Player {
     ArrayList<Card> hand = new ArrayList<Card>();
     ArrayList<Integer> aceIndex = new ArrayList<Integer>();
 
-    public void getCard(Deck deck){
+    public void getCard(Deck deck) {
         hand.add(deck.list.get(0));
-        if (hand.get(hand.size() - 1).rank.equals("Туз")){
+        if (hand.get(hand.size() - 1).rank.equals("Туз")) {
             aceIndex.add(hand.size() - 1);
         }
         points += hand.get(hand.size() - 1).value;

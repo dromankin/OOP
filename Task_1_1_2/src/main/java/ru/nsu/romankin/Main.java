@@ -6,6 +6,7 @@ public class Main {
     static int currentRound = 1;
     static int playerWonRounds = 0;
     static int dealerWonRounds = 0;
+
     static void player_loose() {
         dealerWonRounds++;
         System.out.print("Вы проиграли раунд! ");
@@ -21,9 +22,11 @@ public class Main {
         currentRound++;
 
     }
-    static boolean checkBlackjack(Player player){
+
+    static boolean checkBlackjack(Player player) {
         return player.hand.size() == 2 && player.points == 21;
     }
+
     static void player_win() {
         playerWonRounds++;
         System.out.print("Вы выиграли раунд! ");
@@ -38,12 +41,13 @@ public class Main {
         System.out.print("\n");
         currentRound++;
     }
+
     static void checkWin(Player player, Player dealer) {
-        if (dealer.points > 21){
+        if (dealer.points > 21) {
             player_win();
             return;
         }
-        if (player.points <= 21 && dealer.points <= 21){
+        if (player.points <= 21 && dealer.points <= 21) {
             if (player.points > dealer.points){
                 player_win();
             }
@@ -55,10 +59,10 @@ public class Main {
                 System.out.print("Ничья! ");
                 System.out.printf("Счёт %d:%d ",
                         playerWonRounds, dealerWonRounds);
-                if (playerWonRounds > dealerWonRounds){
+                if (playerWonRounds > dealerWonRounds) {
                     System.out.print("в вашу пользу.");
                 }
-                if(playerWonRounds < dealerWonRounds) {
+                if (playerWonRounds < dealerWonRounds) {
                     System.out.print("в пользу дилера.");
                 }
                 System.out.print("\n");
@@ -67,17 +71,17 @@ public class Main {
 
         }
     }
+
     static void printCards(Player player, Player dealer) {
         System.out.print("Ваши карты: [");
-        for (int i = 0; i < player.hand.size(); i++){
+        for (int i = 0; i < player.hand.size(); i++) {
             if (i == player.hand.size() - 1) {
                 System.out.printf("%s %s (%d)]",
                         player.hand.get(i).rank,
                         player.hand.get(i).suit,
                         player.hand.get(i).value);
 
-            }
-            else {
+            } else {
                 System.out.printf("%s %s (%d), ",
                         player.hand.get(i).rank,
                         player.hand.get(i).suit,
@@ -86,7 +90,7 @@ public class Main {
         }
         System.out.printf(" -> %d\n", player.points);
         System.out.print("Карты дилера: [");
-        for (int i = 0; i < dealer.hand.size(); i++){
+        for (int i = 0; i < dealer.hand.size(); i++) {
             if (dealer.hand.get(i).hidden){
                 System.out.print("<закрытая карта>]");
                 break;
@@ -97,8 +101,7 @@ public class Main {
                         dealer.hand.get(i).suit,
                         dealer.hand.get(i).value);
 
-            }
-            else {
+            } else {
                 System.out.printf("%s %s (%d), ",
                         dealer.hand.get(i).rank,
                         dealer.hand.get(i).suit,
@@ -107,14 +110,13 @@ public class Main {
         }
         if (!dealer.hidden) {
             System.out.printf(" -> %d\n", dealer.points);
-        }
-        else {
+        } else {
             System.out.print("\n");
         }
     }
+
     public static void main(String[] args) {
         System.out.println("Добро пожаловать в Блэкджек!");
-
         Scanner scan = new Scanner(System.in);
         while (currentRound < 5) {
             Deck deck = new Deck();
@@ -136,7 +138,7 @@ public class Main {
             System.out.print("Ваш ход\n-------\n");
             int playerInput = 1;
             while (playerInput != 0) {
-                if (player.points > 21){
+                if (player.points > 21) {
                     player_loose();
                     break;
                 }
