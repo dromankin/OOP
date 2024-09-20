@@ -12,7 +12,8 @@ public class Deck {
     public Deck() {
         String[] suitNames = new String[] {"Червы", "Пики", "Бубны", "Трефы"};
         Rank[] ranks = new Rank[] {Rank.TW0, Rank.THREE, Rank.FOUR, Rank.FIVE, Rank.SIX,
-            Rank.SEVEN, Rank.EIGHT, Rank.NINE, Rank.TEN, Rank.JACK, Rank.QUEEN, Rank.KING, Rank.ACE};
+            Rank.SEVEN, Rank.EIGHT, Rank.NINE, Rank.TEN,
+            Rank.JACK, Rank.QUEEN, Rank.KING, Rank.ACE};
         for (String suit : suitNames) { //this loop responds for filling the deck
             for (Rank rank : ranks) {
                 list.add(new Card(rank, suit));

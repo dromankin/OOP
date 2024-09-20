@@ -36,7 +36,7 @@ public class Card {
 
     /**prints card name when it is not closed.*/
     public void printCard() {
-        if (hidden){
+        if (hidden) {
             System.out.print("<закрытая карта>");
         } else {
             System.out.printf("%s %s (%d)", rank.rankname, suit, value);

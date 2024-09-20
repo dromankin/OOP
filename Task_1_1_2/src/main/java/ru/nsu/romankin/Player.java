@@ -44,7 +44,7 @@ public class Player {
             }
 
             for (int i = 0; i < aceIndex.size(); i++) {
-                hand.get(aceIndex.get(i)).setAceValue();//changing value of aces
+                hand.get(aceIndex.get(i)).setAceValue(); //changing value of aces
             }
         }
     }

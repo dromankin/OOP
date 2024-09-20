@@ -10,6 +10,7 @@ public class Main {
     static int dealerWonRounds = 0; //amount of rounds won by dealer
     private static final int blackjack = 21;
     private static final int dealerStop = 17;
+
     static void player_loose() {
         dealerWonRounds++;
         System.out.print("Вы проиграли раунд! ");
@@ -136,7 +137,7 @@ public class Main {
                 }
                 System.out.print("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться\n");
                 playerInput = scan.nextInt();
-                if (playerInput == -1){
+                if (playerInput == -1) {
                     return;
                 }
                 if (playerInput == 1) {
