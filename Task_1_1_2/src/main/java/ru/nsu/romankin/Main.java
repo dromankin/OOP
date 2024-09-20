@@ -8,8 +8,8 @@ public class Main {
     static int currentRound = 1; //store the current round
     static int playerWonRounds = 0; //amount of rounds won by player
     static int dealerWonRounds = 0; //amount of rounds won by dealer
-    static private final int blackjack = 21;
-    static private final int dealerStop = 17;
+    private static final int blackjack = 21;
+    private static final int dealerStop = 17;
     static void player_loose() {
         dealerWonRounds++;
         System.out.print("Вы проиграли раунд! ");

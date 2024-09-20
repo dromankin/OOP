@@ -11,13 +11,16 @@ public class Player {
     boolean hidden;
 
     /**gets card by its index in player's hand.*/
+
     public Card getCardByIndex(int index) {
         return hand.get(index);
     }
     /**gets player's points.*/
+
     public int getPoints() {
         return points;
     }
+
     /**gets player's hand size.*/
     public int getHandSize() {
         return hand.size();
@@ -25,6 +28,7 @@ public class Player {
 
     /**Function of taking card from the top of the deck.
      * It also has a check for changing the value of aces in the hand*/
+
     public void takeCard(Deck deck) {
         hand.add(deck.list.get(0));
         if ((hand.get(hand.size() - 1)).getRank() == Rank.ACE) {
@@ -33,7 +37,7 @@ public class Player {
         points += hand.get(hand.size() - 1).getValue();
         deck.removeCard();
         if (points > 21 && !aceIndex.isEmpty()) {
-            for (int i = 0; i < aceIndex.size(); i++){
+            for (int i = 0; i < aceIndex.size(); i++) {
                 if (getCardByIndex(aceIndex.get(i)).getValue() == 11) {
                     points -= 10;
                 }
