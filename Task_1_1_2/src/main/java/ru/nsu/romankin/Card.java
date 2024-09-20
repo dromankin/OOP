@@ -20,28 +20,38 @@ public class Card {
         this.value = rank.value;
     }
 
-    public int getValue(){
+    /**gets value of the card.*/
+
+    public int getValue() {
         return value;
     }
 
-    public void setAceValue(){
-        if (rank == Rank.ACE){
+    /**set ace value to 1 in case of overflow.*/
+
+    public void setAceValue() {
+        if (rank == Rank.ACE) {
             value = 1;
         }
     }
 
-    public void printCard(){
+    /**prints card name when it is not closed.*/
+    public void printCard() {
         if (hidden){
             System.out.print("<закрытая карта>");
         } else {
-            System.out.printf("%s %s (%d)", rank.rankname, suit, rank.value);
+            System.out.printf("%s %s (%d)", rank.rankname, suit, value);
         }
     }
 
-    public Rank getRank(){
+    /**gets rank of the card.*/
+
+    public Rank getRank() {
         return rank;
     }
-    public String getSuit(){
+
+    /**gets suit of the card.*/
+
+    public String getSuit() {
         return suit;
     }
 }

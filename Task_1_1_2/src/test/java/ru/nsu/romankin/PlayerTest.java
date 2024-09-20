@@ -34,12 +34,12 @@ class PlayerTest {
         Deck deck = new Deck();
         while (aceCount < 2) {
             player.takeCard(deck);
-            if (player.getCardByIndex(player.getHandSize() - 1).getRank() == Rank.ACE){
+            if (player.getCardByIndex(player.getHandSize() - 1).getRank() == Rank.ACE) {
                 aceCount++;
             }
         }
-        for (int i = 0; i < player.getHandSize(); i++){
-            if (player.getCardByIndex(i).getRank() == Rank.ACE){
+        for (int i = 0; i < player.getHandSize(); i++) {
+            if (player.getCardByIndex(i).getRank() == Rank.ACE) {
                 assertTrue(player.getCardByIndex(i).getValue() == 1);
             }
         }

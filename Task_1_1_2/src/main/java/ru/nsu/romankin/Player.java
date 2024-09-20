@@ -10,13 +10,16 @@ public class Player {
     private ArrayList<Integer> aceIndex = new ArrayList<Integer>();
     boolean hidden;
 
+    /**gets card by its index in player's hand.*/
     public Card getCardByIndex(int index) {
         return hand.get(index);
     }
-    public int getPoints(){
+    /**gets player's points.*/
+    public int getPoints() {
         return points;
     }
-    public int getHandSize(){
+    /**gets player's hand size.*/
+    public int getHandSize() {
         return hand.size();
     }
 
