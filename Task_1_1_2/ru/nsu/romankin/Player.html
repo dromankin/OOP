@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -88,13 +88,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -132,36 +132,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Player</span>
 extends java.lang.Object</pre>
-<div class="block">Player class with getCard function.</div>
+<div class="block">Player class with takeCard function.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hidden">hidden</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -198,8 +175,23 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="Card.html" title="class in ru.nsu.romankin">Card</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCardByIndex(int)">getCardByIndex</a></span>&#8203;(int&nbsp;index)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHandSize()">getHandSize</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPoints()">getPoints</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCard(ru.nsu.romankin.Deck)">getCard</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.romankin">Deck</a>&nbsp;deck)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#takeCard(ru.nsu.romankin.Deck)">takeCard</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.romankin">Deck</a>&nbsp;deck)</code></th>
 <td class="colLast">
 <div class="block">Function of taking card from the top of the deck.</div>
 </td>
@@ -221,25 +213,6 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="hidden">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>hidden</h4>
-<pre>public&nbsp;boolean hidden</pre>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -266,13 +239,40 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getCard(ru.nsu.romankin.Deck)">
+<a id="getCardByIndex(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCardByIndex</h4>
+<pre class="methodSignature">public&nbsp;<a href="Card.html" title="class in ru.nsu.romankin">Card</a>&nbsp;getCardByIndex&#8203;(int&nbsp;index)</pre>
+</li>
+</ul>
+<a id="getPoints()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPoints</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getPoints()</pre>
+</li>
+</ul>
+<a id="getHandSize()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHandSize</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getHandSize()</pre>
+</li>
+</ul>
+<a id="takeCard(ru.nsu.romankin.Deck)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getCard</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;getCard&#8203;(<a href="Deck.html" title="class in ru.nsu.romankin">Deck</a>&nbsp;deck)</pre>
+<h4>takeCard</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;takeCard&#8203;(<a href="Deck.html" title="class in ru.nsu.romankin">Deck</a>&nbsp;deck)</pre>
 <div class="block">Function of taking card from the top of the deck.
  It also has a check for changing the value of aces in the hand</div>
 </li>
@@ -328,13 +328,13 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

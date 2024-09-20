@@ -27,6 +27,12 @@
     catch(err) {
     }
 //-->
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 var pathtoroot = "../../../";
 var useModuleDirectories = true;
 loadScripts(document, 'script');</script>
@@ -82,15 +88,15 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a id="skip.navbar.top">
@@ -133,39 +139,6 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hidden">hidden</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#suit">suit</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>protected int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#value">value</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -180,9 +153,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,int)">Card</a></span>&#8203;(java.lang.String&nbsp;rank,
-    java.lang.String&nbsp;suit,
-    int&nbsp;value)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.romankin.Rank,java.lang.String)">Card</a></span>&#8203;(<a href="Rank.html" title="enum in ru.nsu.romankin">Rank</a>&nbsp;rank,
+    java.lang.String&nbsp;suit)</code></th>
 <td class="colLast">
 <div class="block">This is a card constructor building a card by input parameters.</div>
 </td>
@@ -198,6 +170,39 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Method</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="Rank.html" title="enum in ru.nsu.romankin">Rank</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRank()">getRank</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSuit()">getSuit</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue()">getValue</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printCard()">printCard</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAceValue()">setAceValue</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
@@ -214,43 +219,6 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="hidden">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>hidden</h4>
-<pre>public&nbsp;boolean hidden</pre>
-</li>
-</ul>
-<a id="suit">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>suit</h4>
-<pre>public&nbsp;java.lang.String suit</pre>
-</li>
-</ul>
-<a id="value">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>value</h4>
-<pre>protected&nbsp;int value</pre>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -258,22 +226,75 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.lang.String,java.lang.String,int)">
+<a id="&lt;init&gt;(ru.nsu.romankin.Rank,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Card</h4>
-<pre>public&nbsp;Card&#8203;(java.lang.String&nbsp;rank,
-            java.lang.String&nbsp;suit,
-            int&nbsp;value)</pre>
+<pre>public&nbsp;Card&#8203;(<a href="Rank.html" title="enum in ru.nsu.romankin">Rank</a>&nbsp;rank,
+            java.lang.String&nbsp;suit)</pre>
 <div class="block">This is a card constructor building a card by input parameters.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>rank</code> - -- rank of card (from "Двойка" to "Туз")</dd>
 <dd><code>suit</code> - -- suit of card ("Червы", "Пики", "Бубны", "Трефы")</dd>
-<dd><code>value</code> - -- value of card (from 2 to 11)</dd>
 </dl>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<!-- ============ METHOD DETAIL ========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a id="getValue()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValue</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getValue()</pre>
+</li>
+</ul>
+<a id="setAceValue()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAceValue</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setAceValue()</pre>
+</li>
+</ul>
+<a id="printCard()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>printCard</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;printCard()</pre>
+</li>
+</ul>
+<a id="getRank()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRank</h4>
+<pre class="methodSignature">public&nbsp;<a href="Rank.html" title="enum in ru.nsu.romankin">Rank</a>&nbsp;getRank()</pre>
+</li>
+</ul>
+<a id="getSuit()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getSuit</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getSuit()</pre>
 </li>
 </ul>
 </li>
@@ -327,15 +348,15 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a id="skip.navbar.bottom">
