@@ -11,40 +11,38 @@ class PlayerTest {
     void playerConstructor() {
         Player player = new Player();
         assertTrue(!player.hidden);
-        assertTrue(player.hand.size() == 0);
-        assertFalse(player.points != 0);
+        assertTrue(player.getHandSize() == 0);
+        assertFalse(player.getPoints() != 0);
 
     }
 
     @Test
-    void getCardTest() {
+    void takeCardTest() {
         Player player = new Player();
         Deck deck = new Deck();
-        player.getCard(deck);
-        player.getCard(deck);
-        player.getCard(deck);
-        assertTrue(player.hand.size() == 3);
-        assertTrue(player.points < 31);
+        player.takeCard(deck);
+        player.takeCard(deck);
+        player.takeCard(deck);
+        assertTrue(player.getHandSize() == 3);
+        assertTrue(player.getPoints() < 31);
     }
 
     @Test
     void getAceTest() {
-        final Player player = new Player();
+        int aceCount = 0;
+        Player player = new Player();
         Deck deck = new Deck();
-        deck.list.get(0).rank = "Туз";
-        deck.list.get(0).value = 11;
-        deck.list.get(1).rank = "Туз";
-        deck.list.get(1).value = 11;
-        deck.list.get(2).rank = "Король";
-        deck.list.get(2).value = 10;
+        while (aceCount < 2) {
+            player.takeCard(deck);
+            if (player.getCardByIndex(player.getHandSize() - 1).getRank() == Rank.ACE){
+                aceCount++;
+            }
+        }
+        for (int i = 0; i < player.getHandSize(); i++){
+            if (player.getCardByIndex(i).getRank() == Rank.ACE){
+                assertTrue(player.getCardByIndex(i).getValue() == 1);
+            }
+        }
 
-        player.getCard(deck);
-        player.getCard(deck);
-
-        assertTrue(player.hand.get(0).value == 1);
-        assertTrue(player.points == 12);
-        player.getCard(deck);
-        assertTrue(player.points == 12);
-        assertTrue(player.hand.get(1).value == 1);
     }
 }

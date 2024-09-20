@@ -8,7 +8,8 @@ public class Main {
     static int currentRound = 1; //store the current round
     static int playerWonRounds = 0; //amount of rounds won by player
     static int dealerWonRounds = 0; //amount of rounds won by dealer
-
+    static private final int blackjack = 21;
+    static private final int dealerStop = 17;
     static void player_loose() {
         dealerWonRounds++;
         System.out.print("Вы проиграли раунд! ");
@@ -26,7 +27,7 @@ public class Main {
     }
 
     static boolean checkBlackjack(Player player) {
-        return player.hand.size() == 2 && player.points == 21;
+        return player.getHandSize() == 2 && player.getPoints() == blackjack;
     }
 
     static void player_win() {
@@ -45,19 +46,19 @@ public class Main {
     }
 
     static void checkWin(Player player, Player dealer) {
-        if (dealer.points > 21) {
+        if (dealer.getPoints() > blackjack) {
             player_win();
             return;
         }
-        if (player.points <= 21 && dealer.points <= 21) {
-            if (player.points > dealer.points) {
+        if (player.getPoints() <= 21 && dealer.getPoints() <= 21) {
+            if (player.getPoints() > dealer.getPoints()) {
                 player_win();
             }
-            if (player.points < dealer.points) {
+            if (player.getPoints() < dealer.getPoints()) {
                 player_loose();
 
             }
-            if (player.points == dealer.points) {
+            if (player.getPoints() == dealer.getPoints()) {
                 System.out.print("Ничья! ");
                 System.out.printf("Счёт %d:%d ",
                         playerWonRounds, dealerWonRounds);
@@ -76,42 +77,29 @@ public class Main {
 
     static void printCards(Player player, Player dealer) {
         System.out.print("Ваши карты: [");
-        for (int i = 0; i < player.hand.size(); i++) {
-            if (i == player.hand.size() - 1) {
-                System.out.printf("%s %s (%d)]",
-                        player.hand.get(i).rank,
-                        player.hand.get(i).suit,
-                        player.hand.get(i).value);
+        for (int i = 0; i < player.getHandSize(); i++) {
+            if (i == player.getHandSize() - 1) {
+                player.getCardByIndex(i).printCard();
+                System.out.print("]");
 
             } else {
-                System.out.printf("%s %s (%d), ",
-                        player.hand.get(i).rank,
-                        player.hand.get(i).suit,
-                        player.hand.get(i).value);
+                player.getCardByIndex(i).printCard();
+                System.out.print(", ");
             }
         }
-        System.out.printf(" -> %d\n", player.points);
+        System.out.printf(" -> %d\n", player.getPoints());
         System.out.print("Карты дилера: [");
-        for (int i = 0; i < dealer.hand.size(); i++) {
-            if (dealer.hand.get(i).hidden) {
-                System.out.print("<закрытая карта>]");
-                break;
-            }
-            if (i == dealer.hand.size() - 1) {
-                System.out.printf("%s %s (%d)]",
-                        dealer.hand.get(i).rank,
-                        dealer.hand.get(i).suit,
-                        dealer.hand.get(i).value);
-
+        for (int i = 0; i < dealer.getHandSize(); i++) {
+            if (i == dealer.getHandSize() - 1) {
+                dealer.getCardByIndex(i).printCard();
+                System.out.print("]");
             } else {
-                System.out.printf("%s %s (%d), ",
-                        dealer.hand.get(i).rank,
-                        dealer.hand.get(i).suit,
-                        dealer.hand.get(i).value);
+                dealer.getCardByIndex(i).printCard();
+                System.out.print(", ");
             }
         }
         if (!dealer.hidden) {
-            System.out.printf(" -> %d\n", dealer.points);
+            System.out.printf(" -> %d\n", dealer.getPoints());
         } else {
             System.out.print("\n");
         }
@@ -119,19 +107,20 @@ public class Main {
 
     /**main method processing player input and displaying the game.*/
     public static void main(String[] args) {
+
         System.out.println("Добро пожаловать в Блэкджек!");
         Scanner scan = new Scanner(System.in);
-        while (currentRound < 5) {
+        while (true) {
             Deck deck = new Deck();
             Player player = new Player();
             Player dealer = new Player();
-            player.getCard(deck);
-            player.getCard(deck);
+            player.takeCard(deck);
+            player.takeCard(deck);
 
-            dealer.getCard(deck);
-            dealer.getCard(deck);
+            dealer.takeCard(deck);
+            dealer.takeCard(deck);
+            dealer.getCardByIndex(dealer.getHandSize() - 1).hidden = true;
             dealer.hidden = true;
-            dealer.hand.get(dealer.hand.size() - 1).hidden = true;
             System.out.printf("Раунд %d\nДилер раздал карты\n", currentRound);
             printCards(player, dealer);
             if (checkBlackjack(player)) {
@@ -141,45 +130,44 @@ public class Main {
             System.out.print("Ваш ход\n-------\n");
             int playerInput = 1;
             while (playerInput != 0) {
-                if (player.points > 21) {
+                if (player.getPoints() > blackjack) {
                     player_loose();
                     break;
                 }
                 System.out.print("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться\n");
                 playerInput = scan.nextInt();
+                if (playerInput == -1){
+                    return;
+                }
                 if (playerInput == 1) {
-                    player.getCard(deck);
-                    System.out.printf("Вы открыли карту %s %s (%d)\n",
-                            player.hand.get(player.hand.size() - 1).rank,
-                            player.hand.get(player.hand.size() - 1).suit,
-                            player.hand.get(player.hand.size() - 1).value);
+                    player.takeCard(deck);
+                    System.out.print("Вы открыли карту ");
+                    player.getCardByIndex(player.getHandSize() - 1).printCard();
+                    System.out.print("\n");
                     printCards(player, dealer);
                 } else {
                     break;
                 }
             }
-            if (player.points > 21) {
+            if (player.getPoints() > blackjack) {
                 continue;
             }
             System.out.print("Ход дилера\n-------\n");
-            dealer.hand.get(dealer.hand.size() - 1).hidden = false;
+            dealer.getCardByIndex(dealer.getHandSize() - 1).hidden = false;
             dealer.hidden = false;
-            System.out.printf("Дилер открывает закрытую карту %s %s (%d)\n",
-                    dealer.hand.get(dealer.hand.size() - 1).rank,
-                    dealer.hand.get(dealer.hand.size() - 1).suit,
-                    dealer.hand.get(dealer.hand.size() - 1).value);
-
+            System.out.print("Дилер открывает закрытую карту ");
+            dealer.getCardByIndex(dealer.getHandSize() - 1).printCard();
+            System.out.print("\n");
             printCards(player, dealer);
             if (checkBlackjack(dealer)) {
                 player_loose();
                 continue;
             }
-            while (dealer.points <= 17) {
-                dealer.getCard(deck);
-                System.out.printf("Дилер открыл карту %s %s (%d)\n",
-                        dealer.hand.get(dealer.hand.size() - 1).rank,
-                        dealer.hand.get(dealer.hand.size() - 1).suit,
-                        dealer.hand.get(dealer.hand.size() - 1).value);
+            while (dealer.getPoints() < dealerStop) {
+                dealer.takeCard(deck);
+                System.out.print("Дилер открыл карту ");
+                dealer.getCardByIndex(dealer.getHandSize() - 1).printCard();
+                System.out.print("\n");
                 printCards(player, dealer);
                 try {
                     Thread.sleep(1000);
@@ -188,6 +176,7 @@ public class Main {
                 }
             }
             checkWin(player, dealer);
+            System.out.print("\n\n\n");
         }
     }
 }

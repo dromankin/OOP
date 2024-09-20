@@ -6,23 +6,18 @@ import java.util.Collections;
 /** This class describes a deck of cards.
  * It consists of ArrayList of class Card instances.*/
 public class Deck {
-    ArrayList<Card> list;
+    ArrayList<Card> list = new ArrayList<>();;
     /** Class constructor.*/
 
     public Deck() {
-        list = new ArrayList<>();
         String[] suitNames = new String[] {"Червы", "Пики", "Бубны", "Трефы"};
-        String[] rankNames = new String[] {"Двойка", "Тройка", "Четвёрка", "Пятёрка",
-            "Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама",
-            "Король", "Туз"};
-        int[] values = new int[] {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11}; //array of values
-        int valueIndex = 0; //we use this variable to move by values array for each card suit
+        Rank[] ranks = new Rank[] {Rank.TW0, Rank.THREE, Rank.FOUR, Rank.FIVE,
+                Rank.SIX, Rank.SEVEN, Rank.EIGHT, Rank.NINE, Rank.TEN,
+                Rank.JACK, Rank.QUEEN, Rank.KING, Rank.ACE};
         for (String suit : suitNames) { //this loop responds for filling the deck
-            for (String rank : rankNames) {
-                list.add(new Card(rank, suit, values[valueIndex]));
-                valueIndex++;
+            for (Rank rank : ranks) {
+                list.add(new Card(rank, suit));
             }
-            valueIndex = 0; //resetting when going to new suit
         }
         Collections.shuffle(list); //shuffling deck;
     }

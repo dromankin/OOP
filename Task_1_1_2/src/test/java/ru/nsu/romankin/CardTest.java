@@ -9,17 +9,16 @@ class CardTest {
 
     @Test
     void cardConstructor() {
-        Card card = new Card("Туз", "Трефы", 11);
-        assertTrue(card.rank.equals("Туз"));
-        assertTrue(card.suit.equals("Трефы"));
-        assertTrue(card.value == 11);
+        Card card = new Card(Rank.ACE, "Трефы");
+        assertTrue(card.getSuit() == "Трефы");
+        assertTrue(card.getValue() == 11);
     }
 
     @Test
     void cardConstructorFalse() {
-        Card card = new Card("Туз", "Трефы", 11);
-        assertFalse(!card.rank.equals("Туз"));
+        Card card = new Card(Rank.ACE, "Трефы");
+
         assertFalse(card.hidden);
-        assertFalse(card.value != 11);
+        assertFalse(card.getValue() != 11);
     }
 }

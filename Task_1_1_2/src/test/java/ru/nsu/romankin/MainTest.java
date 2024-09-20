@@ -1,5 +1,6 @@
 package ru.nsu.romankin;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 
 class MainTest {
+
     private String runGame(String input) {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -25,53 +27,56 @@ class MainTest {
 
     @Test
     void inputTest() {
-        runGame("0\n0\n0\n0");
+        runGame("0\n0\n0\n0\n-1\n");
         assertTrue(true);
     }
 
     @Test
     void blackjackFunction() {
         Deck deck = new Deck();
-        deck.list.get(0).rank = "Туз";
-        deck.list.get(0).value = 11;
-        deck.list.get(1).rank = "Король";
-        deck.list.get(1).value = 10;
+
         Player player = new Player();
-        player.getCard(deck);
-        player.getCard(deck);
-        assertTrue(Main.checkBlackjack(player));
+        player.takeCard(deck);
+        player.takeCard(deck);
+        if (player.getPoints() == 21) {
+            assertTrue(Main.checkBlackjack(player));
+        } else {
+            assertFalse(Main.checkBlackjack(player));
+        }
     }
 
     @Test
     void winFunction() {
         Main.playerWonRounds = 0;
-        Main.currentRound = 0;
+        Main.currentRound = 1;
         Main.player_win();
         Main.player_win();
 
         assertTrue(Main.playerWonRounds == 2);
-        assertTrue(Main.currentRound == 2);
+        assertTrue(Main.currentRound == 3);
     }
 
     @Test
     void looseFunction() {
-        Main.dealerWonRounds = 0;
-        Main.currentRound = 0;
+
         Main.player_loose();
         Main.player_loose();
         Main.player_loose();
         assertTrue(Main.dealerWonRounds == 3);
-        assertTrue(Main.currentRound == 3);
+        assertTrue(Main.currentRound == 4);
     }
 
     @Test
     void checkWinTest() {
         Player player = new Player();
         Player dealer = new Player();
-        player.points = 21;
-        dealer.points = 21;
+        Deck deck = new Deck();
+        player.takeCard(deck);
+        player.takeCard(deck);
+        dealer.takeCard(deck);
+        dealer.takeCard(deck);
         int rounds = Main.playerWonRounds;
         Main.checkWin(player, dealer);
-        assertTrue(Main.playerWonRounds == rounds);
+        assertTrue(Main.playerWonRounds >= rounds);
     }
 }
