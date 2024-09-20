@@ -105,10 +105,8 @@ public class Main {
             System.out.print("\n");
         }
     }
-
     /**main method processing player input and displaying the game.*/
     public static void main(String[] args) {
-
         System.out.println("Добро пожаловать в Блэкджек!");
         Scanner scan = new Scanner(System.in);
         while (true) {
@@ -117,7 +115,6 @@ public class Main {
             Player dealer = new Player();
             player.takeCard(deck);
             player.takeCard(deck);
-
             dealer.takeCard(deck);
             dealer.takeCard(deck);
             dealer.getCardByIndex(dealer.getHandSize() - 1).hidden = true;
