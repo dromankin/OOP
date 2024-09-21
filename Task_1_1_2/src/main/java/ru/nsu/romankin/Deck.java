@@ -6,7 +6,7 @@ import java.util.Collections;
 /** This class describes a deck of cards.
  * It consists of ArrayList of class Card instances.*/
 public class Deck {
-    ArrayList<Card> list = new ArrayList<>();
+    private ArrayList<Card> list = new ArrayList<>();
     /** Class constructor.*/
 
     public Deck() {
@@ -25,5 +25,13 @@ public class Deck {
 
     public void removeCard() {
         list.remove(0);
+    }
+
+    public Card getTopCard() {
+        return list.get(0);
+    }
+
+    public int getDeckSize() {
+        return list.size();
     }
 }

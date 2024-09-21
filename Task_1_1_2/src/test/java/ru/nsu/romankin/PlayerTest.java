@@ -10,7 +10,7 @@ class PlayerTest {
     @Test
     void playerConstructor() {
         Player player = new Player();
-        assertTrue(!player.hidden);
+        assertTrue(!player.getHidden());
         assertTrue(player.getHandSize() == 0);
         assertFalse(player.getPoints() != 0);
 

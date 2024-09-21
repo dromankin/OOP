@@ -8,8 +8,17 @@ public class Player {
     private ArrayList<Card> hand = new ArrayList<Card>();
     //array of indexes of aces for correct getting aces processing
     private ArrayList<Integer> aceIndex = new ArrayList<Integer>();
-    boolean hidden;
+    private boolean hidden = false;
 
+    /**gets value of hidden flag.*/
+    public boolean getHidden() {
+        return hidden;
+    }
+
+    /**sets value of hidden flag.*/
+    public void setHiddenPlayer(boolean bool) {
+        hidden = bool;
+    }
     /**gets card by its index in player's hand.*/
 
     public Card getCardByIndex(int index) {
@@ -30,7 +39,7 @@ public class Player {
      * It also has a check for changing the value of aces in the hand*/
 
     public void takeCard(Deck deck) {
-        hand.add(deck.list.get(0));
+        hand.add(deck.getTopCard());
         if ((hand.get(hand.size() - 1)).getRank() == Rank.ACE) {
             aceIndex.add(hand.size() - 1); //adding current index if we added ace
         }

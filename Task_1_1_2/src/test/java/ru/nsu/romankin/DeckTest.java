@@ -10,13 +10,13 @@ class DeckTest {
     @Test
     void deckConstructor() {
         Deck deck = new Deck();
-        assertTrue(deck.list.size() == 52);
+        assertTrue(deck.getDeckSize() == 52);
     }
 
     @Test
     void deckConstructorFalse() {
         Deck deck = new Deck();
-        assertFalse(deck.list.size() != 52);
+        assertFalse(deck.getDeckSize() != 52);
     }
 
     @Test
@@ -25,6 +25,6 @@ class DeckTest {
         deck.removeCard();
         deck.removeCard();
         deck.removeCard();
-        assertTrue(deck.list.size() == 49);
+        assertTrue(deck.getDeckSize() == 49);
     }
 }

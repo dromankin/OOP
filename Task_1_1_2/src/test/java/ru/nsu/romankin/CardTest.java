@@ -18,7 +18,7 @@ class CardTest {
     void cardConstructorFalse() {
         Card card = new Card(Rank.ACE, "Трефы");
 
-        assertFalse(card.hidden);
+        assertFalse(card.getHiddenCard());
         assertFalse(card.getValue() != 11);
     }
 }

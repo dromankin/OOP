@@ -21,7 +21,17 @@ public enum Rank {
         this.rankname = rankname;
     }
 
-    int value;
+    private int value;
 
-    String rankname;
+    /**gets value of rank.*/
+    public int getRankValue() {
+        return value;
+    }
+
+    private String rankname;
+
+    /**gets name of rank.*/
+    public String getRankName() {
+        return rankname;
+    }
 }

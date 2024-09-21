@@ -3,10 +3,20 @@ package ru.nsu.romankin;
 /** This class describes a single card.
  *  */
 public class Card {
-    boolean hidden = false; //this flag is showing if card hidden or not
+    private boolean hidden = false; //this flag is showing if card hidden or not
     private String suit;
     private Rank rank;
     private int value;
+
+    /**sets value of hidden flag.*/
+    public void setHiddenCard(boolean bool) {
+        hidden = bool;
+    }
+
+    /**gets value of hidden flag.*/
+    public boolean getHiddenCard() {
+        return hidden;
+    }
     /** This is a card constructor building a card by input parameters.
      *
      * @param rank -- rank of card (from "Двойка" to "Туз")
@@ -17,7 +27,7 @@ public class Card {
     public Card(Rank rank, String suit) {
         this.suit = suit;
         this.rank = rank;
-        this.value = rank.value;
+        this.value = rank.getRankValue();
     }
 
     /**gets value of the card.*/
@@ -39,7 +49,7 @@ public class Card {
         if (hidden) {
             System.out.print("<закрытая карта>");
         } else {
-            System.out.printf("%s %s (%d)", rank.rankname, suit, value);
+            System.out.printf("%s %s (%d)", rank.getRankName(), suit, value);
         }
     }
 
