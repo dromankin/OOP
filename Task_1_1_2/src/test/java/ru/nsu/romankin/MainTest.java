@@ -71,11 +71,11 @@ class MainTest {
         Player player = new Player();
         Player dealer = new Player();
         Deck deck = new Deck();
+        player.takeCard(deck);
+        player.takeCard(deck);
+        dealer.takeCard(deck);
+        dealer.takeCard(deck);
         Main main = new Main();
-        player.takeCard(deck);
-        player.takeCard(deck);
-        dealer.takeCard(deck);
-        dealer.takeCard(deck);
         int rounds = main.playerWonRounds;
         main.checkWin(player, dealer);
         assertTrue(main.playerWonRounds >= rounds);
