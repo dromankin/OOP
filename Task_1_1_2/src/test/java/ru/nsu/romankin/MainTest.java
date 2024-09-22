@@ -31,10 +31,10 @@ class MainTest {
         String output  = runGame("-1\n");
         String subOutput = output.substring(0, 28);
         assertEquals("Добро пожаловать в Блэкджек!", subOutput);
-        String SubOutput2  = output.substring(28, 57);
-        assertEquals("\r\nРаунд 1\nДилер раздал карты\n", SubOutput2);
-        String SubOutput3  = output.substring(57, 68);
-        assertEquals("Ваши карты:", SubOutput3);
+        String subOutput2  = output.substring(28, 57);
+        assertEquals("\r\nРаунд 1\nДилер раздал карты\n", subOutput2);
+        String subOutput3  = output.substring(57, 68);
+        assertEquals("Ваши карты:", subOutput3);
     }
 
     @Test
@@ -43,6 +43,7 @@ class MainTest {
         String subOutput = output.substring(output.length() - 58);
         assertEquals("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться\n", subOutput);
     }
+
     @Test
     void blackjackFunction() {
         Deck deck = new Deck();
