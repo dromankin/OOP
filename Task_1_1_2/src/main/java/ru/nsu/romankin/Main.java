@@ -8,8 +8,8 @@ public class Main {
     int currentRound = 1; //store the current round
     int playerWonRounds = 0; //amount of rounds won by player
     int dealerWonRounds = 0; //amount of rounds won by dealer
-    private static final int blackjack = 21;
-    private static final int dealerStop = 17;
+    private static final int BLACKJACK = 21;
+    private static final int DEALER_STOP = 17;
 
     void player_loose() {
         dealerWonRounds++;
@@ -28,7 +28,7 @@ public class Main {
     }
 
     boolean checkBlackjack(Player player) {
-        return player.getHandSize() == 2 && player.getPoints() == blackjack;
+        return player.getHandSize() == 2 && player.getPoints() == BLACKJACK;
     }
 
     void player_win() {
@@ -47,7 +47,7 @@ public class Main {
     }
 
     void checkWin(Player player, Player dealer) {
-        if (dealer.getPoints() > blackjack) {
+        if (dealer.getPoints() > BLACKJACK) {
             player_win();
             return;
         }
@@ -130,13 +130,13 @@ public class Main {
             System.out.print("Ваш ход\n-------\n");
             int playerInput = 1;
             while (playerInput != 0) {
-                if (player.getPoints() > blackjack) {
+                if (player.getPoints() > BLACKJACK) {
                     game.player_loose();
                     break;
                 }
                 System.out.print("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться\n");
                 playerInput = scan.nextInt();
-                if (playerInput == -1) {
+                if (playerInput != 1 && playerInput != 0) {
                     return;
                 }
                 if (playerInput == 1) {
@@ -149,7 +149,7 @@ public class Main {
                     break;
                 }
             }
-            if (player.getPoints() > blackjack) {
+            if (player.getPoints() > BLACKJACK) {
                 continue;
             }
             System.out.print("Ход дилера\n-------\n");
@@ -163,7 +163,7 @@ public class Main {
                 game.player_loose();
                 continue;
             }
-            while (dealer.getPoints() < dealerStop) {
+            while (dealer.getPoints() < DEALER_STOP) {
                 dealer.takeCard(deck);
                 System.out.print("Дилер открыл карту ");
                 dealer.getCardByIndex(dealer.getHandSize() - 1).printCard();

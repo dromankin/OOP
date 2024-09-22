@@ -1,7 +1,9 @@
 package ru.nsu.romankin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +12,8 @@ class CardTest {
     @Test
     void cardConstructor() {
         Card card = new Card(Rank.ACE, "Трефы");
-        assertTrue(card.getSuit() == "Трефы");
-        assertTrue(card.getValue() == 11);
+        assertSame("Трефы", card.getSuit());
+        assertEquals(11, card.getValue());
     }
 
     @Test

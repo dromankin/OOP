@@ -1,7 +1,7 @@
 package ru.nsu.romankin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ class DeckTest {
     @Test
     void deckConstructor() {
         Deck deck = new Deck();
-        assertTrue(deck.getDeckSize() == 52);
+        assertEquals(52, deck.getDeckSize());
     }
 
     @Test
@@ -25,6 +25,6 @@ class DeckTest {
         deck.removeCard();
         deck.removeCard();
         deck.removeCard();
-        assertTrue(deck.getDeckSize() == 49);
+        assertEquals(49, deck.getDeckSize());
     }
 }

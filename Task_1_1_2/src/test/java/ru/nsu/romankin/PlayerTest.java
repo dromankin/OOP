@@ -1,5 +1,6 @@
 package ru.nsu.romankin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -10,8 +11,8 @@ class PlayerTest {
     @Test
     void playerConstructor() {
         Player player = new Player();
-        assertTrue(!player.getHidden());
-        assertTrue(player.getHandSize() == 0);
+        assertFalse(player.getHidden());
+        assertEquals(0, player.getHandSize());
         assertFalse(player.getPoints() != 0);
 
     }
@@ -23,7 +24,7 @@ class PlayerTest {
         player.takeCard(deck);
         player.takeCard(deck);
         player.takeCard(deck);
-        assertTrue(player.getHandSize() == 3);
+        assertEquals(3, player.getHandSize());
         assertTrue(player.getPoints() < 31);
     }
 
@@ -40,7 +41,7 @@ class PlayerTest {
         }
         for (int i = 0; i < player.getHandSize(); i++) {
             if (player.getCardByIndex(i).getRank() == Rank.ACE) {
-                assertTrue(player.getCardByIndex(i).getValue() == 1);
+                assertEquals(1, player.getCardByIndex(i).getValue());
             }
         }
 

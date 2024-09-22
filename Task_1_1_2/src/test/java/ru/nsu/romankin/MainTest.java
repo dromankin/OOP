@@ -1,5 +1,6 @@
 package ru.nsu.romankin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -27,10 +28,21 @@ class MainTest {
 
     @Test
     void inputTest() {
-        runGame("0\n0\n0\n0\n-1\n");
-        assertTrue(true);
+        String output  = runGame("-1\n");
+        String subOutput = output.substring(0, 28);
+        assertEquals("Добро пожаловать в Блэкджек!", subOutput);
+        String SubOutput2  = output.substring(28, 57);
+        assertEquals("\r\nРаунд 1\nДилер раздал карты\n", SubOutput2);
+        String SubOutput3  = output.substring(57, 68);
+        assertEquals("Ваши карты:", SubOutput3);
     }
 
+    @Test
+    void anotherInputTest() {
+        String output  = runGame("0\n0\n0\n0\n0\n4\n");
+        String subOutput = output.substring(output.length() - 58);
+        assertEquals("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться\n", subOutput);
+    }
     @Test
     void blackjackFunction() {
         Deck deck = new Deck();
@@ -52,8 +64,8 @@ class MainTest {
         main.player_win();
         main.player_win();
 
-        assertTrue(main.playerWonRounds == 2);
-        assertTrue(main.currentRound == 3);
+        assertEquals(2, main.playerWonRounds);
+        assertEquals(3, main.currentRound);
     }
 
     @Test
@@ -62,8 +74,8 @@ class MainTest {
         main.player_loose();
         main.player_loose();
         main.player_loose();
-        assertTrue(main.dealerWonRounds == 3);
-        assertTrue(main.currentRound == 4);
+        assertEquals(3, main.dealerWonRounds);
+        assertEquals(4, main.currentRound);
     }
 
     @Test
