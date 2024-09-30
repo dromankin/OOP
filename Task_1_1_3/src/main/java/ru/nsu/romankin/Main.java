@@ -2,11 +2,13 @@ package ru.nsu.romankin;
 
 public class Main {
     public static void main(String[] args) {
-        Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        Expression de = e.derivative("x");
-        int res = e.eval("x = 10; y = 13");
+        String expr = "(x-y)";
+        Parser parser = new Parser();
+        Expression e = parser.readExpression(expr);
         e.print();
-        System.out.println(res);
-        de.print();
+        int evaluate = e.eval(e.eval_parse("x = 10; y = 14"));
+        System.out.println();
+        System.out.println();
+        System.out.println(evaluate);
     }
 }

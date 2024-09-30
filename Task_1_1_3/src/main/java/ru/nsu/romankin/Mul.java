@@ -1,6 +1,11 @@
 package ru.nsu.romankin;
 
+import java.util.Map;
+
 public class Mul extends Expression {
+
+    private Expression left;
+    private Expression right;
 
     public Mul(Expression left, Expression right) {
         this.left = left;
@@ -15,8 +20,8 @@ public class Mul extends Expression {
         System.out.print(")");
     }
 
-    public int eval(String variables) {
-        return left.eval(variables) * right.eval(variables);
+    public int eval(Map<String, String> map) {
+        return left.eval(map) * right.eval(map);
     }
 
     public Expression derivative(String var) {

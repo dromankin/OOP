@@ -1,5 +1,7 @@
 package ru.nsu.romankin;
 
+import java.util.Map;
+
 public class Number extends Expression {
     private int value;
 
@@ -11,7 +13,7 @@ public class Number extends Expression {
         System.out.print(value);
     }
 
-    public int eval(String variables) {
+    public int eval(Map<String, String> map) {
         return value;
     }
 

@@ -1,6 +1,11 @@
 package ru.nsu.romankin;
 
+import java.util.Map;
+
 public class Add extends Expression {
+
+    private Expression left;
+    private Expression right;
 
     public Add(Expression left, Expression right) {
         this.left = left;
@@ -15,8 +20,8 @@ public class Add extends Expression {
         System.out.print(")");
     }
 
-    public int eval(String vars) {
-        return left.eval(vars) + right.eval(vars);
+    public int eval(Map<String, String> map) {
+        return left.eval(map) + right.eval(map);
     }
 
     @Override

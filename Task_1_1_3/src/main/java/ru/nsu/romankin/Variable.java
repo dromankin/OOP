@@ -1,5 +1,7 @@
 package ru.nsu.romankin;
 
+import java.util.Map;
+
 public class Variable extends Expression {
     private String variable;
 
@@ -11,37 +13,24 @@ public class Variable extends Expression {
         System.out.print(variable);
     }
 
-    public int eval(String string) {
-        int start = 0;
-        int res = 0;
-        String var = "";
-        String numberString = "";
-        char c;
-        for (int i = 0; i < string.length(); i++) {
-            if (Character.isLetter(string.charAt(i))) {
-                var += string.charAt(i);
+    public int eval(Map<String, String> map) {
+        try {
+            if (!map.containsKey(variable)) {
+                throw  new Exception("No such variable");
             }
-            if (string.charAt(i) == ' ') {
-                if (var.equals(variable)) {
-                    start = i + 3;
-                    for (int j = start; j < string.length() && string.charAt(j) != ';'; j++) {
-                        c = string.charAt(j);
-                        numberString += c;
-                        if (j == string.length() || string.charAt(j) == ';') {break;}
-                    }
-                }
-                var = "";
-            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        res = Integer.parseInt(numberString);
-        return res;
+
+        return Integer.parseInt(map.get(variable));
+
     }
 
     public Expression derivative(String var) {
         if (var.equals(variable)) {
             return new Number(1);
         } else {
-            return new Variable(variable);
+            return new Number(0);
         }
 
     }
