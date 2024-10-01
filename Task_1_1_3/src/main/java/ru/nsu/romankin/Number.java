@@ -2,6 +2,7 @@ package ru.nsu.romankin;
 
 import java.util.Map;
 
+/**this subclass of Expression implements a number.*/
 public class Number extends Expression {
     private int value;
 

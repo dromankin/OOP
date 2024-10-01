@@ -11,14 +11,15 @@ public class Parser {
         return Character.isLetter(string.charAt(0));
     }
 
-    private String read_token(String string) { //moves the pos pointer, next time new token will be read
-        if (pos == string.length() - 1){
+    private String read_token(String string) { //moves the pos pointer,
+        // next time new token will be read
+        if (pos == string.length() - 1) {
             token = "";
             return token;
         }
-        if (string.charAt(pos) == '+' || string.charAt(pos) == '-' || string.charAt(pos) == '*' ||
-                string.charAt(pos) == '/' || string.charAt(pos) == '(' ||
-                string.charAt(pos) == ')') {
+        if (string.charAt(pos) == '+' || string.charAt(pos) == '-' || string.charAt(pos) == '*'
+                || string.charAt(pos) == '/' || string.charAt(pos) == '('
+                || string.charAt(pos) == ')') {
             token = "";
             token += string.charAt(pos);
             pos++;
@@ -51,7 +52,7 @@ public class Parser {
         if (peekToken(string).equals("-")) {
             read_token(string);
             String s = read_token(string);
-            if (isVariable(s)){
+            if (isVariable(s)) {
                 return new Variable('-' + s);
             } else {
                 return new Number(-Integer.parseInt(s));
@@ -67,7 +68,8 @@ public class Parser {
     }
 
     private Expression parse_monome(String string) { //parses monomes - groups of multiplications
-        Expression res = parse_atom(string);
+        Expression res;
+        res = parse_atom(string);
         while (peekToken(string).equals("*") || peekToken(string).equals("/")) {
             String oper = read_token(string);
             Expression add = parse_atom(string);

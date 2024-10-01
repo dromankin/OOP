@@ -2,6 +2,8 @@ package ru.nsu.romankin;
 
 import java.util.Map;
 
+/**this subclass of Expression implements division.*/
+
 public class Mul extends Expression {
 
     private Expression left; //left part of expression

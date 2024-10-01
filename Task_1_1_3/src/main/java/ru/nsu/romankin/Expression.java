@@ -11,6 +11,7 @@ public abstract class Expression {
     public abstract void print();
 
     /**evaluate the expression by HashMap with pairs "variable:value".
+     *
      * @param map - hashmap with "variable:value" pairs*/
     public abstract int eval(Map<String, String> map);
 
@@ -18,8 +19,9 @@ public abstract class Expression {
     public abstract Expression derivative(String var);
 
     /**this function parses the string with variables and values into hashmap.
+     *
      * @param string - string that needs to be parsed*/
-    public Map<String,String> eval_parse(String string) {
+    public Map<String, String> eval_parse(String string) {
         Map<String, String> res = new HashMap<String, String>();
         String var = "";
         String number = "";

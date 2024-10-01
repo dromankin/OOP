@@ -2,17 +2,21 @@ package ru.nsu.romankin;
 
 import java.util.Map;
 
+/**this subclass of Expression implements a variable.*/
 public class Variable extends Expression {
     private String variable;
 
+    /**Class constructor.*/
     public Variable(String variable) {
         this.variable = variable;
     }
 
+    /**prints the expression.*/
     public void print() {
         System.out.print(variable);
     }
 
+    /**evaluate the expression by HashMap with variables and values.*/
     public int eval(Map<String, String> map) {
         try {
             if (!map.containsKey(variable)) {
@@ -26,6 +30,7 @@ public class Variable extends Expression {
 
     }
 
+    /**differentiates the expression.*/
     public Expression derivative(String var) {
         if (var.equals(variable)) {
             return new Number(1);

@@ -2,6 +2,7 @@ package ru.nsu.romankin;
 
 import java.util.Map;
 
+/**this subclass of Expression implements addition.*/
 public class Add extends Expression {
 
     private Expression left; //left part of expression
@@ -13,7 +14,7 @@ public class Add extends Expression {
         this.right = right;
     }
 
-
+    /**prints the expression.*/
     public void print() {
         System.out.print("(");
         left.print();
@@ -22,11 +23,12 @@ public class Add extends Expression {
         System.out.print(")");
     }
 
+    /**evaluate the expression by HashMap with variables and values.*/
     public int eval(Map<String, String> map) {
         return left.eval(map) + right.eval(map);
     }
 
-    @Override
+    /**differentiates the expression.*/
     public Expression derivative(String var) {
         return new Add(left.derivative(var), right.derivative(var));
     }
