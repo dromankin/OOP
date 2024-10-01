@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 /**main class to test parsing from console input.*/
 public class Main {
+
+    /**main function.*/
     public static void main(String[] args) {
         String expr = "(2*(x+3))";
         //Scanner scanner = new Scanner(System.in);

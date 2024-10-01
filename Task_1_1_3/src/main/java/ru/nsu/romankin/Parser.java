@@ -102,7 +102,8 @@ public class Parser {
      * sets pos, oldpos and token to zero for a new string.*/
 
     public Expression readExpression(String string) {
-        Expression res = parse_expr(string);
+        Expression res;
+        res = parse_expr(string);
         pos = 0;
         oldpos = 0;
         token = "";
