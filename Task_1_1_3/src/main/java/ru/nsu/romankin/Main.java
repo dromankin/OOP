@@ -1,8 +1,14 @@
 package ru.nsu.romankin;
 
+import java.util.Scanner;
+
+/**main class to test parsing from console input.*/
 public class Main {
     public static void main(String[] args) {
-        String expr = "(x-y)";
+        //String expr;
+        Scanner scanner = new Scanner(System.in);
+        String expr = scanner.nextLine();
+        //System.out.println(string);
         Parser parser = new Parser();
         Expression e = parser.readExpression(expr);
         e.print();

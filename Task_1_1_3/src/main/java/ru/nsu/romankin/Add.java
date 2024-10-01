@@ -4,13 +4,15 @@ import java.util.Map;
 
 public class Add extends Expression {
 
-    private Expression left;
-    private Expression right;
+    private Expression left; //left part of expression
+    private Expression right; //right part of expression
 
+    /**Class constructor.*/
     public Add(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
+
 
     public void print() {
         System.out.print("(");

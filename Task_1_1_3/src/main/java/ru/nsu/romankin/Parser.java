@@ -1,16 +1,17 @@
 package ru.nsu.romankin;
 
-public class Parser {
-    private static int pos = 0;
-    String token;
-    String text;
-    private int oldpos;
+/**this class implements functions that parse the string into Expression instance.*/
 
-    private boolean isVariable(String string) {
+public class Parser {
+    private static int pos = 0; //current position in the text
+    private String token; //string containing the token
+    private int oldpos; //old position for peekToken() function
+
+    private boolean isVariable(String string) { //checks if string is variable
         return Character.isLetter(string.charAt(0));
     }
 
-    String read_token(String string) {
+    private String read_token(String string) { //moves the pos pointer, next time new token will be read
         if (pos == string.length() - 1){
             token = "";
             return token;
@@ -32,14 +33,15 @@ public class Parser {
         return token;
     }
 
-    String peekToken(String string) {
+    private String peekToken(String string) { //doesn't move the pos pointer,
+        // next time the same token will be read
         oldpos = pos;
         read_token(string);
         pos = oldpos;
         return token;
     }
 
-    Expression parse_atom(String string) {
+    private Expression parse_atom(String string) { //parses atoms - expressions in brackets
         if (peekToken(string).equals("(")) {
             read_token(string);
             Expression res = parse_expr(string);
@@ -64,7 +66,7 @@ public class Parser {
         }
     }
 
-    Expression parse_monome(String string) {
+    private Expression parse_monome(String string) { //parses monomes - groups of multiplications
         Expression res = parse_atom(string);
         while (peekToken(string).equals("*") || peekToken(string).equals("/")) {
             String oper = read_token(string);
@@ -79,7 +81,7 @@ public class Parser {
         return res;
     }
 
-    Expression parse_expr(String string) {
+    private Expression parse_expr(String string) { //parses a sum of monomes
         Expression res = parse_monome(string);
         while (peekToken(string).equals("+") || peekToken(string).equals("-")) {
             String oper = read_token(string);
@@ -93,6 +95,9 @@ public class Parser {
         }
         return res;
     }
+
+    /**final function that parses the expression and
+     * sets pos, oldpos and token to zero for a new string.*/
 
     public Expression readExpression(String string) {
         Expression res = parse_expr(string);

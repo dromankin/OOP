@@ -3,14 +3,22 @@ package ru.nsu.romankin;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Expression {
-    private String expression;
+/**This is abstract class describing expression and its methods implemented in subclasses.*/
 
-    //public abstract Expression make_Expression();
+public abstract class Expression {
+
+    /**prints expression.*/
     public abstract void print();
+
+    /**evaluate the expression by HashMap with pairs "variable:value".
+     * @param map - hashmap with "variable:value" pairs*/
     public abstract int eval(Map<String, String> map);
+
+    /**differentiate the expression.*/
     public abstract Expression derivative(String var);
-    //public abstract int evaluate(Map<String, String> map);
+
+    /**this function parses the string with variables and values into hashmap.
+     * @param string - string that needs to be parsed*/
     public Map<String,String> eval_parse(String string) {
         Map<String, String> res = new HashMap<String, String>();
         String var = "";
