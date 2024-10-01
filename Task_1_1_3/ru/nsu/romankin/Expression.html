@@ -136,6 +136,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public abstract class <span class="typeNameLabel">Expression</span>
 extends java.lang.Object</pre>
+<div class="block">This is abstract class describing expression and its methods implemented in subclasses.</div>
 </li>
 </ul>
 </div>
@@ -180,22 +181,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract <a href="Expression.html" title="class in ru.nsu.romankin">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;var)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">differentiate the expression.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.util.Map)">eval</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;map)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">evaluate the expression by HashMap with pairs "variable:value".</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval_parse(java.lang.String)">eval_parse</a></span>&#8203;(java.lang.String&nbsp;string)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">this function parses the string with variables and values into hashmap.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">prints expression.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -247,6 +256,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">public abstract&nbsp;void&nbsp;print()</pre>
+<div class="block">prints expression.</div>
 </li>
 </ul>
 <a id="eval(java.util.Map)">
@@ -256,6 +266,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public abstract&nbsp;int&nbsp;eval&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;map)</pre>
+<div class="block">evaluate the expression by HashMap with pairs "variable:value".</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>map</code> - - hashmap with "variable:value" pairs</dd>
+</dl>
 </li>
 </ul>
 <a id="derivative(java.lang.String)">
@@ -265,6 +280,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="Expression.html" title="class in ru.nsu.romankin">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;var)</pre>
+<div class="block">differentiate the expression.</div>
 </li>
 </ul>
 <a id="eval_parse(java.lang.String)">
@@ -274,6 +290,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>eval_parse</h4>
 <pre class="methodSignature">public&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;eval_parse&#8203;(java.lang.String&nbsp;string)</pre>
+<div class="block">this function parses the string with variables and values into hashmap.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>string</code> - - string that needs to be parsed</dd>
+</dl>
 </li>
 </ul>
 </li>
