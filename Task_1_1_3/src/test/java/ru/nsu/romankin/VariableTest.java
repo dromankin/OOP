@@ -1,10 +1,12 @@
 package ru.nsu.romankin;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 class VariableTest {
@@ -36,5 +38,16 @@ class VariableTest {
         int res2 = de2.eval(de2.eval_parse("x = 2"));
         assertEquals(res1, 1);
         assertEquals(res2, 0);
+    }
+
+    @Test
+    void exceptionTest() {
+        Variable var = new Variable("x");
+        try {
+            int res = var.eval(var.eval_parse("y = 4"));
+            fail("No exception");
+        } catch (Exception e) {
+            assertNotNull(e);
+        }
     }
 }
