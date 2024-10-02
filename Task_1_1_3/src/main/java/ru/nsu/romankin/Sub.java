@@ -2,7 +2,7 @@ package ru.nsu.romankin;
 
 import java.util.Map;
 
-/**this subclass of Expression implements division.*/
+/**this subclass of Expression implements subtraction.*/
 public class Sub extends Expression {
 
     private Expression left; //left part of expression

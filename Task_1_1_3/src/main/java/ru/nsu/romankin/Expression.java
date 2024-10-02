@@ -22,7 +22,7 @@ public abstract class Expression {
      *
      * @param string - string that needs to be parsed*/
     public Map<String, String> eval_parse(String string) {
-        Map<String, String> res = new HashMap<String, String>();
+        Map<String, String> res = new HashMap<>();
         String var = "";
         String number = "";
         for (int i = 0; i < string.length(); i++) {

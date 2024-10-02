@@ -11,6 +11,11 @@ public class Number extends Expression {
         this.value = value;
     }
 
+    /**gets the value.*/
+    public int getValue() {
+        return value;
+    }
+
     /**prints the expression.*/
     public void print() {
         System.out.print(value);
