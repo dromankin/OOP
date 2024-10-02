@@ -15,7 +15,7 @@ class ExpressionTest {
 
     @Test
     void printTest() {
-        Expression e = new Add(new Number(178), new Add (new Variable("x"),
+        Expression e = new Add(new Number(178), new Add(new Variable("x"),
                 new Add(new Variable("y"), new Number(100))));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(stream));
