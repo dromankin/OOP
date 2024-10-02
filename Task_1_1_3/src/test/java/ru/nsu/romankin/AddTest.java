@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class AddTest {
     @Test
     void constructorTest() {
-        Add add= new Add(new Number(90), new Variable("x"));
+        Add add = new Add(new Number(90), new Variable("x"));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(stream));
         add.print();

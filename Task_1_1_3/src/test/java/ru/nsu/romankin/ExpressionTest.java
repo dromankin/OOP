@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 class ExpressionTest {
@@ -16,7 +16,7 @@ class ExpressionTest {
     @Test
     void printTest() {
         Expression e = new Add(new Number(178), new Add (new Variable("x"),
-                new Add (new Variable("y"), new Number(100))));
+                new Add(new Variable("y"), new Number(100))));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(stream));
         e.print();
@@ -37,7 +37,7 @@ class ExpressionTest {
         Map<String, String> map = new HashMap<>();
         Expression e = new Number(1);
         map = e.eval_parse("x = 14; k = 8; z = 10; u = -8");
-        assertTrue(map.containsKey("u") && (map.get("u").equals( "-8")));
+        assertTrue(map.containsKey("u") && (map.get("u").equals("-8")));
         assertFalse(map.containsKey("x") && !map.get("x").equals("14"));
     }
 

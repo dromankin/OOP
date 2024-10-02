@@ -1,19 +1,20 @@
 package ru.nsu.romankin;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class NumberTest {
 
     @Test
     void constructorTest() {
         Number number = new Number(121);
-        assertEquals(number.getValue(),121);
+        assertEquals(number.getValue(), 121);
     }
 
     @Test
