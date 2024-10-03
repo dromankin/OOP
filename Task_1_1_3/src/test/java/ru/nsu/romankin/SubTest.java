@@ -20,9 +20,9 @@ class SubTest {
     }
 
     @Test
-    void evalTest() {
+    void evalTest() throws Exception {
         Sub sub = new Sub(new Variable("x"), new Add(new Variable("y"), new Number(10)));
-        int res = sub.eval(sub.eval_parse("y = 14; x = 30"));
+        int res = sub.eval("y = 14; x = 30");
         assertEquals(6, res);
     }
 

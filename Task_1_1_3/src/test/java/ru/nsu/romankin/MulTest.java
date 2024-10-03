@@ -21,9 +21,9 @@ class MulTest {
     }
 
     @Test
-    void evalTest() {
+    void evalTest() throws Exception {
         Mul mul = new Mul(new Variable("x"), new Add(new Variable("y"), new Number(10)));
-        int res = mul.eval(mul.eval_parse("y = 14; x = 30"));
+        int res = mul.eval("y = 14; x = 30");
         assertEquals(720, res);
     }
 

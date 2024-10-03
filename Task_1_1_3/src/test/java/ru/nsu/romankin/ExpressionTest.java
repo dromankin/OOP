@@ -26,9 +26,9 @@ class ExpressionTest {
     }
 
     @Test
-    void evalTest() {
+    void evalTest() throws Exception {
         Expression e = new Add(new Number(4), new Sub(new Variable("x"), new Variable("y")));
-        int res = e.eval(e.eval_parse("x = 10; z = 18; y = -8"));
+        int res = e.eval("x = 10; z = 18; y = -8");
         assertEquals(22, res);
     }
 
@@ -42,12 +42,12 @@ class ExpressionTest {
     }
 
     @Test
-    void derivativeTest() {
+    void derivativeTest() throws Exception {
         Expression e = new Mul(new Variable("y"), new Variable("x"));
         Expression de = e.derivative("x");
         Expression de2 = e.derivative("y");
-        int res = de.eval(de.eval_parse("x = 14; y = 10"));
-        int res2 = de2.eval(de2.eval_parse("x = 14; y = 10"));
+        int res = de.eval("x = 14; y = 10");
+        int res2 = de2.eval("x = 14; y = 10");
         assertTrue(res == 10 && res2 == 14);
     }
 }

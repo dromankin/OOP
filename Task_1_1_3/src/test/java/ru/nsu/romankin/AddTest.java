@@ -19,9 +19,9 @@ class AddTest {
     }
 
     @Test
-    void evalTest() {
+    void evalTest() throws Exception {
         Add add = new Add(new Variable("x"), new Add(new Variable("y"), new Number(10)));
-        int res = add.eval(add.eval_parse("y = 14; x = 30"));
+        int res = add.eval("y = 14; x = 30");
         assertEquals(54, res);
     }
 

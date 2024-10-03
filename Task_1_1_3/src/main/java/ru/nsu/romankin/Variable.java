@@ -17,13 +17,10 @@ public class Variable extends Expression {
     }
 
     /**evaluate the expression by HashMap with variables and values.*/
-    public int eval(Map<String, String> map) {
-        try {
-            if (!map.containsKey(variable)) {
-                throw  new Exception("No such variable");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public int eval(Map<String, String> map) throws Exception{
+
+        if (!map.containsKey(variable)) {
+            throw new Exception("No such variable");
         }
 
         return Integer.parseInt(map.get(variable));

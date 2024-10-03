@@ -20,9 +20,9 @@ class DivTest {
     }
 
     @Test
-    void evalTest() {
+    void evalTest() throws Exception {
         Div div = new Div(new Variable("x"), new Add(new Variable("y"), new Number(10)));
-        int res = div.eval(div.eval_parse("y = 14; x = 30"));
+        int res = div.eval("y = 14; x = 30");
         assertEquals(1, res);
     }
 

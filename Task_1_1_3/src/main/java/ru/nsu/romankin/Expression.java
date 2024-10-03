@@ -13,8 +13,12 @@ public abstract class Expression {
     /**evaluate the expression by HashMap with pairs "variable:value".
      *
      * @param map - hashmap with "variable:value" pairs*/
-    public abstract int eval(Map<String, String> map);
+    public abstract int eval(Map<String, String> map) throws Exception;
 
+    /**evaluates the expression by the string.*/
+    public int eval(String s) throws Exception {
+        return eval(eval_parse(s));
+    }
     /**differentiate the expression.*/
     public abstract Expression derivative(String var);
 

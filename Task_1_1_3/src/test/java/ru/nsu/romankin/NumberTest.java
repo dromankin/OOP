@@ -33,19 +33,19 @@ class NumberTest {
     }
 
     @Test
-    void evalTest() {
+    void evalTest() throws Exception {
         Number number = new Number(14);
-        int res = number.eval(number.eval_parse("x = 10"));
+        int res = number.eval("x = 10");
         assertNotEquals(res, 10);
         assertEquals(res, 14);
     }
 
     @Test
-    void derivativeTest() {
+    void derivativeTest() throws Exception {
         Random random = new Random();
         int res = random.nextInt();
         Expression number = new Number(res);
         Expression deNumber = number.derivative("x");
-        assertEquals(0, deNumber.eval(deNumber.eval_parse("x = 14")));
+        assertEquals(0, deNumber.eval("x = 14"));
     }
 }

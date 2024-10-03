@@ -24,7 +24,7 @@ public class Sub extends Expression {
     }
 
     /**evaluate the expression by HashMap with variables and values.*/
-    public int eval(Map<String, String> map) {
+    public int eval(Map<String, String> map) throws Exception {
         return left.eval(map) - right.eval(map);
     }
 

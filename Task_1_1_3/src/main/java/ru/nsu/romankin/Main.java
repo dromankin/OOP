@@ -6,17 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     /**main function.*/
-    public static void main(String[] args) {
-        String expr = "(2*(x+3))";
-        //Scanner scanner = new Scanner(System.in);
-        //String expr = scanner.nextLine();
-        //System.out.println(string);
+    public static void main(String[] args) throws Exception {
+        String string = "(x+(x*(x+x)))";
         Parser parser = new Parser();
-        Expression e = parser.readExpression(expr);
-        e.print();
-        int evaluate = e.eval(e.eval_parse("x = 10; y = 14"));
-        System.out.println();
-        System.out.println();
-        System.out.println(evaluate);
+        Expression e = parser.readExpression(string);
+        System.out.println(e.eval("x = 2"));
     }
 }
