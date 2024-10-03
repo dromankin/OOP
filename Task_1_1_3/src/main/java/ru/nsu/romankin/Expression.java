@@ -19,7 +19,9 @@ public abstract class Expression {
     public int eval(String s) throws Exception {
         return eval(eval_parse(s));
     }
+
     /**differentiate the expression.*/
+
     public abstract Expression derivative(String var);
 
     /**this function parses the string with variables and values into hashmap.

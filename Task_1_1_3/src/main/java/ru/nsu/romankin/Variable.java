@@ -17,7 +17,7 @@ public class Variable extends Expression {
     }
 
     /**evaluate the expression by HashMap with variables and values.*/
-    public int eval(Map<String, String> map) throws Exception{
+    public int eval(Map<String, String> map) throws Exception {
 
         if (!map.containsKey(variable)) {
             throw new Exception("No such variable");
