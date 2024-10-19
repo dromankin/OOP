@@ -2,11 +2,13 @@ package ru.nsu.romankin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * Interface that implements basic graph operations.
+ * @param <T>
+ */
 public interface Graph<T> {
     void addVertex(Vertex<T> vertex);
     void addEdge(Edge<T> edge);

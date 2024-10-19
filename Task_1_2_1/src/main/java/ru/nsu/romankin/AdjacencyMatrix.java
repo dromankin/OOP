@@ -8,6 +8,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     private List<List<Boolean>> matrix = new ArrayList<>();
     private List<Vertex<T>> vertices = new ArrayList<>();
     private List<Edge<T>> edges = new ArrayList<>();
+
+    /**
+     * Function that adds edge to graph.
+     *
+     * @param edge - edge.
+     */
     @Override
     public void addEdge(Edge<T> edge) {
         int indexFrom = vertices.indexOf(edge.getFrom());
@@ -15,6 +21,11 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         matrix.get(indexFrom).set(indexTo, true);
     }
 
+    /**
+     * Function that deletes edge from the graph.
+     *
+     * @param edge - edge
+     */
     @Override
     public void deleteEdge(Edge<T> edge) {
         int indexFrom = vertices.indexOf(edge.getFrom());
@@ -22,6 +33,11 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         matrix.get(indexFrom).set(indexTo, false);
     }
 
+    /**
+     * Function that adds vertex to the graph.
+     *
+     * @param vertex - vertex
+     */
     @Override
     public void addVertex(Vertex<T> vertex) {
         if (!vertices.contains(vertex)) {
@@ -39,6 +55,11 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         }
     }
 
+    /**
+     * Function that deletes vertex from the graph.
+     *
+     * @param vertex - vertex
+     */
     @Override
     public void deleteVertex(Vertex<T> vertex) {
         if (vertices.contains(vertex)) {
@@ -51,6 +72,11 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         }
     }
 
+    /**
+     * Function that gets list of neighbours of vertex.
+     *
+     * @param vertex - vertex
+     */
     @Override
     public List<Vertex<T>> getNeighbours(Vertex<T> vertex) {
         int index = vertices.indexOf(vertex);
@@ -68,17 +94,25 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         return res;
     }
 
+    /**
+     * Function that gets count of vertices.
+     */
     @Override
     public int getVerticesCount() {
         return vertices.size();
     }
 
-
+    /**
+     * Function that gets list of all vertices.
+     */
     @Override
     public List<Vertex<T>> getAllVertices() {
         return vertices;
     }
 
+    /**
+     * Function that gets list of all edges.
+     */
     @Override
     public List<Edge<T>> getAllEdges() {
         return edges;
