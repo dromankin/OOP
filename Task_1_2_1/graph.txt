@@ -1,0 +1,8 @@
+Vertices
+v1
+v2
+v3
+Edges
+0 1
+1 2
+2 0

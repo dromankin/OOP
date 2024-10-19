@@ -2,7 +2,6 @@ package ru.nsu.romankin;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class IncidenceMatrix<T> implements Graph<T> {
 
@@ -71,22 +70,18 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public void readFromFile(String filename) {
-
-    }
-
-    @Override
     public int getVerticesCount() {
         return vertices.size();
     }
 
+
     @Override
-    public Vertex<T> getVertexById(int id) {
-        return vertices.get(id);
+    public List<Vertex<T>> getAllVertices() {
+        return vertices;
     }
 
     @Override
-    public int getVertexId(Vertex<T> vertex) {
-        return vertices.indexOf(vertex);
+    public List<Edge<T>> getAllEdges() {
+        return edges;
     }
 }

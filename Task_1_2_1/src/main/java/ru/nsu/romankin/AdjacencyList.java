@@ -8,6 +8,7 @@ public class AdjacencyList<T> implements Graph<T> {
 
     private HashMap<Vertex<T>, ArrayList<Vertex<T>>> list = new HashMap<>();
     private List<Vertex<T>> vertices = new ArrayList<>();
+    private List<Edge<T>> edges = new ArrayList<>();
 
     @Override
     public void addEdge(Edge<T> edge) {
@@ -17,6 +18,7 @@ public class AdjacencyList<T> implements Graph<T> {
                 list.get(edge.getFrom()).add(edge.getTo());
                 list.get(edge.getTo()).add(edge.getFrom());
             }
+            edges.add(edge);
         }
     }
 
@@ -46,23 +48,20 @@ public class AdjacencyList<T> implements Graph<T> {
         return list.getOrDefault(vertex, new ArrayList<>());
     }
 
-    @Override
-    public void readFromFile(String filename) {
-
-    }
 
     @Override
     public int getVerticesCount() {
         return list.size();
     }
 
+
     @Override
-    public Vertex<T> getVertexById(int id) {
-        return vertices.get(id);
+    public List<Vertex<T>> getAllVertices() {
+        return vertices;
     }
 
     @Override
-    public int getVertexId(Vertex<T> vertex) {
-        return vertices.indexOf(vertex);
+    public List<Edge<T>> getAllEdges() {
+        return edges;
     }
 }

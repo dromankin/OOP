@@ -5,8 +5,9 @@ import java.util.List;
 
 public class AdjacencyMatrix<T> implements Graph<T> {
 
-    List<List<Boolean>> matrix = new ArrayList<>();
-    List<Vertex<T>> vertices = new ArrayList<>();
+    private List<List<Boolean>> matrix = new ArrayList<>();
+    private List<Vertex<T>> vertices = new ArrayList<>();
+    private List<Edge<T>> edges = new ArrayList<>();
     @Override
     public void addEdge(Edge<T> edge) {
         int indexFrom = vertices.indexOf(edge.getFrom());
@@ -68,22 +69,18 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public void readFromFile(String filename) {
-
-    }
-
-    @Override
     public int getVerticesCount() {
         return vertices.size();
     }
 
+
     @Override
-    public Vertex<T> getVertexById(int id) {
-        return vertices.get(id);
+    public List<Vertex<T>> getAllVertices() {
+        return vertices;
     }
 
     @Override
-    public int getVertexId(Vertex<T> vertex) {
-        return vertices.indexOf(vertex);
+    public List<Edge<T>> getAllEdges() {
+        return edges;
     }
 }
