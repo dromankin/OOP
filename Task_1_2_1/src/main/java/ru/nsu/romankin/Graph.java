@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * Interface that implements basic graph operations.
+ *
  * @param <T> - type of value that vertex stores
  */
 public interface Graph<T> {
@@ -55,15 +56,15 @@ public interface Graph<T> {
                 default:
                     if (verticesReading) {
                         try {
-                           number = Integer.parseInt(string);
-                           numberReading = true;
+                            number = Integer.parseInt(string);
+                            numberReading = true;
                         } catch (NumberFormatException e) {
-                           numberReading = false;
+                            numberReading = false;
                         }
                         if (numberReading) {
-                           addVertex(new Vertex<T>((T)Integer.valueOf(string)));
+                            addVertex(new Vertex<T>((T) Integer.valueOf(string)));
                         } else {
-                           addVertex(new Vertex<T>((T)(string)));
+                            addVertex(new Vertex<T>((T) (string)));
                         }
                     } else {
                         String[] arr = string.split(" ");

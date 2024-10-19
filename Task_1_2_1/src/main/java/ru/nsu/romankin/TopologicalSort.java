@@ -19,9 +19,9 @@ public class TopologicalSort<T>  {
         boolean[] used;
         int verticesCount = graph.getVerticesCount();
         used = new boolean[verticesCount];
-        for (int i = 0; i < verticesCount; i++)
+        for (int i = 0; i < verticesCount; i++) {
             used[i] = false;
-        ans.clear();
+        }
         for (int i = 0; i < verticesCount; i++) {
             if (!used[i]) {
                 dfs(i, graph, used, ans);

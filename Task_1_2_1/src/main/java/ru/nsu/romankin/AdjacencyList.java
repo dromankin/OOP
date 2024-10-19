@@ -24,11 +24,11 @@ public class AdjacencyList<T> implements Graph<T> {
     @Override
     public void addEdge(Edge<T> edge) {
         if (list.containsKey(edge.getTo()) || list.containsKey(edge.getFrom())) {
-                if (!list.get(edge.getFrom()).contains(edge.getTo())
-                        && !list.get(edge.getTo()).contains(edge.getFrom())) {
-                    list.get(edge.getFrom()).add(edge.getTo());
-                    list.get(edge.getTo()).add(edge.getFrom());
-                }
+            if (!list.get(edge.getFrom()).contains(edge.getTo())
+                    && !list.get(edge.getTo()).contains(edge.getFrom())) {
+                list.get(edge.getFrom()).add(edge.getTo());
+                list.get(edge.getTo()).add(edge.getFrom());
+            }
             edges.add(edge);
         }
     }
