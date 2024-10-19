@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":18};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -141,7 +141,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -168,18 +168,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNeighbours(ru.nsu.romankin.Vertex)">getNeighbours</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
+<td class="colFirst"><code>java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.romankin">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllEdges()">getAllEdges</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexById(int)">getVertexById</a></span>&#8203;(int&nbsp;id)</code></th>
+<td class="colFirst"><code>java.util.List&lt;<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllVertices()">getAllVertices</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexId(ru.nsu.romankin.Vertex)">getVertexId</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
+<td class="colFirst"><code>java.util.List&lt;<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNeighbours(ru.nsu.romankin.Vertex)">getNeighbours</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -188,8 +188,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readFromFile(java.lang.String)">readFromFile</a></span>&#8203;(java.lang.String&nbsp;filename)</code></th>
+<td class="colFirst"><code>default void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readFromFile(java.lang.String,java.lang.String)">readFromFile</a></span>&#8203;(java.lang.String&nbsp;filename,
+            java.lang.String&nbsp;type)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -254,13 +255,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre class="methodSignature">java.util.List&lt;<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;&nbsp;getNeighbours&#8203;(<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</pre>
 </li>
 </ul>
-<a id="readFromFile(java.lang.String)">
+<a id="readFromFile(java.lang.String,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>readFromFile</h4>
-<pre class="methodSignature">void&nbsp;readFromFile&#8203;(java.lang.String&nbsp;filename)</pre>
+<pre class="methodSignature">default&nbsp;void&nbsp;readFromFile&#8203;(java.lang.String&nbsp;filename,
+                          java.lang.String&nbsp;type)
+                   throws java.io.FileNotFoundException</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.FileNotFoundException</code></dd>
+</dl>
 </li>
 </ul>
 <a id="getVerticesCount()">
@@ -272,22 +279,22 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre class="methodSignature">int&nbsp;getVerticesCount()</pre>
 </li>
 </ul>
-<a id="getVertexById(int)">
+<a id="getAllVertices()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getVertexById</h4>
-<pre class="methodSignature"><a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getVertexById&#8203;(int&nbsp;id)</pre>
+<h4>getAllVertices</h4>
+<pre class="methodSignature">java.util.List&lt;<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;&nbsp;getAllVertices()</pre>
 </li>
 </ul>
-<a id="getVertexId(ru.nsu.romankin.Vertex)">
+<a id="getAllEdges()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getVertexId</h4>
-<pre class="methodSignature">int&nbsp;getVertexId&#8203;(<a href="Vertex.html" title="class in ru.nsu.romankin">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</pre>
+<h4>getAllEdges</h4>
+<pre class="methodSignature">java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.romankin">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;&nbsp;getAllEdges()</pre>
 </li>
 </ul>
 </li>
