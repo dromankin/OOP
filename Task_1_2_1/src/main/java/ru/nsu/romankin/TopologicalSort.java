@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This class contains necessary functions for topological sort.
+ */
 public class TopologicalSort<T>  {
-    //private List<Vertex<T>> ans = new ArrayList<>();
-    //private boolean[] used;
+
+    /**
+     * Main sorting function.
+     *
+     * @param graph - graph that should be sorted.
+     */
     public List<Vertex<T>> topologicalSort(Graph<T> graph) {
         List<Vertex<T>> ans = new ArrayList<>();
         boolean[] used;
@@ -15,9 +22,11 @@ public class TopologicalSort<T>  {
         for (int i = 0; i < verticesCount; i++)
             used[i] = false;
         ans.clear();
-        for (int i=0; i < verticesCount; ++i)
-            if (!used[i])
+        for (int i = 0; i < verticesCount; i++) {
+            if (!used[i]) {
                 dfs(i, graph, used, ans);
+            }
+        }
         Collections.reverse(ans);
         return ans;
     }
@@ -29,8 +38,9 @@ public class TopologicalSort<T>  {
         for (int i = 0; i < size; i++) {
             vertex = graph.getNeighbours(graph.getAllVertices().get(v)).get(i);
             int to = graph.getAllVertices().indexOf(vertex);
-            if (!used[to])
-                dfs (to, graph, used, ans);
+            if (!used[to]) {
+                dfs(to, graph, used, ans);
+            }
         }
         ans.add(graph.getAllVertices().get(v));
     }

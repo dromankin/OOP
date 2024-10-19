@@ -3,6 +3,11 @@ package ru.nsu.romankin;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class describes adjacency matrix implementation of graph.
+ *
+ * @param <T> - type of value that vertex stores.
+ */
 public class AdjacencyMatrix<T> implements Graph<T> {
 
     private List<List<Boolean>> matrix = new ArrayList<>();
@@ -42,7 +47,6 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     public void addVertex(Vertex<T> vertex) {
         if (!vertices.contains(vertex)) {
             vertices.add(vertex);
-            int index = vertices.indexOf(vertex);
             for (List<Boolean> temp : matrix) {
                 temp.add(false);
             }
@@ -50,6 +54,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             for (int i = 0; i < vertices.size(); i++) {
                 temp.add(false);
             }
+            int index = vertices.indexOf(vertex);
             matrix.add(temp);
             matrix.get(index).set(index, false);
         }
@@ -87,7 +92,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             }
         }
         for (List<Boolean> list : matrix) {
-            if (list.get(index) && matrix.indexOf(list) != index ) {
+            if (list.get(index) && matrix.indexOf(list) != index) {
                 res.add(vertices.get(matrix.indexOf(list)));
             }
         }

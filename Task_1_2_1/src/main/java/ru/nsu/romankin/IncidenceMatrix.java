@@ -84,12 +84,14 @@ public class IncidenceMatrix<T> implements Graph<T> {
      */
     @Override
     public List<Vertex<T>> getNeighbours(Vertex<T> vertex) {
+        int value;
         List<Vertex<T>> res = new ArrayList<>();
         int vertexIndex = vertices.indexOf(vertex);
         for (int i = 0; i < matrix.get(vertexIndex).size(); i++) {
             if (matrix.get(vertexIndex).get(i) == 1 || (matrix.get(vertexIndex).get(i) == -1)) {
                 for (int j = 0; j < vertices.size(); j++) {
-                    if ((matrix.get(j).get(i) == 1 || matrix.get(j).get(i) == -1) && j!=vertexIndex) {
+                    value = matrix.get(j).get(i);
+                    if ((value == 1 || value == -1) && j != vertexIndex) {
                         res.add(vertices.get(j));
                     }
                 }
