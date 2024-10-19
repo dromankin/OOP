@@ -1,22 +1,23 @@
 package ru.nsu.romankin;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class GraphTest {
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void addVertexTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         graph.addVertex(v1);
@@ -25,7 +26,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void deleteVertexTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -37,7 +38,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void addEdgeTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -56,7 +57,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void deleteEdgeTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -75,7 +76,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getNeighboursTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -100,7 +101,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getVerticesCountTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -127,7 +128,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getAllVerticesAndEdgesTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -156,7 +157,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void readFromFileTest(Graph<String> graph) throws FileNotFoundException {
         graph.readFromFile("graph.txt", "string");
         List<Vertex<String>> verticesList = graph.getAllVertices();
@@ -168,7 +169,7 @@ class GraphTest {
 
     }
 
-    static class testArgumentsProvider implements ArgumentsProvider {
+    static class TestArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(

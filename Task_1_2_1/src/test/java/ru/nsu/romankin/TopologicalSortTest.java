@@ -1,21 +1,20 @@
 package ru.nsu.romankin;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.util.List;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 class TopologicalSortTest {
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void topologicalSortTest(Graph<String> graph) {
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -25,10 +24,10 @@ class TopologicalSortTest {
         graph.addVertex(v2);
         graph.addVertex(v3);
         graph.addVertex(v4);
-        Edge<String> e1 = new Edge<>(v1,v4);
-        Edge<String> e2 = new Edge<>(v4,v2);
-        Edge<String> e3 = new Edge<>(v4,v3);
-        Edge<String> e4 = new Edge<>(v3,v2);
+        Edge<String> e1 = new Edge<>(v1, v4);
+        Edge<String> e2 = new Edge<>(v4, v2);
+        Edge<String> e3 = new Edge<>(v4, v3);
+        Edge<String> e4 = new Edge<>(v3, v2);
         graph.addEdge(e1);
         graph.addEdge(e2);
         graph.addEdge(e3);
@@ -41,7 +40,7 @@ class TopologicalSortTest {
         assertEquals(list.get(3).getVertex(), "v3");
     }
 
-    static class testArgumentsProvider implements ArgumentsProvider {
+    static class TestArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
