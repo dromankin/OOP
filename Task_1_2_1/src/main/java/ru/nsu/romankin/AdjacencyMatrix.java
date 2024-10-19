@@ -21,9 +21,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      */
     @Override
     public void addEdge(Edge<T> edge) {
-        int indexFrom = vertices.indexOf(edge.getFrom());
-        int indexTo = vertices.indexOf(edge.getTo());
-        matrix.get(indexFrom).set(indexTo, true);
+        if (!edges.contains(edge)) {
+            int indexFrom = vertices.indexOf(edge.getFrom());
+            int indexTo = vertices.indexOf(edge.getTo());
+            matrix.get(indexFrom).set(indexTo, true);
+            edges.add(edge);
+        }
     }
 
     /**
@@ -33,9 +36,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      */
     @Override
     public void deleteEdge(Edge<T> edge) {
-        int indexFrom = vertices.indexOf(edge.getFrom());
-        int indexTo = vertices.indexOf(edge.getTo());
-        matrix.get(indexFrom).set(indexTo, false);
+        if (edges.contains(edge)) {
+            int indexFrom = vertices.indexOf(edge.getFrom());
+            int indexTo = vertices.indexOf(edge.getTo());
+            matrix.get(indexFrom).set(indexTo, false);
+            edges.remove(edge);
+        }
     }
 
     /**
@@ -74,6 +80,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             for (List<Boolean> list : matrix) {
                 list.remove(index);
             }
+            edges.removeIf(edge -> edge.getTo() == vertex || edge.getFrom() == vertex);
         }
     }
 

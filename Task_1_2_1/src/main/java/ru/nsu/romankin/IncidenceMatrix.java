@@ -41,12 +41,14 @@ public class IncidenceMatrix<T> implements Graph<T> {
      */
     @Override
     public void deleteEdge(Edge<T> edge) {
-        edges.remove(edge);
-        int indexFrom = vertices.indexOf(edge.getFrom());
-        int indexTo = vertices.indexOf(edge.getTo());
-        int edgeIndex = edges.indexOf(edge);
-        matrix.get(indexFrom).set(edgeIndex, 0);
-        matrix.get(indexTo).set(edgeIndex, 0);
+        if (edges.contains(edge)) {
+            int indexFrom = vertices.indexOf(edge.getFrom());
+            int indexTo = vertices.indexOf(edge.getTo());
+            int edgeIndex = edges.indexOf(edge);
+            edges.remove(edge);
+            matrix.get(indexFrom).set(edgeIndex, 0);
+            matrix.get(indexTo).set(edgeIndex, 0);
+        }
     }
 
     /**
@@ -70,10 +72,12 @@ public class IncidenceMatrix<T> implements Graph<T> {
      */
     @Override
     public void deleteVertex(Vertex<T> vertex) {
-        int index = vertices.indexOf(vertex);
-        vertices.remove(vertex);
-        matrix.remove(index);
-        edges.removeIf(edge -> edge.getFrom() == vertex || edge.getTo() == vertex);
+        if (vertices.contains(vertex)) {
+            int index = vertices.indexOf(vertex);
+            vertices.remove(vertex);
+            matrix.remove(index);
+            edges.removeIf(edge -> edge.getFrom() == vertex || edge.getTo() == vertex);
+        }
     }
 
 

@@ -1,6 +1,7 @@
 package ru.nsu.romankin;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 /**
  * Main class.
@@ -10,7 +11,7 @@ public class Main {
      * Main function.
      */
     public static void main(String[] args) throws FileNotFoundException {
-        /*
+
         Graph<String> graph = new AdjacencyList<>();
         Vertex<String> v1 = new Vertex<>("v1");
         Vertex<String> v2 = new Vertex<>("v2");
@@ -35,11 +36,14 @@ public class Main {
         for (Vertex<String> i : list) {
             System.out.printf("%s, %d\n", i.getVertex(), list.indexOf(i)+1);
         }
-         */
+
+        /*
         Graph<String> graph2 = new AdjacencyList<>();
         graph2.readFromFile("graph.txt", "string");
         for (Edge<String> edge : graph2.getAllEdges()) {
             System.out.printf("%s %s\n", edge.getFrom().getVertex(), edge.getTo().getVertex());
         }
+
+         */
     }
 }
