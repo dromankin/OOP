@@ -123,7 +123,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
-<dd><code>T</code> - </dd>
+<dd><code>T</code> - - type of value that vertex stores</dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
@@ -196,7 +196,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colFirst"><code>default void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readFromFile(java.lang.String,java.lang.String)">readFromFile</a></span>&#8203;(java.lang.String&nbsp;filename,
             java.lang.String&nbsp;type)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">That function reads a graph from a file.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -269,9 +271,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre class="methodSignature">default&nbsp;void&nbsp;readFromFile&#8203;(java.lang.String&nbsp;filename,
                           java.lang.String&nbsp;type)
                    throws java.io.FileNotFoundException</pre>
+<div class="block">That function reads a graph from a file.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - - name of file;</dd>
+<dd><code>type</code> - - type of vertices value;</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.FileNotFoundException</code></dd>
+<dd><code>java.io.FileNotFoundException</code> - - if file was not found.</dd>
 </dl>
 </li>
 </ul>
