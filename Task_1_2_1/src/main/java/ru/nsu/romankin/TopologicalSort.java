@@ -14,7 +14,7 @@ public class TopologicalSort<T>  {
      *
      * @param graph - graph that should be sorted.
      */
-    public static <T>List<Vertex<T>> topologicalSort(Graph<T> graph) {
+    public static <T> List<Vertex<T>> topologicalSort(Graph<T> graph) {
         List<Vertex<T>> ans = new ArrayList<>();
         boolean[] used;
         int verticesCount = graph.getVerticesCount();
