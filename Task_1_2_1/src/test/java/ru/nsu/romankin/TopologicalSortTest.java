@@ -32,8 +32,8 @@ class TopologicalSortTest {
         graph.addEdge(e2);
         graph.addEdge(e3);
         graph.addEdge(e4);
-        TopologicalSort<String> sort = new TopologicalSort<>();
-        List<Vertex<String>> list = sort.topologicalSort(graph);
+        //TopologicalSort<String> sort = new TopologicalSort<>();
+        List<Vertex<String>> list = TopologicalSort.topologicalSort(graph);
         assertEquals(list.get(0).getVertex(), "v1");
         assertTrue(list.get(1).getVertex().equals("v4") || list.get(1).getVertex().equals("v2"));
         assertTrue(list.get(2).getVertex().equals("v4") || list.get(2).getVertex().equals("v2"));

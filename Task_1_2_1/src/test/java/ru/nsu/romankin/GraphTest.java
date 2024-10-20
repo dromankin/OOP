@@ -169,6 +169,19 @@ class GraphTest {
 
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(NewTestArgumentsProvider.class)
+    void readIntegerFromFileTest(Graph<Integer> graph) throws FileNotFoundException {
+        graph.readFromFile("graphTest.txt", "integer");
+        List<Vertex<Integer>> verticesList = graph.getAllVertices();
+        List<Edge<Integer>> edgesList = graph.getAllEdges();
+        assertFalse(verticesList.isEmpty() && edgesList.isEmpty());
+        assertTrue(!graph.getNeighbours(verticesList.get(0)).isEmpty()
+                && graph.getNeighbours(verticesList.get(0)).contains(verticesList.get(1))
+                && graph.getNeighbours(verticesList.get(0)).contains(verticesList.get(2)));
+
+    }
+
     static class TestArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
@@ -176,6 +189,17 @@ class GraphTest {
                     Arguments.of(new AdjacencyList<String>()),
                     Arguments.of(new AdjacencyMatrix<String>()),
                     Arguments.of(new IncidenceMatrix<String>())
+            );
+        }
+    }
+
+    static class NewTestArgumentsProvider implements ArgumentsProvider {
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+            return Stream.of(
+                    Arguments.of(new AdjacencyList<Integer>()),
+                    Arguments.of(new AdjacencyMatrix<Integer>()),
+                    Arguments.of(new IncidenceMatrix<Integer>())
             );
         }
     }

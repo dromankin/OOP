@@ -14,7 +14,7 @@ public class TopologicalSort<T>  {
      *
      * @param graph - graph that should be sorted.
      */
-    public List<Vertex<T>> topologicalSort(Graph<T> graph) {
+    public static <T>List<Vertex<T>> topologicalSort(Graph<T> graph) {
         List<Vertex<T>> ans = new ArrayList<>();
         boolean[] used;
         int verticesCount = graph.getVerticesCount();
@@ -31,7 +31,7 @@ public class TopologicalSort<T>  {
         return ans;
     }
 
-    private void dfs(int v, Graph<T> graph, boolean[] used, List<Vertex<T>> ans) {
+    private static <T> void dfs(int v, Graph<T> graph, boolean[] used, List<Vertex<T>> ans) {
         used[v] = true;
         int size = graph.getNeighbours(graph.getAllVertices().get(v)).size();
         Vertex<T> vertex;
