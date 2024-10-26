@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.romankin.hashtable","l":"HashTable"},{"p":"ru.nsu.romankin.hashtable","l":"Main"},{"p":"ru.nsu.romankin.hashtable","l":"Node"}]
