@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-
+        //comment
         HashTable<String, String> hashTable = new HashTable<>();
         hashTable.put("v1", "value1");
         hashTable.put("v2", "value2");
