@@ -20,7 +20,7 @@ class HashTableTest {
         hashTable.put("v5", "value5");
         hashTable.delete("v5");
         hashTable.delete("v5");
-        assertEquals(hashTable.getSize(),4);
+        assertEquals(hashTable.getSize(), 4);
     }
 
     @Test

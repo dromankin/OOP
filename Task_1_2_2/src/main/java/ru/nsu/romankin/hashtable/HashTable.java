@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @param <V> - type of value
  */
-public class HashTable <K, V> implements Iterable<Node<K, V>>{
+public class HashTable<K, V> implements Iterable<Node<K, V>> {
     private ArrayList<ArrayList<Node<K, V>>> table;
     private int nodeCount;
     private int capacity;
@@ -95,7 +95,7 @@ public class HashTable <K, V> implements Iterable<Node<K, V>>{
      */
     public V getValue(K key) {
         int hash = Objects.hashCode(key) % table.size();
-        for (Node <K, V> node : table.get(hash)) {
+        for (Node<K, V> node : table.get(hash)) {
             if (node.getKey().equals(key)) {
                 return node.getValue();
             }

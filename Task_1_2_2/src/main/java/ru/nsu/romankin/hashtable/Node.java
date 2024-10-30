@@ -2,11 +2,13 @@ package ru.nsu.romankin.hashtable;
 
 /**
  * This class describes a node - "key-value" pair.
+ *
  * @param <K> - type of key
+ *
  * @param <V> - type of value
  */
 
-public class Node <K, V> {
+public class Node<K, V> {
     private final K key;
     private V value;
 
