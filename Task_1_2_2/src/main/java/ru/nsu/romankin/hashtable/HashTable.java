@@ -1,8 +1,18 @@
 package ru.nsu.romankin.hashtable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.Objects;
 
-public class HashTable <K, V> {
+/**
+ * This class implements hashtable with basic functions and iterator.
+ *
+ * @param <K> - type of key
+ *
+ * @param <V> - type of value
+ */
+public class HashTable <K, V> implements Iterable<Node<K, V>>{
     private ArrayList<ArrayList<Node<K, V>>> table;
     private int nodeCount;
     private int capacity;
@@ -10,19 +20,24 @@ public class HashTable <K, V> {
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int modCount;
 
-
+    /**
+     * returns size of hashtable(number of "key-value" pairs).
+     */
     public int getSize() {
         return nodeCount;
     }
 
 
+    /**
+     * returns iterator.
+     */
     public Iterator<Node<K, V>> iterator() {
         return new HashTableIterator<>();
     }
 
-
-
-
+    /**
+     * Class constructor.
+     */
     public HashTable() {
         table = new ArrayList<>(DEFAULT_CAPACITY);
         for (int i = 0; i < DEFAULT_CAPACITY; i++) {
@@ -32,10 +47,14 @@ public class HashTable <K, V> {
         capacity = DEFAULT_CAPACITY;
     }
 
-    public void print() {
-        System.out.println(table.size());
-    }
 
+    /**
+     * Puts a "key-value" pair in hashtable.
+     *
+     * @param key - key
+     *
+     * @param value - value
+     */
     public void put(K key, V value) {
 
         if ((float) nodeCount / capacity >= DEFAULT_LOAD_FACTOR) {
@@ -53,6 +72,13 @@ public class HashTable <K, V> {
         modCount++;
     }
 
+    /**
+     * Update a "key-value" pair in hashtable.
+     *
+     * @param key - key
+     *
+     * @param value - value
+     */
     public void update(K key, V value) {
         int hash = Objects.hashCode(key) % capacity;
         for (Node<K, V> node : table.get(hash)) {
@@ -62,6 +88,11 @@ public class HashTable <K, V> {
         }
     }
 
+    /**
+     * Returns a value by key.
+     *
+     * @param key - key
+     */
     public V getValue(K key) {
         int hash = Objects.hashCode(key) % table.size();
         for (Node <K, V> node : table.get(hash)) {
@@ -87,6 +118,11 @@ public class HashTable <K, V> {
         table = newTable;
     }
 
+    /**
+     * Deletes a "key-value" pair from hashtable.
+     *
+     * @param key - key
+     */
     public void delete(K key) {
         int hash = Objects.hashCode(key) % capacity;
         for (Node<K, V> node : table.get(hash)) {
@@ -99,6 +135,11 @@ public class HashTable <K, V> {
         }
     }
 
+    /**
+     * Checks for existing of value by key.
+     *
+     * @param key - key
+     */
     public boolean containsKey(K key) {
         int hash = Objects.hashCode(key) % capacity;
         for (Node<K, V> node : table.get(hash)) {
@@ -109,7 +150,15 @@ public class HashTable <K, V> {
         return false;
     }
 
-    public boolean equals(HashTable<K, V> compareTable) {
+    /**
+     * Equals method override.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof HashTable)) {
+            return false;
+        }
+        HashTable<K, V> compareTable = (HashTable<K, V>) obj;
         if (compareTable.getSize() != nodeCount) {
             return false;
         }
@@ -127,8 +176,6 @@ public class HashTable <K, V> {
         return true;
     }
 
-
-
     private class HashTableIterator<K, V> implements Iterator<Node<K, V>> {
         private int expectedModCount;
         private int listIndex;
@@ -140,6 +187,9 @@ public class HashTable <K, V> {
             nodeIndex = 0;
         }
 
+        /**
+         * Checks if there is a next node in hashtable.
+         */
         @Override
         public boolean hasNext() {
             if (modCount != expectedModCount) {
@@ -153,6 +203,9 @@ public class HashTable <K, V> {
             return false;
         }
 
+        /**
+         * returns a next node in hashtable.
+         */
         @Override
         public Node<K, V> next() {
             if (modCount != expectedModCount) {
@@ -176,22 +229,29 @@ public class HashTable <K, V> {
         }
     }
 
-
+    /**
+     * returns hashtable as a String.
+     */
     public String toString() {
+        StringBuilder string = new StringBuilder("");
         String res = "";
         res += "[";
+        string.append("[");
         int count = 0;
         for (ArrayList<Node<K, V>> list : table) {
             for (Node<K, V> node : list) {
-                res += node.getKey() + " = " + node.getValue();
+                string.append(node.getKey());
+                string.append(" = ");
+                string.append(node.getValue());
                 count++;
                 if (count < nodeCount) {
-                    res += "; ";
+                    string.append("; ");
                 }
 
             }
         }
-        res += "]";
+        string.append("]");
+        res = string.toString();
         return res;
     }
 }
