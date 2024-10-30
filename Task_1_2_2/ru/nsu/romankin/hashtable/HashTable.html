@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -129,9 +129,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>K</code> - - type of key</dd>
+<dd><code>V</code> - - type of value</dd>
+</dl>
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><code>java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.romankin.hashtable">Node</a>&lt;K,&#8203;V&gt;&gt;</code></dd>
+</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">HashTable&lt;K,&#8203;V&gt;</span>
-extends java.lang.Object</pre>
+extends java.lang.Object
+implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.romankin.hashtable">Node</a>&lt;K,&#8203;V&gt;&gt;</pre>
+<div class="block">This class implements hashtable with basic functions and iterator.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +164,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">HashTable</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Class constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,54 +189,67 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#containsKey(K)">containsKey</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks for existing of value by key.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delete(K)">delete</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Deletes a "key-value" pair from hashtable.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(ru.nsu.romankin.hashtable.HashTable)">equals</a></span>&#8203;(<a href="HashTable.html" title="class in ru.nsu.romankin.hashtable">HashTable</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,&#8203;<a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;&nbsp;compareTable)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;obj)</code></th>
+<td class="colLast">
+<div class="block">Equals method override.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSize()">getSize</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">returns size of hashtable(number of "key-value" pairs).</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="HashTable.html" title="type parameter in HashTable">V</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue(K)">getValue</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns a value by key.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.romankin.hashtable">Node</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,&#8203;<a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">returns iterator.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(K,V)">put</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
    <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Puts a "key-value" pair in hashtable.</div>
+</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">returns hashtable as a String.</div>
+</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(K,V)">update</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
       <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Update a "key-value" pair in hashtable.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -231,7 +257,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.java.lang.Iterable">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;java.lang.Iterable</h3>
+<code>forEach, spliterator</code></li>
 </ul>
 </li>
 </ul>
@@ -256,6 +289,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>HashTable</h4>
 <pre>public&nbsp;HashTable()</pre>
+<div class="block">Class constructor.</div>
 </li>
 </ul>
 </li>
@@ -275,6 +309,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSize</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getSize()</pre>
+<div class="block">returns size of hashtable(number of "key-value" pairs).</div>
 </li>
 </ul>
 <a id="iterator()">
@@ -284,15 +319,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>iterator</h4>
 <pre class="methodSignature">public&nbsp;java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.romankin.hashtable">Node</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,&#8203;<a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;&gt;&nbsp;iterator()</pre>
-</li>
-</ul>
-<a id="print()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>print</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;print()</pre>
+<div class="block">returns iterator.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code>iterator</code>&nbsp;in interface&nbsp;<code>java.lang.Iterable&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>&gt;</code></dd>
+</dl>
 </li>
 </ul>
 <a id="put(java.lang.Object,java.lang.Object)">
@@ -305,6 +336,12 @@ extends java.lang.Object</pre>
 <h4>put</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;put&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
                 <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</pre>
+<div class="block">Puts a "key-value" pair in hashtable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - - key</dd>
+<dd><code>value</code> - - value</dd>
+</dl>
 </li>
 </ul>
 <a id="update(java.lang.Object,java.lang.Object)">
@@ -317,6 +354,12 @@ extends java.lang.Object</pre>
 <h4>update</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;update&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
                    <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</pre>
+<div class="block">Update a "key-value" pair in hashtable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - - key</dd>
+<dd><code>value</code> - - value</dd>
+</dl>
 </li>
 </ul>
 <a id="getValue(java.lang.Object)">
@@ -328,6 +371,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getValue</h4>
 <pre class="methodSignature">public&nbsp;<a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;getValue&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</pre>
+<div class="block">Returns a value by key.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - - key</dd>
+</dl>
 </li>
 </ul>
 <a id="delete(java.lang.Object)">
@@ -339,6 +387,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>delete</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delete&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</pre>
+<div class="block">Deletes a "key-value" pair from hashtable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - - key</dd>
+</dl>
 </li>
 </ul>
 <a id="containsKey(java.lang.Object)">
@@ -350,15 +403,25 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>containsKey</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;containsKey&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</pre>
+<div class="block">Checks for existing of value by key.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - - key</dd>
+</dl>
 </li>
 </ul>
-<a id="equals(ru.nsu.romankin.hashtable.HashTable)">
+<a id="equals(java.lang.Object)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>equals</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(<a href="HashTable.html" title="class in ru.nsu.romankin.hashtable">HashTable</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,&#8203;<a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;&nbsp;compareTable)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;obj)</pre>
+<div class="block">Equals method override.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">
@@ -368,6 +431,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">returns hashtable as a String.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
