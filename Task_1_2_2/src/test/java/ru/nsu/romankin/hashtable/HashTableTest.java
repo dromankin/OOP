@@ -2,6 +2,7 @@ package ru.nsu.romankin.hashtable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -158,5 +159,24 @@ class HashTableTest {
             assertTrue(hashTable.containsKey(node.getKey())
                 && node.getValue().equals(hashTable.getValue(node.getKey())));
         }
+        boolean bool = iterator.hasNext();
+        System.out.println(iterator.hasNext());
+    }
+
+    @Test
+    void notEqualsTest() {
+        HashTable<String, String> hashTable = new HashTable<>();
+        hashTable.put("v1", "value1");
+        hashTable.put("v2", "value2");
+        hashTable.put("v3", "value3");
+        hashTable.put("v4", "value4");
+        hashTable.put("v5", "value5");
+        HashTable<Integer, Double> anotherHashTable = new HashTable<>();
+        anotherHashTable.put(1, 1.5);
+        anotherHashTable.put(2, 2.5);
+        anotherHashTable.put(3, 3.5);
+        anotherHashTable.put(4, 4.5);
+        anotherHashTable.put(5, 5.5);
+        assertNotEquals(hashTable, anotherHashTable);
     }
 }
