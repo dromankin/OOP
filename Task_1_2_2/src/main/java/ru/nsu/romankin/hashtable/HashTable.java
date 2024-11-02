@@ -93,7 +93,7 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
      *
      * @param key - key
      */
-    public V getValue(K key) {
+    public V getValue(Object key) {
         int hash = Objects.hashCode(key) % table.size();
         for (Node<K, V> node : table.get(hash)) {
             if (node.getKey().equals(key)) {
@@ -140,7 +140,8 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
      *
      * @param key - key
      */
-    public boolean containsKey(K key) {
+    public boolean containsKey(Object key) {
+
         int hash = Objects.hashCode(key) % capacity;
         for (Node<K, V> node : table.get(hash)) {
             if (node.getKey().equals(key)) {
@@ -158,12 +159,13 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
         if (!(obj instanceof HashTable)) {
             return false;
         }
-        HashTable<K, V> compareTable = (HashTable<K, V>) obj;
+        HashTable<?, ?> compareTable = (HashTable<?, ?>) obj;
         if (compareTable.getSize() != nodeCount) {
             return false;
         }
         for (ArrayList<Node<K, V>> list : table) {
-            for (Node<K, V> node : list) {
+            for (Node<?, ?> node : list) {
+
                 if (!compareTable.containsKey(node.getKey())) {
                     return false;
                 } else {
@@ -172,6 +174,7 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
                     }
                 }
             }
+
         }
         return true;
     }
@@ -181,7 +184,7 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
         private int listIndex;
         private int nodeIndex;
 
-        private HashTableIterator() {
+        public HashTableIterator() {
             expectedModCount = modCount;
             listIndex = 0;
             nodeIndex = 0;

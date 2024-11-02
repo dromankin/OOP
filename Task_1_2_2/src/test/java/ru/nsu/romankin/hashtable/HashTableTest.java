@@ -171,12 +171,29 @@ class HashTableTest {
         hashTable.put("v3", "value3");
         hashTable.put("v4", "value4");
         hashTable.put("v5", "value5");
-        HashTable<Integer, Double> anotherHashTable = new HashTable<>();
+        HashTable<Integer, Number> anotherHashTable = new HashTable<>();
         anotherHashTable.put(1, 1.5);
         anotherHashTable.put(2, 2.5);
         anotherHashTable.put(3, 3.5);
         anotherHashTable.put(4, 4.5);
         anotherHashTable.put(5, 5.5);
-        assertNotEquals(hashTable, anotherHashTable);
+        assertFalse(hashTable.equals(anotherHashTable));
+    }
+
+    @Test
+    void anotherNotEqualsTest() {
+        HashTable<String, String> hashTable = new HashTable<>();
+        hashTable.put("v1", "value1");
+        hashTable.put("v2", "value2");
+        hashTable.put("v3", "value3");
+        hashTable.put("v4", "value4");
+        hashTable.put("v5", "value5");
+        HashTable<Integer, Integer> anotherHashTable = new HashTable<>();
+        anotherHashTable.put(1, 10);
+        anotherHashTable.put(2, 20);
+        anotherHashTable.put(3, 30);
+        anotherHashTable.put(4, 40);
+        anotherHashTable.put(5, 50);
+        assertFalse(hashTable.equals(anotherHashTable));
     }
 }
