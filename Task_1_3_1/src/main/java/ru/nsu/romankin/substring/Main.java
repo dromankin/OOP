@@ -1,10 +1,24 @@
 package ru.nsu.romankin.substring;
 
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main class, containing searching substring function.
+ */
 public class Main {
+
+    /**
+     * This function searching for entry indexes of a substring in a text.
+     * @param filename - name of file with text
+     * @param substring - substring
+     * @return a list of integers
+     */
     public static List<Integer> search(String filename, String substring) throws IOException {
         List<Integer> res = new ArrayList<>();
         try (Reader br = new BufferedReader(new FileReader(filename))) {
@@ -47,10 +61,11 @@ public class Main {
             return res;
         }
     }
+
+    /**
+     * Main function.
+     */
     public static void main(String[] args) throws IOException {
-        List<Integer> list = search("test.txt", "lo");
-        for (Integer elem : list) {
-            System.out.println(elem);
-        }
+
     }
 }
