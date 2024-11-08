@@ -15,8 +15,11 @@ public class Main {
 
     /**
      * This function searching for entry indexes of a substring in a text.
+     *
      * @param filename - name of file with text
+     *
      * @param substring - substring
+     *                  
      * @return a list of integers
      */
     public static List<Integer> search(String filename, String substring) throws IOException {
