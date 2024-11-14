@@ -77,6 +77,7 @@ class MainTest {
         } catch (IOException e) {
             file.delete();
         }
+        file.delete();
     }
 
 }
