@@ -44,32 +44,34 @@ class MainTest {
         assertEquals(List.of(1L, 6L), res);
     }
 
+    /*
+    @Test
+    void bigDataTest() throws IOException {
+        File file = new File("bigData.txt");
+        try (Writer bw = new BufferedWriter(new FileWriter(file))) {
+            file.createNewFile();
+            String substring = "hello";
 
-//    @Test
-//    void bigDataTest() throws IOException {
-//        File file = new File("bigData.txt");
-//        try (Writer bw = new BufferedWriter(new FileWriter(file))) {
-//            file.createNewFile();
-//            String substring = "hello";
-//
-//            for (long i = 0; i < 1000L; i++) {
-//                bw.write("abrabrabra");
-//                bw.flush();
-//            }
-//            bw.write("hello_world");
-//            bw.flush();
-//            long resNum = 10000000000L;
-//            try (Reader br = new BufferedReader(new FileReader(file))) {
-//                List<Long> res = Main.search(br, substring);
-//                assertFalse(res.isEmpty());
-//                assertTrue(res.contains(resNum) && res.size() == 1);
-//            } catch (IOException e) {
-//                file.delete();
-//            }
-//
-//        } catch (IOException e) {
-//            file.delete();
-//        }
-//    }
+            for (long i = 0; i < 1000L; i++) {
+                bw.write("abrabrabra");
+                bw.flush();
+            }
+            bw.write("hello_world");
+            bw.flush();
+            long resNum = 10000000000L;
+            try (Reader br = new BufferedReader(new FileReader(file))) {
+                List<Long> res = Main.search(br, substring);
+                assertFalse(res.isEmpty());
+                assertTrue(res.contains(resNum) && res.size() == 1);
+            } catch (IOException e) {
+                file.delete();
+            }
+
+        } catch (IOException e) {
+            file.delete();
+        }
+    }
+
+     */
 
 }

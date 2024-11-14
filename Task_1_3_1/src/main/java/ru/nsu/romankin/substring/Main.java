@@ -1,7 +1,11 @@
 package ru.nsu.romankin.substring;
 
 
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class Main {
     /**
      * This function searching for entry indexes of a substring in a text.
      *
-     * @param br - name of file with text
+     * @param br - reader
      *
      * @param substring - substring
      *                  
@@ -63,16 +67,12 @@ public class Main {
     }
 
     /**
-     *
-     * @param filename
-     * @param substring
-     * @return
-     * @throws IOException
+     * Main function of substring searching.
      */
     public static List<Long> searchSubstring(String filename, String substring)
             throws IOException {
-        try (Reader br = new BufferedReader
-                (new InputStreamReader(((Main.class.getResourceAsStream("/" + filename)))))) {
+        try (Reader br = new BufferedReader(
+                new InputStreamReader(((Main.class.getResourceAsStream("/" + filename)))))) {
             return search(br, substring);
         }
     }
