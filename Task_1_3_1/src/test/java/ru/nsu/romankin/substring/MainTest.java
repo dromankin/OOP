@@ -4,7 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +51,7 @@ class MainTest {
         assertEquals(List.of(1L, 6L), res);
     }
 
-    /*
+
     @Test
     void bigDataTest() throws IOException {
         File file = new File("bigData.txt");
@@ -52,7 +59,7 @@ class MainTest {
             file.createNewFile();
             String substring = "hello";
 
-            for (long i = 0; i < 1000L; i++) {
+            for (long i = 0; i < 1000000000L; i++) {
                 bw.write("abrabrabra");
                 bw.flush();
             }
@@ -71,7 +78,5 @@ class MainTest {
             file.delete();
         }
     }
-
-     */
 
 }
