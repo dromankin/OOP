@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +52,15 @@ class MainTest {
         assertEquals(List.of(1L, 6L), res);
     }
 
+    @Test
+    void crossStringsTest() throws IOException {
+            List<Long> res = Main.searchSubstring("crossStringsTest.txt", "aaaaaaaaa");
+            List<Long> compare = new ArrayList<>();
+            for (long i = 0L; i <= 20L; i++) {
+                    compare.add(i);
+            }
+            assertEquals(compare, res);
+    }
 
     @Test
     void bigDataTest() throws IOException {
@@ -60,8 +70,8 @@ class MainTest {
             String substring = "hello";
 
             for (long i = 0; i < 1000000000L; i++) {
-                bw.write("abrabrabra");
-                bw.flush();
+                bw.append("abrabrabra");
+                //bw.flush();
             }
             bw.write("hello_world");
             bw.flush();
@@ -69,15 +79,14 @@ class MainTest {
             try (Reader br = new BufferedReader(new FileReader(file))) {
                 List<Long> res = Main.search(br, substring);
                 assertFalse(res.isEmpty());
-                assertTrue(res.contains(resNum) && res.size() == 1);
-            } catch (IOException e) {
-                file.delete();
+                assertTrue(res.contains(resNum));
+                assertEquals(res.size(), 1);
             }
-
-        } catch (IOException e) {
+        } finally {
             file.delete();
         }
-        file.delete();
+
+
     }
 
 }
