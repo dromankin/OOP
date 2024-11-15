@@ -54,12 +54,12 @@ class MainTest {
 
     @Test
     void crossStringsTest() throws IOException {
-            List<Long> res = Main.searchSubstring("crossStringsTest.txt", "aaaaaaaaa");
-            List<Long> compare = new ArrayList<>();
-            for (long i = 0L; i <= 20L; i++) {
-                    compare.add(i);
-            }
-            assertEquals(compare, res);
+        List<Long> res = Main.searchSubstring("crossStringsTest.txt", "aaaaaaaaa");
+        List<Long> compare = new ArrayList<>();
+        for (long i = 0L; i <= 20L; i++) {
+            compare.add(i);
+        }
+        assertEquals(compare, res);
     }
 
     @Test
