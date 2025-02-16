@@ -19,9 +19,9 @@ public class MultiThreadPrime implements PrimeInterface {
         int j = 0;
         for (int i = 0; i < threadsNum; i++) {
             if (i * shift + shift - 1 >= arraySize - 1) {
-                threads[i] = new PrimeThread(i * shift, arraySize);
+                threads[i] = new Thread(new PrimeThread(i * shift, arraySize));
             } else {
-                threads[i] = new PrimeThread(i * shift, i * shift + shift - 1);
+                threads[i] = new Thread(new PrimeThread(i * shift, i * shift + shift - 1));
             }
         }
 
@@ -35,7 +35,7 @@ public class MultiThreadPrime implements PrimeInterface {
         return containsNotPrime;
     }
 
-    private class PrimeThread extends Thread {
+    private class PrimeThread implements Runnable {
         int start;
         int end;
         PrimeThread(int start, int end) {
@@ -44,7 +44,7 @@ public class MultiThreadPrime implements PrimeInterface {
         }
         @Override
         public void run() {
-            for (int i = start; i < end && !containsNotPrime; i++) {
+            for (int i = start; i <= end && !containsNotPrime; i++) {
                 if (PrimeInterface.isNotPrime(array[i])) {
                     containsNotPrime = true;
                     break;
