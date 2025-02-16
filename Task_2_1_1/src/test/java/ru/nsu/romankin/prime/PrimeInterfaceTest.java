@@ -1,17 +1,16 @@
 package ru.nsu.romankin.prime;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Random;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import java.util.Random;
 
-
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PrimeInterfaceTest {
 
@@ -26,7 +25,7 @@ class PrimeInterfaceTest {
     @ArgumentsSource(TestArgumentsProvider.class)
     void primeTestFalse(PrimeInterface prime) throws InterruptedException {
         int[] arr2 = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
-                6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
+            6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
         assertFalse(prime.findNonPrime(arr2));
     }
 
