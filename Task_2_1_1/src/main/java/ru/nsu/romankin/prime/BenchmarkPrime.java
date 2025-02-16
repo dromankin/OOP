@@ -2,6 +2,10 @@ package ru.nsu.romankin.prime;
 
 import java.util.Random;
 
+/**
+ * Class for findNonPrime function benchmark.
+ */
+
 public class BenchmarkPrime {
 
     private static long test(PrimeInterface prime) throws InterruptedException {
@@ -27,6 +31,10 @@ public class BenchmarkPrime {
         time = System.currentTimeMillis() - time;
         return time;
     }
+
+    /**
+     * Main function.
+     */
 
     public static void main(String[] args) throws InterruptedException {
         SequentialPrime seq = new SequentialPrime();

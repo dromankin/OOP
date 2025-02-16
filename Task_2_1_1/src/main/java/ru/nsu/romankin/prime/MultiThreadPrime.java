@@ -1,10 +1,15 @@
 package ru.nsu.romankin.prime;
 
+/**
+ * Class for multithreaded non-prime numbers finding.
+ */
+
 public class MultiThreadPrime implements PrimeInterface {
     private int threadsNum;
     private int[] array;
     private Thread [] threads;
     private boolean containsNotPrime = false;
+
     MultiThreadPrime(int threadsNum) {
         this.threadsNum = threadsNum;
         threads = new Thread[threadsNum];
@@ -38,10 +43,12 @@ public class MultiThreadPrime implements PrimeInterface {
     private class PrimeThread implements Runnable {
         int start;
         int end;
+
         PrimeThread(int start, int end) {
             this.start = start;
             this.end = end;
         }
+
         @Override
         public void run() {
             for (int i = start; i <= end && !containsNotPrime; i++) {
