@@ -21,16 +21,16 @@ public class MultiThreadPrime implements PrimeInterface {
         this.array = array;
         int arraySize = array.length;
         int shift = arraySize / threadsNum + 1;
-        int index_first;
-        int index_last;
+        int indexFirst;
+        int indexLast;
         for (int i = 0; i < threadsNum; i++) {
-            index_first = i * shift;
-            if (index_first + shift - 1 >= arraySize - 1) {
-                index_last = arraySize;
+            indexFirst = i * shift;
+            if (indexFirst + shift - 1 >= arraySize - 1) {
+                indexLast = arraySize;
             } else {
-                index_last = index_first + shift - 1;
+                indexLast = indexFirst + shift - 1;
             }
-            threads[i] = createThread(index_first, index_last);
+            threads[i] = createThread(indexFirst, indexLast);
         }
 
         for (int i = 0; i < threadsNum; i++) {

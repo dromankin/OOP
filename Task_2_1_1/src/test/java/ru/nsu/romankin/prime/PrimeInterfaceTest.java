@@ -45,8 +45,7 @@ class PrimeInterfaceTest {
                     arr[i] = number;
                     number = rnd.nextInt(bound);
                     i++;
-                }
-                else {
+                } else {
                     number = rnd.nextInt(bound);
                 }
             } else {

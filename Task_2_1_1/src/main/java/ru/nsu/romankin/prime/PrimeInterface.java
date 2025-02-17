@@ -9,7 +9,9 @@ public interface PrimeInterface {
 
     /**
      * Function that checks if number is prime or not.
+     *
      * @param num - number to check;
+     *
      * @return true - if it is not prime, false - if it is prime;
      */
 
