@@ -1,24 +1,22 @@
 package ru.nsu.romankin.prime;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * Class for multithreaded non-prime numbers finding.
  */
 
 public class MultiThreadPrime implements PrimeInterface {
     private int threadsNum;
-    private int[] array;
-    private Thread [] threads;
-    private boolean containsNotPrime = false;
 
     MultiThreadPrime(int threadsNum) {
         this.threadsNum = threadsNum;
-        threads = new Thread[threadsNum];
     }
 
     @Override
     public boolean findNonPrime(int[] array) throws InterruptedException {
-        containsNotPrime = false;
-        this.array = array;
+        Thread[] threads = new Thread[threadsNum];
+        AtomicBoolean containsNotPrime = new AtomicBoolean(false);
         int arraySize = array.length;
         int shift = arraySize / threadsNum + 1;
         int indexFirst;
@@ -30,7 +28,7 @@ public class MultiThreadPrime implements PrimeInterface {
             } else {
                 indexLast = indexFirst + shift - 1;
             }
-            threads[i] = createThread(indexFirst, indexLast);
+            threads[i] = createThread(indexFirst, indexLast, array, containsNotPrime);
         }
 
         for (int i = 0; i < threadsNum; i++) {
@@ -40,14 +38,14 @@ public class MultiThreadPrime implements PrimeInterface {
         for (int i = 0; i < threadsNum; i++) {
             threads[i].join();
         }
-        return containsNotPrime;
+        return containsNotPrime.get();
     }
 
-    private Thread createThread(int start, int end) {
+    private Thread createThread(int start, int end, int[] array, AtomicBoolean flag) {
         return new Thread(() -> {
-            for (int i = start; i <= end && !containsNotPrime; i++) {
+            for (int i = start; i <= end && !flag.get(); i++) {
                 if (PrimeInterface.isNotPrime(array[i])) {
-                    containsNotPrime = true;
+                    flag.set(true);
                     break;
                 }
             }
