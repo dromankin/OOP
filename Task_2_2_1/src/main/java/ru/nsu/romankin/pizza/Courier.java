@@ -27,15 +27,17 @@ public class Courier implements Runnable{
 
     @Override
     public void run() {
-        try {
-            Order order = storage.takeOrder();
-            order.setState(States.DELIVERING);
-            System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
-            sleep(deliverSpeed);
-            order.setState(States.DELIVERED);
-            System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        while (true) {
+            try {
+                Order order = storage.takeOrder();
+                order.setState(States.DELIVERING);
+                System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
+                sleep(deliverSpeed);
+                order.setState(States.DELIVERED);
+                System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
+            } catch (InterruptedException e) {
+                return;
+            }
         }
     }
 }

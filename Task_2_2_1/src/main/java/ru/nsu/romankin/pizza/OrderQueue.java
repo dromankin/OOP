@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class OrderQueue {
-    Queue<Order> queue = new LinkedList<>();
+    private Queue<Order> queue = new LinkedList<>();
 
 
     public synchronized void addOrder(Order order) {

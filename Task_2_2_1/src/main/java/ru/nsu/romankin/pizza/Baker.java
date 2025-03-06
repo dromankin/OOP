@@ -26,16 +26,18 @@ public class Baker implements Runnable{
 
     @Override
     public void run() {
-        try {
-            Order order = orderQueue.takeOrder();
-            order.setState(States.COOKING);
-            System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
-            sleep(speed);
-            order.setState(States.STORAGED);
-            storage.addOrder(order);
-            System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        while(true) {
+            try {
+                Order order = orderQueue.takeOrder();
+                order.setState(States.COOKING);
+                System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
+                sleep(speed);
+                order.setState(States.STORAGED);
+                storage.addOrder(order);
+                System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
+            } catch (InterruptedException e) {
+                return;
+            }
         }
     }
 }
