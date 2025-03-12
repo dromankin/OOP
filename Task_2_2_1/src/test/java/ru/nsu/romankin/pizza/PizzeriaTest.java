@@ -76,7 +76,7 @@ class PizzeriaTest {
     @Test
     void capacityTest() throws IOException, InterruptedException {
         int ordersCount = 15;
-        Pizzeria pizzeria = new Pizzeria("src/test/resources/config.json");
+        Pizzeria pizzeria = new Pizzeria("src/test/resources/capacity.json");
         Order[] orders = new Order[ordersCount];
 
         pizzeria.start();
