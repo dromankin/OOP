@@ -9,9 +9,7 @@ public class Order {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public void setState(States state) {
         this.state = state;
@@ -19,6 +17,10 @@ public class Order {
 
     public String getState() {
         return state.getState();
+    }
+
+    public String toString() {
+        return "Order: " + id + "; state: " + this.getState();
     }
 }
 

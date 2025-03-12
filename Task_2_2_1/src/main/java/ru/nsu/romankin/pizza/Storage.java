@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Storage {
     private int capacity;
-
     Queue<Order> storage = new LinkedList<>();
-    private int size;
+
     public Storage(int capacity) {
         this.capacity = capacity;
     }
+
 
 
     public synchronized void addOrder(Order order) throws InterruptedException {
@@ -27,8 +28,11 @@ public class Storage {
         while (storage.isEmpty()) {
             wait();
         }
-        Order order = storage.remove();
+        Order order = storage.poll();
         notifyAll();
         return order;
     }
+
+
+
 }

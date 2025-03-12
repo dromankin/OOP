@@ -1,43 +1,44 @@
 package ru.nsu.romankin.pizza;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import static java.lang.Thread.sleep;
 
-public class Courier implements Runnable{
+public class Courier extends Thread {
 
     private int id;
     private int capacity;
     private int deliverSpeed;
     private Storage storage;
-
-    public Courier(int id, int capacity, Storage storage, int deliverSpeed) {
+    private Pizzeria pizzeria;
+    public Courier(int id, int capacity, Storage storage, int deliverSpeed, Pizzeria pizzeria) {
         this.capacity = capacity;
         this.id = id;
         this.storage = storage;
         this.deliverSpeed = deliverSpeed;
-    }
+        this.pizzeria = pizzeria;
 
-    public int getId() {
-        return id;
-    }
-
-    public int getCapacity() {
-        return capacity;
     }
 
 
     @Override
     public void run() {
-        while (true) {
+        while (!isInterrupted()) {
             try {
                 Order order = storage.takeOrder();
+                if (order == null) {
+                    break;
+                }
                 order.setState(States.DELIVERING);
-                System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
+                System.out.println(order + " courier id: " + id);
                 sleep(deliverSpeed);
                 order.setState(States.DELIVERED);
-                System.out.printf("Order: %d; state:%s\n", order.getId(), order.getState());
+                System.out.println(order + " courier id: " + id);
+                pizzeria.courierTookOrder();
             } catch (InterruptedException e) {
                 return;
             }
         }
+
     }
 }

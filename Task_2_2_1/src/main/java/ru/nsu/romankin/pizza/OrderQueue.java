@@ -17,7 +17,7 @@ public class OrderQueue {
         while (queue.isEmpty()) {
             wait();
         }
-        Order order = queue.remove();
+        Order order = queue.poll();
         notifyAll();
         return order;
     }

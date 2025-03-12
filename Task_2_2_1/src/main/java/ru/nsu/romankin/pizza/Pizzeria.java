@@ -1,55 +1,88 @@
 package ru.nsu.romankin.pizza;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class Pizzeria {
-    private List<Thread> bakers;
-    private List<Thread> couriers;
+    private List<Baker> bakers;
+    private List<Courier> couriers;
     private OrderQueue orderQueue = new OrderQueue();
     private Storage storage;
     private int ordersCount = 0;
-    AtomicBoolean working = new AtomicBoolean();
-    public Pizzeria(int bakersCount, int couriersCount, int[] couriersCapacities,
-                    int[] couriersSpeeds, int[] bakerSpeeds, int storageCapacity) {
-        this.storage = new Storage(storageCapacity);
-        this.bakers = new ArrayList<>(bakersCount);
-        this.couriers = new ArrayList<>(couriersCount);
-        for (int i = 0; i < bakersCount; i++) {
-            bakers.add(i, new Thread(new Baker(i, bakerSpeeds[i], orderQueue, storage)));
+    private int workTime;
+    private JsonConfig config;
+    private AtomicBoolean working = new AtomicBoolean();
+    public Pizzeria(String jsonFilename) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        config = objectMapper.readValue(new File(jsonFilename), JsonConfig.class);
+        this.storage = new Storage(config.getStorageCapacity());
+        this.bakers = new ArrayList<>(config.getBakersCount());
+        this.couriers = new ArrayList<>(config.getCouriersCount());
+        this.workTime = config.getWorkTime();
+        for (int i = 0; i < config.getBakersCount(); i++) {
+            bakers.add(i, new Baker(i, config.getBakersSpeeds()[i], orderQueue, storage));
         }
-        for (int i = 0; i < couriersCount; i++) {
-            couriers.add(i, new Thread(new Courier(i, couriersCapacities[i], storage, couriersSpeeds[i])));
+        for (int i = 0; i < config.getCouriersCount(); i++) {
+            couriers.add(i, new Courier(i, config.getCouriersCapacities()[i], storage, config.getCouriersSpeeds()[i], this));
         }
 
+    }
+
+    public void courierTookOrder() {
+        ordersCount--;
     }
 
     public void start() {
         working.set(true);
-        for (Thread baker : bakers) {
+
+        for (Baker baker : bakers) {
             baker.start();
         }
-        for (Thread courier : couriers) {
+        for (Courier courier : couriers) {
             courier.start();
         }
     }
 
+    public int getWorkTime() {
+        return workTime;
+    }
 
-    public void stop() {
+    public int getOrdersCount() {
+        return ordersCount;
+    }
+
+    public void stop() throws InterruptedException {
         working.set(false);
-        for (Thread baker : bakers) {
-            baker.interrupt();
+        while (ordersCount > 0) {
+            Thread.sleep(1000);
+            System.out.println("Pizzeria has closed, orders remaining: " + ordersCount);
         }
-        for (Thread courier : couriers) {
+        for (Baker baker : bakers) {
+            baker.interrupt();
+
+        }
+        for (Courier courier : couriers) {
             courier.interrupt();
         }
+
+
+
     }
 
     public void addOrder(Order order) {
-        synchronized (orderQueue) {
-            orderQueue.addOrder(order);
-            orderQueue.notifyAll();
+        if (working.get()) {
+
+            synchronized (orderQueue) {
+                orderQueue.addOrder(order);
+                ordersCount++;
+                orderQueue.notifyAll();
+            }
         }
     }
 }
