@@ -24,6 +24,7 @@ public class Pizzeria {
 
     /**
      * Class constructor.
+     *
      * @param jsonFilename - path to json config file.
      */
     public Pizzeria(String jsonFilename) throws IOException {

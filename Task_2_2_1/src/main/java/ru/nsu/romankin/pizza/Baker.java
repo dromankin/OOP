@@ -14,9 +14,13 @@ public class Baker extends Thread {
 
     /**
      * Class constructor.
+     *
      * @param id - baker's id
+     *
      * @param speed - baker's speed
+     *
      * @param orderQueue - order queue used by baker
+     *
      * @param storage - storage used by baker
      */
     public Baker(int id, int speed, OrderQueue orderQueue, Storage storage) {

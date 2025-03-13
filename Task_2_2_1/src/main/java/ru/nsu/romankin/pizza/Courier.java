@@ -15,9 +15,13 @@ public class Courier extends Thread {
     /**
      * Class constructor.
      * @param id - courier's id
+     *
      * @param capacity - courier's capacity
+     *
      * @param storage - storage used by courier
+     *
      * @param deliverSpeed - deliver speed
+     *
      * @param pizzeria - pizzeria used by courier
      */
     public Courier(int id, int capacity, Storage storage, int deliverSpeed, Pizzeria pizzeria) {

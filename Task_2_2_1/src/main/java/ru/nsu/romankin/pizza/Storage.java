@@ -18,7 +18,6 @@ public class Storage {
 
     /**
      * Synchronized adding order method.
-     * @param order
      */
     public synchronized void addOrder(Order order) throws InterruptedException {
         while (storage.size() >= capacity) {
