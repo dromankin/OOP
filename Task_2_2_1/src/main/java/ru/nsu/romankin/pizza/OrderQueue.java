@@ -17,6 +17,9 @@ public class OrderQueue {
         notifyAll();
     }
 
+    /**
+     * Synchronized method for taking order.
+     */
     public synchronized Order takeOrder() throws InterruptedException {
         while (queue.isEmpty()) {
             wait();

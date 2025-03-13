@@ -11,6 +11,14 @@ public class Baker extends Thread {
     private OrderQueue orderQueue;
     private Storage storage;
     private AtomicBoolean working = new AtomicBoolean();
+
+    /**
+     * Class constructor.
+     * @param id - baker's id
+     * @param speed - baker's speed
+     * @param orderQueue - order queue used by baker
+     * @param storage - storage used by baker
+     */
     public Baker(int id, int speed, OrderQueue orderQueue, Storage storage) {
         this.id = id;
         this.speed = speed;
@@ -23,7 +31,7 @@ public class Baker extends Thread {
 
     @Override
     public void run() {
-        while(!isInterrupted()) {
+        while (!isInterrupted()) {
             try {
 
                 Order order = orderQueue.takeOrder();

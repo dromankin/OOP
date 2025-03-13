@@ -21,6 +21,11 @@ public class Pizzeria {
     private int workTime;
     private JsonConfig config;
     private AtomicBoolean working = new AtomicBoolean();
+
+    /**
+     * Class constructor.
+     * @param jsonFilename - path to json config file.
+     */
     public Pizzeria(String jsonFilename) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         config = objectMapper.readValue(new File(jsonFilename), JsonConfig.class);
@@ -38,11 +43,17 @@ public class Pizzeria {
 
     }
 
+    /**
+     * Order count decrement method.
+     */
     public synchronized void courierTookOrder() {
-            ordersCount--;
+        ordersCount--;
 
     }
 
+    /**
+     * Starting pizzeria method.
+     */
     public void start() {
         working.set(true);
 
@@ -54,14 +65,23 @@ public class Pizzeria {
         }
     }
 
+    /**
+     * Returns pizzeria work time.
+     */
     public int getWorkTime() {
         return workTime;
     }
 
+    /**
+     * Synchronized method for orders count.
+     */
     public synchronized int getOrdersCount() {
         return ordersCount;
     }
 
+    /**
+     * Method stops pizzeria and interrupts threads.
+     */
     public void stop() throws InterruptedException {
         working.set(false);
         while (getOrdersCount() > 0) {
@@ -80,6 +100,11 @@ public class Pizzeria {
 
     }
 
+    /**
+     * Adding order method.
+     *
+     * @param order - order
+     */
     public void addOrder(Order order) {
         if (working.get()) {
 
