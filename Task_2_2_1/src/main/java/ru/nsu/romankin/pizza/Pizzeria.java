@@ -34,8 +34,9 @@ public class Pizzeria {
 
     }
 
-    public void courierTookOrder() {
-        ordersCount--;
+    public synchronized void courierTookOrder() {
+            ordersCount--;
+
     }
 
     public void start() {
