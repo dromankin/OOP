@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Storage {
     private int capacity;
-    Queue<Order> storage = new LinkedList<>();
+    private Queue<Order> storage = new LinkedList<>();
 
     public Storage(int capacity) {
         this.capacity = capacity;
