@@ -1,0 +1,9 @@
+{
+  "bakersCount" : 3,
+  "couriersCount" : 2,
+  "couriersCapacities" : [1, 2],
+  "couriersSpeeds" : [500, 1000],
+  "bakersSpeeds" : [250, 400, 600],
+  "storageCapacity" : 70,
+  "workTime" : 500
+}
