@@ -1,5 +1,9 @@
 package ru.nsu.romankin.pizza;
 
+/**
+ * Class representing order.
+ */
+
 public class Order {
 
     private States state = States.QUEUED;

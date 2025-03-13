@@ -1,5 +1,9 @@
 package ru.nsu.romankin.pizza;
 
+
+/**
+ * Enumeration for order states.
+ */
 public enum States {
     QUEUED("queued"),
     COOKING("cooking"),

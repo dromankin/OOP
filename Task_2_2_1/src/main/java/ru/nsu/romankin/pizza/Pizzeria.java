@@ -1,13 +1,16 @@
 package ru.nsu.romankin.pizza;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Class representing pizzeria.
+ * There are start, stop and adding order methods
+ */
 
 public class Pizzeria {
     private List<Baker> bakers;
@@ -29,7 +32,8 @@ public class Pizzeria {
             bakers.add(i, new Baker(i, config.getBakersSpeeds()[i], orderQueue, storage));
         }
         for (int i = 0; i < config.getCouriersCount(); i++) {
-            couriers.add(i, new Courier(i, config.getCouriersCapacities()[i], storage, config.getCouriersSpeeds()[i], this));
+            couriers.add(i, new Courier(i, config.getCouriersCapacities()[i],
+                storage, config.getCouriersSpeeds()[i], this));
         }
 
     }

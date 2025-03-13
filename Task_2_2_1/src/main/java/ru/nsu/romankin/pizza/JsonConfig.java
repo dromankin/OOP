@@ -1,9 +1,8 @@
 package ru.nsu.romankin.pizza;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.IOException;
+/**
+ * Class for JSON pizzeria configuration used in pizzeria constructor.
+ */
 
 public class JsonConfig {
     private int bakersCount;

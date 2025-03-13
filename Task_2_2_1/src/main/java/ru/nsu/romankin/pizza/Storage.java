@@ -1,11 +1,12 @@
 package ru.nsu.romankin.pizza;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicBoolean;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * Thread-safe structure for order storage.
+ */
 public class Storage {
     private int capacity;
     private Queue<Order> storage = new LinkedList<>();

@@ -1,10 +1,10 @@
 package ru.nsu.romankin.pizza;
 
-
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static java.lang.Thread.sleep;
-
+/**
+ * Baker class(Thread).
+ */
 public class Baker extends Thread {
     private int id;
     private int speed;

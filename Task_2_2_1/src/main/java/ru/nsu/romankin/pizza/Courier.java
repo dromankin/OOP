@@ -1,8 +1,8 @@
 package ru.nsu.romankin.pizza;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import static java.lang.Thread.sleep;
+/**
+ * Courier class(thread).
+ */
 
 public class Courier extends Thread {
 
