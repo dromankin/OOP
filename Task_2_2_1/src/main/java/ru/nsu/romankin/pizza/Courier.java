@@ -14,6 +14,7 @@ public class Courier extends Thread {
 
     /**
      * Class constructor.
+     *
      * @param id - courier's id
      *
      * @param capacity - courier's capacity
