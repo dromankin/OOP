@@ -54,13 +54,13 @@ public class Pizzeria {
         return workTime;
     }
 
-    public int getOrdersCount() {
+    public synchronized int getOrdersCount() {
         return ordersCount;
     }
 
     public void stop() throws InterruptedException {
         working.set(false);
-        while (ordersCount > 0) {
+        while (getOrdersCount() > 0) {
             Thread.sleep(1000);
             System.out.println("Pizzeria has closed, orders remaining: " + ordersCount);
         }
