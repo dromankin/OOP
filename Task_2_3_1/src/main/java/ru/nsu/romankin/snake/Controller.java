@@ -4,26 +4,29 @@ import javafx.animation.AnimationTimer;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 
 public class Controller {
     @FXML private Canvas gameCanvas;
     @FXML private Text gameStatusText;
-
+    public final static long HARD_SPEED = 40_000_000;
+    public final static long NORMAL_SPEED = 100_000_000;
+    public final static long EASY_SPEED = 160_000_000;
+    public static final int WIN_COUNT = 5 + 1;
     private Model model;
     private AnimationTimer gameLoop;
     private final int cellSize = 20;
     private GraphicsContext gc;
     private BooleanProperty gameStatus = new SimpleBooleanProperty(true);
-
+    private View view;
+    private long speed = NORMAL_SPEED;
+    private int record = 0;
+    private boolean played = false;
     @FXML
     public void initialize() {
         gc = gameCanvas.getGraphicsContext2D();
@@ -31,9 +34,14 @@ public class Controller {
         int height = (int)(gameCanvas.getHeight() / cellSize);
         gameCanvas.setFocusTraversable(true);
         gameCanvas.setOnKeyPressed(this::handleKeyPressed);
-        gameStatusText.visibleProperty().bind(gameStatus);
-        model = new Model(width, height, 5, 10);
+        gameStatusText.visibleProperty();
+        model = new Model(width, height, 5, WIN_COUNT);
+        view = new View(gc, gameCanvas, model, cellSize);
         startGame();
+    }
+
+    public void setDifficulty(long speed) {
+        this.speed = speed;
     }
 
     private void startGame() {
@@ -46,82 +54,67 @@ public class Controller {
                     lastTick = now;
                     return;
                 }
-
-                if (now - lastTick > 100000000) {
+                if (now - lastTick > speed) {
                     lastTick = now;
                     updateGame();
-                    draw();
+
                 }
+                view.draw();
+
+
+
             }
         };
         gameLoop.start();
     }
 
-    private void draw() {
-        clearScreen();
-        drawSnake();
-        drawFood();
-        drawBorders();
-    }
 
-
-
-    private void clearScreen() {
-        gc.setFill(Color.LIGHTGREEN);
-        gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
-    }
-
-    private void drawSnake() {
-        for (int i = 0; i < model.getSnake().getLength(); i++) {
-            Coordinate p = model.getSnake().getSnakeBody().get(i);
-            gc.setFill(i == 0 ? Color.BLUE : Color.LIGHTSEAGREEN);
-            gc.fillRect(p.getX() * cellSize, p.getY() * cellSize, cellSize, cellSize);
-        }
-    }
-
-    private void drawFood() {
-        gc.setFill(Color.RED);
-        for (Coordinate p : model.getFood()) {
-            gc.fillRect(p.getX() * cellSize, p.getY() * cellSize, cellSize, cellSize);
-        }
-    }
-
-    private void drawBorders() {
-        gc.setStroke(Color.YELLOW);
-        gc.setLineWidth(1);
-        gc.strokeRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
-    }
-
+    long prevTime = 0;
     @FXML
     private void handleKeyPressed(KeyEvent event) {
+
         if (event.getCode() == KeyCode.ENTER) {
             restartGame();
             event.consume();
             return;
         }
         KeyCode code = event.getCode();
-        if (code == KeyCode.UP && model.getDirection() != Direction.DOWN) {
-            model.setDirection(Direction.UP);
-        } else if (code == KeyCode.DOWN && model.getDirection() != Direction.UP) {
-            model.setDirection(Direction.DOWN);
-        } else if (code == KeyCode.LEFT && model.getDirection() != Direction.RIGHT) {
-            model.setDirection(Direction.LEFT);
-        } else if (code == KeyCode.RIGHT && model.getDirection() != Direction.LEFT) {
-            model.setDirection(Direction.RIGHT);
+        if (code == KeyCode.UP) {
+            model.getSnake().setDirection(Direction.UP);
+        } else if (code == KeyCode.DOWN) {
+            model.getSnake().setDirection(Direction.DOWN);
+        } else if (code == KeyCode.LEFT) {
+            model.getSnake().setDirection(Direction.LEFT);
+        } else if (code == KeyCode.RIGHT) {
+            model.getSnake().setDirection(Direction.RIGHT);
         }
+
     }
 
     private void updateGame() {
+        model.movement();
+
+
         if (model.isGameOver() || model.isWon()) {
+
+            if (record < model.getSnake().getLength() - 1) {
+                record = model.getSnake().getLength() - 1;
+            }
             gameStatusText.setText(model.isWon() ?
                     "You win! Score: " + (model.getSnake().getLength() - 1) + " Press ENTER to restart":
                     "Game over! Press ENTER to restart");
             gameLoop.stop();
+            played = true;
             return;
         }
 
-        model.movement();
-        gameStatusText.setText("Score: " + (model.getSnake().getLength() - 1));
+        if (!played) {
+            gameStatusText.setText("Score: " + (model.getSnake().getLength() - 1));
+        } else {
+
+            gameStatusText.setText("Score: " + (model.getSnake().getLength() - 1) + "\t\tRecord: " + record);
+
+        }
     }
 
     private void restartGame() {
@@ -132,6 +125,5 @@ public class Controller {
 
         initialize();
 
-        gameCanvas.requestFocus();
     }
 }

@@ -9,8 +9,18 @@ public class Coordinate {
         this.y = y;
     }
 
-    public boolean equals(Coordinate coordinate) {
-        return (this.x == coordinate.x && this.y == coordinate.y);
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Coordinate) {
+            return (this.x == ((Coordinate) object).getX() &&
+                    this.y == ((Coordinate) object).getY());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     public int getX() {

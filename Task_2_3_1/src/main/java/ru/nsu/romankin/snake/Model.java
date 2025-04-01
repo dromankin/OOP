@@ -7,20 +7,22 @@ import java.util.Random;
 public class Model {
     private final int width;
     private final int height;
-    private final int foodCount;
     private final int winCount;
 
     private Snake snake;
     private List<Food> food = new ArrayList<>();
-    private List<Wall> wall = new ArrayList<>();
-    private Direction direction;
     private boolean gameOver;
     private boolean won;
     private Random random = new Random();
 
 
+
     public int getWidth() {
         return width;
+    }
+
+    public int getFoodCount() {
+        return food.size();
     }
 
     public int getHeight() {
@@ -34,16 +36,16 @@ public class Model {
     public boolean isGameOver() {
         return gameOver;
     }
+
     public int getWinCount() {
         return winCount;
     }
+
     public Model(int width, int height, int foodCount, int winCount) {
         this.width = width;
         this.height = height;
-        this.foodCount = foodCount;
         this.winCount = winCount;
         snake = new Snake(width/2, height/2);
-        direction = Direction.RIGHT;
         gameOver = false;
         won = false;
         for (int i = 0; i < foodCount; i++) {
@@ -51,28 +53,6 @@ public class Model {
         }
     }
 
-
-    private boolean checkCollision(Coordinate head) {
-        if (head.getX() >= width || head.getX() < 0 || head.getY() >= height || head.getY() < 0) {
-            return true;
-        }
-        for (Coordinate coordinate : snake.getSnakeBody()) {
-            if (coordinate.equals(head)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private Coordinate calculateNewHead(Coordinate head) {
-        switch (direction) {
-            case UP: return new Coordinate(head.getX(), head.getY() - 1);
-            case DOWN: return new Coordinate(head.getX(), head.getY() + 1);
-            case LEFT: return new Coordinate(head.getX() - 1, head.getY());
-            case RIGHT: return new Coordinate(head.getX() + 1, head.getY());
-            default: throw new IllegalStateException();
-        }
-    }
 
     private boolean eatFood(Coordinate head) {
         for (int i = 0; i < food.size(); i++) {
@@ -112,18 +92,15 @@ public class Model {
     }
 
     public void movement() {
-        Coordinate head = snake.getSnakeHead();
-        Coordinate newHead = calculateNewHead(head);
 
-        if (checkCollision(newHead)) {
+
+        if (!snake.move(snake.getDirection(), this)) {
             gameOver = true;
             return;
         }
 
-        snake.setSnakeHead(newHead);
-
-        if (!eatFood(newHead)) {
-            snake.removeTail();
+        if (eatFood(snake.getSnakeHead())) {
+            snake.grow();
         }
 
         if (snake.getLength() >= winCount) {
@@ -140,11 +117,6 @@ public class Model {
         return food;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
 
-    public Direction getDirection() {
-        return direction;
-    }
+
 }

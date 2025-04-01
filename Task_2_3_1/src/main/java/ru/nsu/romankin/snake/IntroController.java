@@ -1,0 +1,51 @@
+package ru.nsu.romankin.snake;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+
+public class IntroController {
+    @FXML
+    ObservableList<String> list = FXCollections.observableArrayList("Easy", "Normal", "Hard");
+    @FXML
+    private ChoiceBox<String> choiceBox = new ChoiceBox<>(list);
+    private Stage stage;
+    private long speed = Controller.NORMAL_SPEED;
+
+
+    public void setDifficulty(ActionEvent event) {
+        String difficulty = choiceBox.getValue();
+        switch (difficulty) {
+            case "Easy": speed = Controller.EASY_SPEED; break;
+            case "Normal": speed = Controller.NORMAL_SPEED; break;
+            case "Hard": speed = Controller.HARD_SPEED; break;
+        }
+    }
+
+    @FXML
+    private void start() throws IOException {
+        URL fxmlUrl = getClass().getResource("/game.fxml");
+        FXMLLoader loader = new FXMLLoader(fxmlUrl);
+
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Controller controller = loader.getController();
+        controller.setDifficulty(speed);
+        stage = new Stage();
+        stage.setTitle("Snake");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+}

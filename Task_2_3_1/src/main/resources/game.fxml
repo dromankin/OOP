@@ -7,7 +7,7 @@
 <BorderPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.romankin.snake.Controller">
 
     <center>
-        <Canvas fx:id="gameCanvas" height="500" onKeyPressed="#handleKeyPressed" width="500" />
+        <Canvas fx:id="gameCanvas" height="300" onKeyPressed="#handleKeyPressed" width="300" />
     </center>
 
     <top>

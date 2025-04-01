@@ -12,12 +12,13 @@ import java.net.URL;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        URL fxmlUrl = getClass().getResource("/game.fxml");
+    public void start(Stage primaryStage) throws Exception {
+
+        URL fxmlUrl = getClass().getResource("/intro.fxml");
         FXMLLoader loader = new FXMLLoader(fxmlUrl);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Змейка");
+        primaryStage.setTitle("Snake");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
