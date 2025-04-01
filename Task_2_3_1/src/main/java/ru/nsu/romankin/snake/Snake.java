@@ -3,15 +3,28 @@ package ru.nsu.romankin.snake;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing snake.
+ */
+
 public class Snake {
     private List<Coordinate> snake = new ArrayList<>();
     private Direction direction;
     private Direction lastDirection;
+
+    /**
+     * Class constructor.
+     *
+     * @param startX - x-coordinate
+     *
+     * @param startY - y-coordinate
+     */
     public Snake(int startX, int startY) {
         snake.add(new Coordinate(startX, startY));
         direction = Direction.RIGHT;
         lastDirection = Direction.RIGHT;
     }
+
     public int getLength() {
         return snake.size();
     }
@@ -51,6 +64,7 @@ public class Snake {
         snake.add(snake.size() - 1, new Coordinate(tail.getX(), tail.getY()));
 
     }
+
     public boolean move (Direction direction, Model model) {
         lastDirection = direction;
         Coordinate newHead = calculateNewHead(getSnakeHead(), getDirection());

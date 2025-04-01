@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class representing Model in MVC, contains main game logic.
+ */
 public class Model {
     private final int width;
     private final int height;
@@ -16,9 +19,12 @@ public class Model {
     private Random random = new Random();
 
 
-
     public int getWidth() {
         return width;
+    }
+
+    public int getScore() {
+        return getSnake().getLength() - 1;
     }
 
     public int getFoodCount() {
@@ -41,6 +47,9 @@ public class Model {
         return winCount;
     }
 
+    /**
+     * Class constructor.
+     */
     public Model(int width, int height, int foodCount, int winCount) {
         this.width = width;
         this.height = height;
@@ -64,6 +73,7 @@ public class Model {
         }
         return false;
     }
+
     private void spawnFood() {
         Food newFood = null;
         boolean validPosition = false;

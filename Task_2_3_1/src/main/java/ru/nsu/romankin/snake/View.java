@@ -4,12 +4,18 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+/**
+ * Class representing View in MVC.
+ */
 public class View {
     private final GraphicsContext gc;
     private final Canvas gameCanvas;
     private Model model;
     private final int cellSize;
 
+    /**
+     * Class constructor.
+     */
     public View (GraphicsContext gc, Canvas gameCanvas, Model model, int cellSize) {
         this.gc = gc;
         this.gameCanvas = gameCanvas;

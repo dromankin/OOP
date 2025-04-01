@@ -1,9 +1,16 @@
 package ru.nsu.romankin.snake;
 
+
+/**
+ * Class representing a coordinate on a field.
+ */
 public class Coordinate {
 
     private int x, y;
 
+    /**
+     * Class constructor.
+     */
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;

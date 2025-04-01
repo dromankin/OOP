@@ -1,8 +1,6 @@
 package ru.nsu.romankin.snake;
 
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,7 +8,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
-
+/**
+ * Class representing Controller in MVC.
+ * Responsible for interactions with user and game update.
+ */
 public class Controller {
     @FXML private Canvas gameCanvas;
     @FXML private Text gameStatusText;
@@ -26,6 +27,7 @@ public class Controller {
     private long speed = NORMAL_SPEED;
     private int record = 0;
     private boolean played = false;
+
     @FXML
     public void initialize() {
         gc = gameCanvas.getGraphicsContext2D();
@@ -68,7 +70,6 @@ public class Controller {
     }
 
 
-    long prevTime = 0;
     @FXML
     private void handleKeyPressed(KeyEvent event) {
 
@@ -92,15 +93,13 @@ public class Controller {
 
     private void updateGame() {
         model.movement();
-
-
         if (model.isGameOver() || model.isWon()) {
 
-            if (record < model.getSnake().getLength() - 1) {
-                record = model.getSnake().getLength() - 1;
+            if (record < model.getScore()) {
+                record = model.getScore();
             }
             gameStatusText.setText(model.isWon() ?
-                    "You win! Score: " + (model.getSnake().getLength() - 1) + " Press ENTER to restart":
+                    "You win! Score: " + (model.getScore()) + " Press ENTER to restart":
                     "Game over! Press ENTER to restart");
             gameLoop.stop();
             played = true;
@@ -108,10 +107,9 @@ public class Controller {
         }
 
         if (!played) {
-            gameStatusText.setText("Score: " + (model.getSnake().getLength() - 1));
+            gameStatusText.setText("Score: " + (model.getScore()));
         } else {
-
-            gameStatusText.setText("Score: " + (model.getSnake().getLength() - 1) + "\t\tRecord: " + record);
+            gameStatusText.setText("Score: " + (model.getScore()) + "\t\tRecord: " + record);
 
         }
     }
