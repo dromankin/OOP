@@ -46,13 +46,12 @@ public class IntroController {
     private void start() throws IOException {
         URL fxmlUrl = getClass().getResource("/game.fxml");
         FXMLLoader loader = new FXMLLoader(fxmlUrl);
-
         Parent root = loader.load();
+        Scene scene = new Scene(root);
         Controller controller = loader.getController();
         controller.setDifficulty(speed);
         stage = new Stage();
         stage.setTitle("Snake");
-        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

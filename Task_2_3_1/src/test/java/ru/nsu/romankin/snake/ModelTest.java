@@ -52,7 +52,7 @@ class ModelTest {
     @Test
     void directionTest() {
         Model model = new Model(20, 20, 5, 3);
-        Snake snake = new Snake(12,12);
+        Snake snake = new Snake(12, 12);
         snake.setDirection(Direction.RIGHT);
         snake.move(snake.getDirection(), model);
         snake.move(snake.getDirection(), model);

@@ -33,6 +33,9 @@ public class Snake {
         return direction;
     }
 
+    /**
+     * Sets direction.
+     */
     public void setDirection(Direction direction) {
         if (direction == Direction.RIGHT && lastDirection != Direction.LEFT) {
             this.direction = direction;
@@ -87,8 +90,8 @@ public class Snake {
      */
     public boolean checkCollision(Model model, Coordinate head) {
 
-        if (head.getX() >= model.getWidth() || head.getX() < 0 ||
-            head.getY() >= model.getHeight() || head.getY() < 0) {
+        if (head.getX() >= model.getWidth() || head.getX() < 0
+            || head.getY() >= model.getHeight() || head.getY() < 0) {
             return true;
         }
         for (Coordinate coordinate : getSnakeBody()) {
