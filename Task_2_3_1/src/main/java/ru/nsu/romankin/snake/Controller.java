@@ -22,7 +22,6 @@ public class Controller {
     private AnimationTimer gameLoop;
     private final int cellSize = 20;
     private GraphicsContext gc;
-    private BooleanProperty gameStatus = new SimpleBooleanProperty(true);
     private View view;
     private long speed = NORMAL_SPEED;
     private int record = 0;
