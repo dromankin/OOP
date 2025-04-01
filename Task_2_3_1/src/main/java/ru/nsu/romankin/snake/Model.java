@@ -54,7 +54,7 @@ public class Model {
         this.width = width;
         this.height = height;
         this.winCount = winCount;
-        snake = new Snake(width/2, height/2);
+        snake = new Snake(width / 2, height / 2);
         gameOver = false;
         won = false;
         for (int i = 0; i < foodCount; i++) {
@@ -101,6 +101,9 @@ public class Model {
         food.add(newFood);
     }
 
+    /**
+     * Movement of snake in model.
+     */
     public void movement() {
 
 

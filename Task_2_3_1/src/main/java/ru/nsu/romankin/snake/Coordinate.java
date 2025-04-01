@@ -6,21 +6,22 @@ package ru.nsu.romankin.snake;
  */
 public class Coordinate {
 
-    private int x, y;
+    private int xVar;
+    private int yVar;
 
     /**
      * Class constructor.
      */
     public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.xVar = x;
+        this.yVar = y;
     }
 
     @Override
     public boolean equals(Object object) {
         if (object instanceof Coordinate) {
-            return (this.x == ((Coordinate) object).getX() &&
-                    this.y == ((Coordinate) object).getY());
+            return (this.xVar == ((Coordinate) object).getX()
+                    && this.yVar == ((Coordinate) object).getY());
         }
         return false;
     }
@@ -31,10 +32,10 @@ public class Coordinate {
     }
 
     public int getX() {
-        return x;
+        return xVar;
     }
 
     public int getY() {
-        return y;
+        return yVar;
     }
 }

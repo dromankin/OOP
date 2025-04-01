@@ -3,7 +3,7 @@ package ru.nsu.romankin.snake;
 /**
  * Class of food.
  */
-public class Food extends Coordinate{
+public class Food extends Coordinate {
     /**
      * Constructor.
      */

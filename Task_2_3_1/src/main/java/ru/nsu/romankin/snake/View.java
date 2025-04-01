@@ -16,13 +16,16 @@ public class View {
     /**
      * Class constructor.
      */
-    public View (GraphicsContext gc, Canvas gameCanvas, Model model, int cellSize) {
+    public View(GraphicsContext gc, Canvas gameCanvas, Model model, int cellSize) {
         this.gc = gc;
         this.gameCanvas = gameCanvas;
         this.model = model;
         this.cellSize = cellSize;
     }
 
+    /**
+     * Function responsible for drawing.
+     */
     public void draw() {
         clearScreen();
         drawSnake();

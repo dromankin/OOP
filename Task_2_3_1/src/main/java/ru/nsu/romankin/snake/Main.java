@@ -1,11 +1,13 @@
 package ru.nsu.romankin.snake;
 
+import java.net.URL;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import java.net.URL;
+
+
 
 /**
  * Main class extending application.

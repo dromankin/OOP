@@ -15,9 +15,9 @@ import javafx.scene.text.Text;
 public class Controller {
     @FXML private Canvas gameCanvas;
     @FXML private Text gameStatusText;
-    public final static long HARD_SPEED = 40_000_000;
-    public final static long NORMAL_SPEED = 100_000_000;
-    public final static long EASY_SPEED = 160_000_000;
+    public static final long HARD_SPEED = 40_000_000;
+    public static final long NORMAL_SPEED = 100_000_000;
+    public static final long EASY_SPEED = 160_000_000;
     public static final int WIN_COUNT = 5 + 1;
     private Model model;
     private AnimationTimer gameLoop;
@@ -28,19 +28,25 @@ public class Controller {
     private int record = 0;
     private boolean played = false;
 
+    /**
+     * Function that initialize the controller and starts the game.
+     */
     @FXML
     public void initialize() {
         gc = gameCanvas.getGraphicsContext2D();
-        int width = (int)(gameCanvas.getWidth() / cellSize);
-        int height = (int)(gameCanvas.getHeight() / cellSize);
         gameCanvas.setFocusTraversable(true);
         gameCanvas.setOnKeyPressed(this::handleKeyPressed);
         gameStatusText.visibleProperty();
+        int width = (int) (gameCanvas.getWidth() / cellSize);
+        int height = (int) (gameCanvas.getHeight() / cellSize);
         model = new Model(width, height, 5, WIN_COUNT);
         view = new View(gc, gameCanvas, model, cellSize);
         startGame();
     }
 
+    /**
+     * Sets difficulty (aka speed of screen updating) of the game.
+     */
     public void setDifficulty(long speed) {
         this.speed = speed;
     }
@@ -98,8 +104,8 @@ public class Controller {
             if (record < model.getScore()) {
                 record = model.getScore();
             }
-            gameStatusText.setText(model.isWon() ?
-                    "You win! Score: " + (model.getScore()) + " Press ENTER to restart":
+            gameStatusText.setText(model.isWon()
+                    ? "You win! Score: " + (model.getScore()) + " Press ENTER to restart" :
                     "Game over! Press ENTER to restart");
             gameLoop.stop();
             played = true;

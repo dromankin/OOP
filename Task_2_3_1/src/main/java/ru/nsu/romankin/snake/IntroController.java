@@ -1,5 +1,7 @@
 package ru.nsu.romankin.snake;
 
+import java.io.IOException;
+import java.net.URL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,8 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.net.URL;
+
 
 /**
  * Controller for intro screen with difficulty select.
@@ -24,13 +25,20 @@ public class IntroController {
     private Stage stage;
     private long speed = Controller.NORMAL_SPEED;
 
-
+    /**
+     * User sets speed and intro controller pass it to game controller.
+     */
     public void setDifficulty(ActionEvent event) {
         String difficulty = choiceBox.getValue();
         switch (difficulty) {
-            case "Easy": speed = Controller.EASY_SPEED; break;
-            case "Normal": speed = Controller.NORMAL_SPEED; break;
-            case "Hard": speed = Controller.HARD_SPEED; break;
+            case "Easy": speed = Controller.EASY_SPEED;
+                break;
+            case "Normal": speed = Controller.NORMAL_SPEED;
+                break;
+            case "Hard": speed = Controller.HARD_SPEED;
+                break;
+            default: speed = Controller.NORMAL_SPEED;
+                break;
         }
     }
 
@@ -40,11 +48,11 @@ public class IntroController {
         FXMLLoader loader = new FXMLLoader(fxmlUrl);
 
         Parent root = loader.load();
-        Scene scene = new Scene(root);
         Controller controller = loader.getController();
         controller.setDifficulty(speed);
         stage = new Stage();
         stage.setTitle("Snake");
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

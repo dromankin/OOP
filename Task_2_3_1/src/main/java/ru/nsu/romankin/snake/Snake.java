@@ -58,14 +58,19 @@ public class Snake {
         snake.add(0, head);
     }
 
-
-    public void grow () {
+    /**
+     * Function responsible for growing after eating food.
+     */
+    public void grow() {
         Coordinate tail = snake.get(snake.size() - 1);
         snake.add(snake.size() - 1, new Coordinate(tail.getX(), tail.getY()));
 
     }
 
-    public boolean move (Direction direction, Model model) {
+    /**
+     * Function responsible for moving snake by direction and model.
+     */
+    public boolean move(Direction direction, Model model) {
         lastDirection = direction;
         Coordinate newHead = calculateNewHead(getSnakeHead(), getDirection());
         if (checkCollision(model, newHead)) {
@@ -77,9 +82,13 @@ public class Snake {
 
     }
 
+    /**
+     * Function returning true if collision happened, false else.
+     */
     public boolean checkCollision(Model model, Coordinate head) {
 
-        if (head.getX() >= model.getWidth() || head.getX() < 0 || head.getY() >= model.getHeight() || head.getY() < 0) {
+        if (head.getX() >= model.getWidth() || head.getX() < 0 ||
+            head.getY() >= model.getHeight() || head.getY() < 0) {
             return true;
         }
         for (Coordinate coordinate : getSnakeBody()) {
@@ -89,6 +98,10 @@ public class Snake {
         }
         return false;
     }
+
+    /**
+     * Function that calculates new head by direction.
+     */
     public Coordinate calculateNewHead(Coordinate head, Direction direction) {
         switch (direction) {
             case UP: return new Coordinate(head.getX(), head.getY() - 1);

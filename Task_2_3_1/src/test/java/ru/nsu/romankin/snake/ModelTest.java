@@ -3,35 +3,36 @@ package ru.nsu.romankin.snake;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
+
 
 
 
 class ModelTest {
     @Test
-    void SnakeInitTest() {
-        Snake snake = new Snake(12,12);
+    void snakeInitTest() {
+        Snake snake = new Snake(12, 12);
         assertEquals(snake.getSnakeBody().size(), 1);
     }
 
     @Test
-    void ModelInitTest() {
+    void modelInitTest() {
         Random rand = new Random();
         int width = rand.nextInt(100) + 1;
         int height = rand.nextInt(100) + 1;
         int foodCount = rand.nextInt(100) + 1;
         int winCount = rand.nextInt(100) + 1;
         Model model = new Model(width, height, foodCount, winCount);
-        assertTrue(model.getWidth() == width && model.getHeight() == height &&
-                model.getWinCount() == winCount && model.getFoodCount() == foodCount &&
-                !model.isWon());
+        assertTrue(model.getWidth() == width && model.getHeight() == height
+                && model.getWinCount() == winCount && model.getFoodCount() == foodCount
+                && !model.isWon());
     }
 
     @Test
-    void CollisionGameOverTest() {
+    void collisionGameOverTest() {
         Model model = new Model(11, 11, 5, 3);
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             model.movement();
         }
         assertTrue(model.isGameOver());
@@ -39,7 +40,7 @@ class ModelTest {
 
     @Test
     void growTest() {
-        Snake snake = new Snake(12,12);
+        Snake snake = new Snake(12, 12);
         Random random = new Random();
         int num = random.nextInt(1000);
         for (int i = 0; i < num; i++) {
@@ -73,7 +74,7 @@ class ModelTest {
     @Test
     void wrongDirectionTest() {
         Model model = new Model(20, 20, 5, 3);
-        Snake snake = new Snake(12,12);
+        Snake snake = new Snake(12, 12);
         snake.setDirection(Direction.RIGHT);
         snake.move(snake.getDirection(), model);
         snake.move(snake.getDirection(), model);
