@@ -104,9 +104,16 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#add(int,int)" class="member-name-link">add</a><wbr>(int&nbsp;x,
- int&nbsp;y)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#calculateNewHead(ru.nsu.romankin.snake.Coordinate,ru.nsu.romankin.snake.Direction)" class="member-name-link">calculateNewHead</a><wbr>(<a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a>&nbsp;head,
+ <a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a>&nbsp;direction)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkCollision(ru.nsu.romankin.snake.Model,ru.nsu.romankin.snake.Coordinate)" class="member-name-link">checkCollision</a><wbr>(<a href="Model.html" title="class in ru.nsu.romankin.snake">Model</a>&nbsp;model,
+ <a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a>&nbsp;head)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDirection()" class="member-name-link">getDirection</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLength()" class="member-name-link">getLength</a>()</code></div>
@@ -118,7 +125,14 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnakeHead()" class="member-name-link">getSnakeHead</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeTail()" class="member-name-link">removeTail</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#grow()" class="member-name-link">grow</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#move(ru.nsu.romankin.snake.Direction,ru.nsu.romankin.snake.Model)" class="member-name-link">move</a><wbr>(<a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a>&nbsp;direction,
+ <a href="Model.html" title="class in ru.nsu.romankin.snake">Model</a>&nbsp;model)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDirection(ru.nsu.romankin.snake.Direction)" class="member-name-link">setDirection</a><wbr>(<a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a>&nbsp;direction)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setSnakeHead(ru.nsu.romankin.snake.Coordinate)" class="member-name-link">setSnakeHead</a><wbr>(<a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a>&nbsp;head)</code></div>
@@ -162,10 +176,15 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="add(int,int)">
-<h3>add</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">add</span><wbr><span class="parameters">(int&nbsp;x,
- int&nbsp;y)</span></div>
+<section class="detail" id="getDirection()">
+<h3>getDirection</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a></span>&nbsp;<span class="element-name">getDirection</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setDirection(ru.nsu.romankin.snake.Direction)">
+<h3>setDirection</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDirection</span><wbr><span class="parameters">(<a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a>&nbsp;direction)</span></div>
 </section>
 </li>
 <li>
@@ -187,9 +206,30 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeTail()">
-<h3>removeTail</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeTail</span>()</div>
+<section class="detail" id="grow()">
+<h3>grow</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">grow</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="move(ru.nsu.romankin.snake.Direction,ru.nsu.romankin.snake.Model)">
+<h3>move</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">move</span><wbr><span class="parameters">(<a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a>&nbsp;direction,
+ <a href="Model.html" title="class in ru.nsu.romankin.snake">Model</a>&nbsp;model)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="checkCollision(ru.nsu.romankin.snake.Model,ru.nsu.romankin.snake.Coordinate)">
+<h3>checkCollision</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">checkCollision</span><wbr><span class="parameters">(<a href="Model.html" title="class in ru.nsu.romankin.snake">Model</a>&nbsp;model,
+ <a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a>&nbsp;head)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="calculateNewHead(ru.nsu.romankin.snake.Coordinate,ru.nsu.romankin.snake.Direction)">
+<h3>calculateNewHead</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a></span>&nbsp;<span class="element-name">calculateNewHead</span><wbr><span class="parameters">(<a href="Coordinate.html" title="class in ru.nsu.romankin.snake">Coordinate</a>&nbsp;head,
+ <a href="Direction.html" title="enum class in ru.nsu.romankin.snake">Direction</a>&nbsp;direction)</span></div>
 </section>
 </li>
 </ul>
