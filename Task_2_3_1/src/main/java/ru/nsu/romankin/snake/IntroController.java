@@ -22,7 +22,7 @@ public class IntroController {
     ObservableList<String> list = FXCollections.observableArrayList("Easy", "Normal", "Hard");
     @FXML
     private ChoiceBox<String> choiceBox = new ChoiceBox<>(list);
-    private Stage stage;
+    private Stage stage = new Stage();
     private long speed = Controller.NORMAL_SPEED;
 
     /**
@@ -47,12 +47,11 @@ public class IntroController {
         URL fxmlUrl = getClass().getResource("/game.fxml");
         FXMLLoader loader = new FXMLLoader(fxmlUrl);
         Parent root = loader.load();
-        Controller controller = loader.getController();
-        controller.setDifficulty(speed);
-        stage = new Stage();
-        stage.setTitle("Snake");
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        Controller controller = loader.getController();
+        controller.setDifficulty(speed);
+        stage.setTitle("Snake");
         stage.setResizable(false);
         stage.show();
     }
