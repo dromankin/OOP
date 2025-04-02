@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.romankin.snake.IntroController">
+   <children>
+      <ChoiceBox layoutX="225.0" layoutY="254.0" prefWidth="150.0" value="Normal" fx:id="choiceBox" onAction="#setDifficulty">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Easy" />
+               <String fx:value="Normal" />
+               <String fx:value="Hard" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Button layoutX="274.0" layoutY="329.0" mnemonicParsing="false" onAction="#start" text="Start" />
+      <Label alignment="CENTER" layoutX="220.0" layoutY="211.0" prefHeight="17.0" prefWidth="150.0" text="Select difficulty" />
+      <Label alignment="CENTER" layoutX="220.0" layoutY="90.0" prefHeight="17.0" prefWidth="150.0" text="Snake">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

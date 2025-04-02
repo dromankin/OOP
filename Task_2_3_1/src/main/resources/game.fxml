@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.romankin.snake.Controller">
+
+    <center>
+        <Canvas fx:id="gameCanvas" height="300" onKeyPressed="#handleKeyPressed" width="300" />
+    </center>
+
+    <top>
+        <Text fx:id="gameStatusText" fill="#0d3e9f" text="Game started">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+    </top>
+</BorderPane>
