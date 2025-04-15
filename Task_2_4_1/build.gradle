@@ -46,3 +46,7 @@ jacocoTestReport {
         xml.required = true
     }
 }
+
+tasks.withType(Jar) {
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+}
