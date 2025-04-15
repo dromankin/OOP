@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.romankin.dsl","l":"App"},{"p":"ru.nsu.romankin.dsl","l":"PassResults"},{"p":"ru.nsu.romankin.dsl","l":"TaskResult"},{"p":"ru.nsu.romankin.dsl","l":"TestCounts"},{"p":"ru.nsu.romankin.dsl","l":"Utils"}];updateSearchResults();
