@@ -67,7 +67,7 @@ public class App {
                     coveragePercent = getCoveragePercentage(connection, repoPrefix, student, task);
                 }
 
-                CheckstyleResult checkstyle = getCheckstyleResult(task, student, repoPrefix);
+                Checkstyle checkstyle = getCheckstyleResult(task, student, repoPrefix);
 
                 runTask(connection, new TaskRunConfig("javadoc"));
 

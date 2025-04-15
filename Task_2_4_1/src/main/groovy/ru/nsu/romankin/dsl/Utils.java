@@ -86,12 +86,12 @@ public class Utils {
         }
     }
 
-    public static CheckstyleResult getCheckstyleResult(
+    public static Checkstyle getCheckstyleResult(
             Task task,
             Student student,
             String repoPrefix
     ) throws Exception {
-        CheckstyleResult checkstyle = CheckstyleResult.CLEAN;
+        Checkstyle checkstyle = Checkstyle.CLEAN;
 
         String outFile = "checkstyle.txt";
         int exitCode = catchSystemExit(() -> {
@@ -125,9 +125,9 @@ public class Utils {
             System.out.println("Checkstyle output read error" + e);
         }
         if (exitCode != 0) {
-            checkstyle = CheckstyleResult.ERROR;
+            checkstyle = Checkstyle.ERROR;
         } else if (warnCount > 0) {
-            checkstyle = CheckstyleResult.WARNING;
+            checkstyle = Checkstyle.WARNING;
         }
 
         return checkstyle;

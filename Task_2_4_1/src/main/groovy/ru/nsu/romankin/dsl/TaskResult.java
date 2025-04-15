@@ -8,7 +8,7 @@ public record TaskResult(
         int skipCount,
         int coverage,
         double points,
-        CheckstyleResult checkstyle,
+        Checkstyle checkstyle,
         boolean softPass,
         boolean hardPass
 ) {}

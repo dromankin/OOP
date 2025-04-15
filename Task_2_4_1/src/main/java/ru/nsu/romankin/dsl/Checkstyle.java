@@ -1,6 +1,6 @@
 package ru.nsu.romankin.dsl;
 
-enum CheckstyleResult {
+enum Checkstyle {
     ERROR,
     WARNING,
     CLEAN,
