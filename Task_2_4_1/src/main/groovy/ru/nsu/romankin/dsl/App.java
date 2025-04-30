@@ -14,14 +14,20 @@ import java.io.*;
 
 import java.util.*;
 
-import static ru.nsu.romankin.dsl.Utils.*;
+import static ru.nsu.romankin.dsl.AnaliticUtils.*;
+import static ru.nsu.romankin.dsl.GitUtils.updateStudentsRepos;
+import static ru.nsu.romankin.dsl.IOUtils.generateReport;
+import static ru.nsu.romankin.dsl.IOUtils.runTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
         CompilerConfiguration cc = new CompilerConfiguration();
+        String classpath = "build/classes/groovy/main";
         cc.setScriptBaseClass(DelegatingScript.class.getName());
+        cc.setClasspath(classpath);
         ClassLoader loader = App.class.getClassLoader();
         GroovyShell sh = new GroovyShell(loader, new Binding(), cc);
+
         InputStream inputStream = loader.getResourceAsStream("config.groovy");
         if (inputStream == null) {
             System.out.println("Error: No config found.");
@@ -36,6 +42,13 @@ public class App {
         String repoPrefix = "repoes";
         GradleConnector connector = GradleConnector.newConnector();
         ArrayList<ArrayList<TaskResult>> results = new ArrayList<>();
+
+        for (Group group : config.getGroups()) {
+            for(Student student : group.getGroupStudents()) {
+                System.out.println(group.getName() + " " +student.getName());
+            }
+        }
+
 
         if (updateStudentsRepos(config, repoPrefix)) {
             return;
@@ -73,6 +86,7 @@ public class App {
 
                 PassResults passes = getSoftHardPasses(task, student, repoPrefix);
                 double points = getPoints(passes);
+                student.addPoints(points);
                 taskResults.add(
                         new TaskResult(
                                 student,
@@ -91,6 +105,11 @@ public class App {
             }
             results.add(taskResults);
         }
+
+        for(Student student : config.getStudents()) {
+            student.setMark(config.getMarks());
+        }
+
         System.out.println(results);
 
         generateReport(results, config);

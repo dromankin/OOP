@@ -5,21 +5,15 @@ import org.apache.commons.lang3.BooleanUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.revwalk.RevCommit;
-import org.gradle.tooling.BuildLauncher;
 import org.gradle.tooling.ProjectConnection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -27,11 +21,13 @@ import java.util.*;
 
 import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
 
-public class Utils {
+public class AnaliticUtils {
+
     public static double getPoints(PassResults passResults) {
         return 0.5 * (BooleanUtils.toInteger(passResults.getHard())
                 + BooleanUtils.toInteger(passResults.getSoft()));
     }
+
     public static PassResults getSoftHardPasses(Task task, Student student, String repoPrefix) throws IOException, GitAPIException {
         boolean hardPass;
         boolean softPass;
@@ -68,23 +64,6 @@ public class Utils {
         return new PassResults(softPass, hardPass);
     }
 
-    public static void generateReport(
-            ArrayList<ArrayList<TaskResult>> results,
-            CheckerConfig config
-    ) {
-        TemplateEngine engine = new TemplateEngine();
-        engine.setTemplateResolver(new FileTemplateResolver());
-        Context ctx = new Context();
-        ctx.setVariable("results", results);
-        ctx.setVariable("tasks", config.getTasks());
-        File report = new File("report.html");
-        try (FileOutputStream writer = new FileOutputStream(report)) {
-            String result = engine.process("src/main/resources/reportTemplate.html", ctx);
-            writer.write(result.getBytes(StandardCharsets.UTF_8));
-        } catch (Exception e) {
-            System.out.println("Failed to write report: " + e);
-        }
-    }
 
     public static Checkstyle getCheckstyleResult(
             Task task,
@@ -139,7 +118,7 @@ public class Utils {
             Student student,
             Task task
     ) {
-        runTask(connection, new TaskRunConfig("jacocoTestReport"));
+        IOUtils.runTask(connection, new TaskRunConfig("jacocoTestReport"));
 
         File jacocoFile = new File(
                 String.format(
@@ -193,49 +172,5 @@ public class Utils {
             System.out.println("Failed to find test report file: " + reportFile);
             return new TestCounts(0, 0, 0);
         }
-    }
-
-    public static boolean updateStudentsRepos(CheckerConfig config, String repoPrefix) {
-        for (Student student : config.getStudents()) {
-            try {
-                File repoFile = new File(String.format("%s/%s", repoPrefix, student.getUsername()));
-                Git repo;
-                if (!repoFile.exists()) {
-                    repo = Git.cloneRepository()
-                            .setURI(String.format("https://github.com/%s/OOP.git", student.getUsername()))
-                            .setDirectory(repoFile)
-                            .call();
-                } else {
-                    try {
-                        repo = Git.open(repoFile);
-                    } catch (Exception e) {
-                        System.out.println("No repo");
-                        return true;
-                    }
-                }
-                if (repo != null) {
-                    repo.pull().call();
-                }
-            } catch (Exception e) {
-                System.out.println("Failed to clone: " + e);
-            }
-        }
-        return false;
-    }
-
-    public static boolean runTask(ProjectConnection conn, TaskRunConfig config) {
-        try {
-            System.out.printf("Running %s...", config.task());
-            BuildLauncher builder = conn.newBuild().forTasks(config.task());
-            if (config.excludeTests()) {
-                builder = builder.addArguments("-x",  "test");
-            }
-            builder.run();
-            System.out.println("Success");
-        } catch (Exception e) {
-            System.out.println("Failure: " + e);
-            return false;
-        }
-        return true;
     }
 }
