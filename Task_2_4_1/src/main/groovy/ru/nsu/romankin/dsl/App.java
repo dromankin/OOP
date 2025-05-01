@@ -27,6 +27,9 @@ import org.gradle.tooling.ProjectConnection;
  * Main app class.
  */
 public class App {
+    /**
+     * Main method.
+     */
     public static void main(String[] args) throws Exception {
         CompilerConfiguration cc = new CompilerConfiguration();
         String classpath = "build/classes/groovy/main";
