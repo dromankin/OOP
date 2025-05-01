@@ -1,19 +1,20 @@
 package ru.nsu.romankin.dsl;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class AppTest {
     @Test
-    void MainTest() throws Exception {
+    void mainTest() throws Exception {
         App.main(null);
         assertTrue(true);
     }
 
     @Test
-    void GradeTest() {
+    void gradeTest() {
         Marks m = new Marks();
         m.setPointsToFive(5);
         m.setPointsToFour(4);

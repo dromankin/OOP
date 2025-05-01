@@ -1,24 +1,27 @@
 package ru.nsu.romankin.dsl;
 
-import com.puppycrawl.tools.checkstyle.Main;
 import org.gradle.tooling.BuildLauncher;
 import org.gradle.tooling.ProjectConnection;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
-
-import java.io.*;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
-
+/**
+ * Class with IO utils.
+ */
 public class IOUtils {
 
+    /**
+     * Method for running task.
+     */
     public static boolean runTask(ProjectConnection conn, TaskRunConfig config) {
         try {
             System.out.printf("Running %s...", config.task());
@@ -35,6 +38,9 @@ public class IOUtils {
         return true;
     }
 
+    /**
+     * Method for generating HTML report.
+     */
     public static void generateReport(
             ArrayList<ArrayList<TaskResult>> results,
             CheckerConfig config

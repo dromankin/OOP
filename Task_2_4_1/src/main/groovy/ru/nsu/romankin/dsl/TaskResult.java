@@ -1,5 +1,8 @@
 package ru.nsu.romankin.dsl;
 
+/**
+ * Record for single task result.
+ */
 public record TaskResult(
         Student student,
         boolean builds,

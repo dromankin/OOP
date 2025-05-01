@@ -1,11 +1,16 @@
 package ru.nsu.romankin.dsl;
 
 import org.eclipse.jgit.api.Git;
-
 import java.io.File;
 
+/**
+ * Class containing git utils.
+ */
 public class GitUtils {
 
+    /**
+     * Method for updating students repos.
+     */
     public static boolean updateStudentsRepos(CheckerConfig config, String repoPrefix) {
         for (Student student : config.getStudents()) {
             try {

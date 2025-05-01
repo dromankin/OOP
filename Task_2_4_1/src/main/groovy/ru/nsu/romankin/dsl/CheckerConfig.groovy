@@ -1,12 +1,12 @@
 package ru.nsu.romankin.dsl
 
-import org.codehaus.groovy.control.CompilerConfiguration
 
 class CheckerConfig {
     List<Task> tasks = new ArrayList<>()
     List<Student> students = new ArrayList<>()
     List<Group> groups = new ArrayList<>()
     Marks marks = new Marks()
+
     void student(Closure c) {
 
         Student s = new Student()

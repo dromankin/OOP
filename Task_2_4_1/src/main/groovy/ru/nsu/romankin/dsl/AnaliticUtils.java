@@ -1,6 +1,20 @@
 package ru.nsu.romankin.dsl;
 
 import com.puppycrawl.tools.checkstyle.Main;
+
+import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 import org.apache.commons.lang3.BooleanUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -11,24 +25,24 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.*;
-
-import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
-
+/**
+ * Class for analitic utils(calculating points, getting coverage percentage etc.).
+ */
 public class AnaliticUtils {
 
+    /**
+     * Method for calculating points by pass results.
+     */
     public static double getPoints(PassResults passResults) {
         return 0.5 * (BooleanUtils.toInteger(passResults.getHard())
                 + BooleanUtils.toInteger(passResults.getSoft()));
     }
 
-    public static PassResults getSoftHardPasses(Task task, Student student, String repoPrefix) throws IOException, GitAPIException {
+    /**
+     * Method checking whether student pass hard and soft deadlines or not.
+     */
+    public static PassResults getSoftHardPasses(Task task, Student student, String repoPrefix)
+            throws IOException, GitAPIException {
         boolean hardPass;
         boolean softPass;
 
@@ -59,12 +73,16 @@ public class AnaliticUtils {
             return new PassResults(false, false);
         }
 
-        softPass = first.isBefore(task.getSoftDeadline()) || first.isEqual(task.getHardDeadline());
-        hardPass = lastDate.isBefore(task.getHardDeadline()) || lastDate.isEqual(task.getHardDeadline());
+        softPass = first.isBefore(task.getSoftDeadline()) ||
+                first.isEqual(task.getHardDeadline());
+        hardPass = lastDate.isBefore(task.getHardDeadline()) ||
+                lastDate.isEqual(task.getHardDeadline());
         return new PassResults(softPass, hardPass);
     }
 
-
+    /**
+     * Method for checkstyle result.
+     */
     public static Checkstyle getCheckstyleResult(
             Task task,
             Student student,
@@ -112,6 +130,9 @@ public class AnaliticUtils {
         return checkstyle;
     }
 
+    /**
+     * Method for calculating coverage percentage.
+     */
     public static int getCoveragePercentage(
             ProjectConnection connection,
             String repoPrefix,
@@ -146,7 +167,9 @@ public class AnaliticUtils {
         }
     }
 
-
+    /**
+     * Method for getting test counts.
+     */
     public static TestCounts getTestCounts(String repoPrefix, Student student, Task task) {
         File reportFile = new File(
                 String.format(
