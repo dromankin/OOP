@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">AnaliticUtils</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Class for analitic utils(calculating points, getting coverage percentage etc.).</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -107,26 +108,36 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getCheckstyleResult(ru.nsu.romankin.dsl.Task,ru.nsu.romankin.dsl.Student,java.lang.String)" class="member-name-link">getCheckstyleResult</a><wbr>(ru.nsu.romankin.dsl.Task&nbsp;task,
  ru.nsu.romankin.dsl.Student&nbsp;student,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for checkstyle result.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getCoveragePercentage(org.gradle.tooling.ProjectConnection,java.lang.String,ru.nsu.romankin.dsl.Student,ru.nsu.romankin.dsl.Task)" class="member-name-link">getCoveragePercentage</a><wbr>(org.gradle.tooling.ProjectConnection&nbsp;connection,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix,
  ru.nsu.romankin.dsl.Student&nbsp;student,
  ru.nsu.romankin.dsl.Task&nbsp;task)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for calculating coverage percentage.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getPoints(ru.nsu.romankin.dsl.PassResults)" class="member-name-link">getPoints</a><wbr>(<a href="PassResults.html" title="class in ru.nsu.romankin.dsl">PassResults</a>&nbsp;passResults)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for calculating points by pass results.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="PassResults.html" title="class in ru.nsu.romankin.dsl">PassResults</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getSoftHardPasses(ru.nsu.romankin.dsl.Task,ru.nsu.romankin.dsl.Student,java.lang.String)" class="member-name-link">getSoftHardPasses</a><wbr>(ru.nsu.romankin.dsl.Task&nbsp;task,
  ru.nsu.romankin.dsl.Student&nbsp;student,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method checking whether student pass hard and soft deadlines or not.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="TestCounts.html" title="class in ru.nsu.romankin.dsl">TestCounts</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTestCounts(java.lang.String,ru.nsu.romankin.dsl.Student,ru.nsu.romankin.dsl.Task)" class="member-name-link">getTestCounts</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix,
  ru.nsu.romankin.dsl.Student&nbsp;student,
  ru.nsu.romankin.dsl.Task&nbsp;task)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for getting test counts.</div>
+</div>
 </div>
 </div>
 </div>
@@ -162,6 +173,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getPoints(ru.nsu.romankin.dsl.PassResults)">
 <h3>getPoints</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getPoints</span><wbr><span class="parameters">(<a href="PassResults.html" title="class in ru.nsu.romankin.dsl">PassResults</a>&nbsp;passResults)</span></div>
+<div class="block">Method for calculating points by pass results.</div>
 </section>
 </li>
 <li>
@@ -172,6 +184,7 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix)</span>
                                      throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
 org.eclipse.jgit.api.errors.GitAPIException</span></div>
+<div class="block">Method checking whether student pass hard and soft deadlines or not.</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code></dd>
@@ -186,6 +199,7 @@ org.eclipse.jgit.api.errors.GitAPIException</span></div>
  ru.nsu.romankin.dsl.Student&nbsp;student,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix)</span>
                                                           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
+<div class="block">Method for checkstyle result.</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
@@ -199,6 +213,7 @@ org.eclipse.jgit.api.errors.GitAPIException</span></div>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix,
  ru.nsu.romankin.dsl.Student&nbsp;student,
  ru.nsu.romankin.dsl.Task&nbsp;task)</span></div>
+<div class="block">Method for calculating coverage percentage.</div>
 </section>
 </li>
 <li>
@@ -207,6 +222,7 @@ org.eclipse.jgit.api.errors.GitAPIException</span></div>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="TestCounts.html" title="class in ru.nsu.romankin.dsl">TestCounts</a></span>&nbsp;<span class="element-name">getTestCounts</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repoPrefix,
  ru.nsu.romankin.dsl.Student&nbsp;student,
  ru.nsu.romankin.dsl.Task&nbsp;task)</span></div>
+<div class="block">Method for getting test counts.</div>
 </section>
 </li>
 </ul>
