@@ -15,7 +15,7 @@ public enum Grades {
     /**
      * Constructor.
      */
-    Grades (String name) {
+    Grades(String name) {
         this.name = name;
     }
 

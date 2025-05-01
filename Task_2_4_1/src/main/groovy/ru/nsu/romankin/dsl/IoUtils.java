@@ -1,10 +1,6 @@
 package ru.nsu.romankin.dsl;
 
-import org.gradle.tooling.BuildLauncher;
-import org.gradle.tooling.ProjectConnection;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.FileTemplateResolver;
+
 import java.io.IOException;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,11 +9,16 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import org.gradle.tooling.BuildLauncher;
+import org.gradle.tooling.ProjectConnection;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 /**
  * Class with IO utils.
  */
-public class IOUtils {
+public class IoUtils {
 
     /**
      * Method for running task.
@@ -52,7 +53,7 @@ public class IOUtils {
         ctx.setVariable("tasks", config.getTasks());
         ctx.setVariable("groups", config.getGroups());
         File report = new File("report.html");
-        URL res = IOUtils.class.getClassLoader().getResource("reportTemplate.html");
+        URL res = IoUtils.class.getClassLoader().getResource("reportTemplate.html");
         File file = Paths.get(res.toURI()).toFile();
         String text = file.getAbsolutePath();
         try (FileOutputStream writer = new FileOutputStream(report)) {

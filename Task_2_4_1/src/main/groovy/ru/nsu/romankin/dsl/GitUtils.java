@@ -1,7 +1,8 @@
 package ru.nsu.romankin.dsl;
 
-import org.eclipse.jgit.api.Git;
+
 import java.io.File;
+import org.eclipse.jgit.api.Git;
 
 /**
  * Class containing git utils.

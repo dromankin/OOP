@@ -1,24 +1,31 @@
 package ru.nsu.romankin.dsl;
 
 
+import static ru.nsu.romankin.dsl.AnaliticUtils.getCheckstyleResult;
+import static ru.nsu.romankin.dsl.AnaliticUtils.getCoveragePercentage;
+import static ru.nsu.romankin.dsl.AnaliticUtils.getPoints;
+import static ru.nsu.romankin.dsl.AnaliticUtils.getSoftHardPasses;
+import static ru.nsu.romankin.dsl.AnaliticUtils.getTestCounts;
+import static ru.nsu.romankin.dsl.GitUtils.updateStudentsRepos;
+import static ru.nsu.romankin.dsl.IoUtils.generateReport;
+import static ru.nsu.romankin.dsl.IoUtils.runTask;
+
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.util.DelegatingScript;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import org.codehaus.groovy.control.CompilerConfiguration;
-
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;
 
 
-import java.io.*;
-
-import java.util.*;
-
-import static ru.nsu.romankin.dsl.AnaliticUtils.*;
-import static ru.nsu.romankin.dsl.GitUtils.updateStudentsRepos;
-import static ru.nsu.romankin.dsl.IOUtils.generateReport;
-import static ru.nsu.romankin.dsl.IOUtils.runTask;
-
+/**
+ * Main app class.
+ */
 public class App {
     public static void main(String[] args) throws Exception {
         CompilerConfiguration cc = new CompilerConfiguration();
@@ -44,8 +51,8 @@ public class App {
         ArrayList<ArrayList<TaskResult>> results = new ArrayList<>();
 
         for (Group group : config.getGroups()) {
-            for(Student student : group.getGroupStudents()) {
-                System.out.println(group.getName() + " " +student.getName());
+            for (Student student : group.getGroupStudents()) {
+                System.out.println(group.getName() + " " + student.getName());
             }
         }
 
@@ -72,9 +79,9 @@ public class App {
                 runTask(connection, new TaskRunConfig("clean"));
                 boolean builds = runTask(connection, new TaskRunConfig("build").withExcludeTests());
                 boolean tests = runTask(connection, new TaskRunConfig("test"));
-
+                builds = builds;
                 TestCounts counts = getTestCounts(repoPrefix, student, task);
-
+                counts = counts;
                 int coveragePercent = 0;
                 if (tests) {
                     coveragePercent = getCoveragePercentage(connection, repoPrefix, student, task);
@@ -106,11 +113,9 @@ public class App {
             results.add(taskResults);
         }
 
-        for(Student student : config.getStudents()) {
+        for (Student student : config.getStudents()) {
             student.setMark(config.getMarks());
         }
-
-        System.out.println(results);
 
         generateReport(results, config);
     }

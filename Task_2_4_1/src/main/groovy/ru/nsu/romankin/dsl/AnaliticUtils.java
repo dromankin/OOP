@@ -1,9 +1,10 @@
 package ru.nsu.romankin.dsl;
 
-import com.puppycrawl.tools.checkstyle.Main;
+
 
 import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
 
+import com.puppycrawl.tools.checkstyle.Main;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -43,9 +44,10 @@ public class AnaliticUtils {
      */
     public static PassResults getSoftHardPasses(Task task, Student student, String repoPrefix)
             throws IOException, GitAPIException {
-        boolean hardPass;
-        boolean softPass;
-
+        boolean hardPass = false;
+        boolean softPass = false;
+        hardPass = hardPass;
+        softPass = softPass;
         File repoFile = new File(String.format("%s/%s", repoPrefix, student.getUsername()));
         Iterable<RevCommit> commits = Git
                 .open(repoFile)
@@ -73,10 +75,10 @@ public class AnaliticUtils {
             return new PassResults(false, false);
         }
 
-        softPass = first.isBefore(task.getSoftDeadline()) ||
-                first.isEqual(task.getHardDeadline());
-        hardPass = lastDate.isBefore(task.getHardDeadline()) ||
-                lastDate.isEqual(task.getHardDeadline());
+        softPass = first.isBefore(task.getSoftDeadline())
+                || first.isEqual(task.getHardDeadline());
+        hardPass = lastDate.isBefore(task.getHardDeadline())
+                || lastDate.isEqual(task.getHardDeadline());
         return new PassResults(softPass, hardPass);
     }
 
@@ -139,7 +141,7 @@ public class AnaliticUtils {
             Student student,
             Task task
     ) {
-        IOUtils.runTask(connection, new TaskRunConfig("jacocoTestReport"));
+        IoUtils.runTask(connection, new TaskRunConfig("jacocoTestReport"));
 
         File jacocoFile = new File(
                 String.format(
